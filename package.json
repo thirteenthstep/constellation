@@ -8,7 +8,9 @@
     "packages/*"
   ],
   "scripts": {
-    "start:native": "yarn workspace @constellation/native start"
+    "start:metro": "yarn workspace @constellation/native start",
+    "start:android": "yarn workspace @constellation/native android",
+    "start:ios": "yarn workspace @constellation/native ios"
   },
   "packageManager": "yarn@4.5.1"
 }
