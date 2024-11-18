@@ -1,8 +1,14 @@
 {
   "name": "constellation",
-  "version": "1.0.0",
   "description": "The constellation academy admin panel",
-  "main": "index.js",
   "author": "Thomas Kröniger",
-  "license": "MIT"
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "start:native": "yarn workspace @constellation/native start"
+  },
+  "packageManager": "yarn@4.5.1"
 }
