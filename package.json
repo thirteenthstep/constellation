@@ -10,7 +10,22 @@
   "scripts": {
     "start:metro": "yarn workspace @constellation/native start",
     "start:android": "yarn workspace @constellation/native android",
-    "start:ios": "yarn workspace @constellation/native ios"
+    "start:ios": "yarn workspace @constellation/native ios",
+    "start:web": "yarn workspace @constellation/web dev",
+    "lint": "yarn workspaces foreach -A -p run lint",
+    "format": "yarn workspaces foreach -A -p run format",
+    "prepare": "husky install"
   },
-  "packageManager": "yarn@4.5.1"
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "prettier": "2.8.8",
+    "typescript": "5.0.4"
+  },
+  "packageManager": "yarn@4.5.1",
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "yarn lint",
+      "yarn format"
+    ]
+  }
 }

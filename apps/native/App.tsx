@@ -4,21 +4,19 @@
  *
  * @format
  */
-
 import React from 'react';
 import {
   SafeAreaView,
   ScrollView,
   StatusBar,
-  StyleSheet,
-  useColorScheme,
   View,
+  useColorScheme,
 } from 'react-native';
-
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+
 import HelloWorld from '@constellation/app/components/HelloWorld.tsx';
 
-function App(): React.JSX.Element {
+function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {

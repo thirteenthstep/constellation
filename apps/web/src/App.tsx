@@ -1,8 +1,10 @@
-import './App.css';
+import React from 'react';
+
 import HelloWorld from '@constellation/app/components/HelloWorld';
 
-function App() {
+import './App.css';
 
+function App() {
   return (
     <>
       <HelloWorld />

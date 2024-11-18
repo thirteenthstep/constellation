@@ -1,43 +1,53 @@
 /* eslint-disable */
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
-export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+export type Exact<T extends {[key: string]: unknown}> = {[K in keyof T]: T[K]};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
+export type MakeEmpty<T extends {[key: string]: unknown}, K extends keyof T> = {
+  [_ in K]?: never;
+};
+export type Incremental<T> =
+  | T
+  | {[P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never};
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string; }
-  String: { input: string; output: string; }
-  Boolean: { input: boolean; output: boolean; }
-  Int: { input: number; output: number; }
-  Float: { input: number; output: number; }
+  ID: {input: string; output: string};
+  String: {input: string; output: string};
+  Boolean: {input: boolean; output: boolean};
+  Int: {input: number; output: number};
+  Float: {input: number; output: number};
   /** The `BigDecimal` scalar type represents signed fractional values with arbitrary precision. */
-  BigDecimal: { input: any; output: any; }
-  DayOfWeek: { input: any; output: any; }
-  LocalDate: { input: any; output: any; }
-  LocalTime: { input: any; output: any; }
+  BigDecimal: {input: any; output: any};
+  DayOfWeek: {input: any; output: any};
+  LocalDate: {input: any; output: any};
+  LocalTime: {input: any; output: any};
   /** The `Long` scalar type represents non-fractional signed whole numeric values. Long can represent values between -(2^63) and 2^63 - 1. */
-  Long: { input: any; output: any; }
-  ZonedDateTIme: { input: any; output: any; }
+  Long: {input: any; output: any};
+  ZonedDateTIme: {input: any; output: any};
 };
 
-export type AvgsPotentialAnalysisLicenseDefinitionData = LicenseDefinitionData & {
-  __typename?: 'AVGSPotentialAnalysisLicenseDefinitionData';
-  kind: LicenseDefinitionDataKind;
-  name: Scalars['String']['output'];
-};
+export type AvgsPotentialAnalysisLicenseDefinitionData =
+  LicenseDefinitionData & {
+    __typename?: 'AVGSPotentialAnalysisLicenseDefinitionData';
+    kind: LicenseDefinitionDataKind;
+    name: Scalars['String']['output'];
+  };
 
 export type AvgsPotentialAnalysisLicenseDefinitionDataInput = {
   name: Scalars['String']['input'];
 };
 
-export type AvgsPotentialAnalysis_AcceptedForUser = AvgsPotentialAnalysis_ForUser & {
-  __typename?: 'AVGSPotentialAnalysis_AcceptedForUser';
-  client?: Maybe<User>;
-  kind: AvgsPotentialAnalysis_ForUserKind;
-};
+export type AvgsPotentialAnalysis_AcceptedForUser =
+  AvgsPotentialAnalysis_ForUser & {
+    __typename?: 'AVGSPotentialAnalysis_AcceptedForUser';
+    client?: Maybe<User>;
+    kind: AvgsPotentialAnalysis_ForUserKind;
+  };
 
 export type AvgsPotentialAnalysis_Dimension = {
   __typename?: 'AVGSPotentialAnalysis_Dimension';
@@ -52,7 +62,7 @@ export type AvgsPotentialAnalysis_ForUser = {
 
 export enum AvgsPotentialAnalysis_ForUserKind {
   AcceptedForUser = 'AcceptedForUser',
-  InvitedForUser = 'InvitedForUser'
+  InvitedForUser = 'InvitedForUser',
 }
 
 export type AvgsPotentialAnalysis_Info = {
@@ -62,11 +72,12 @@ export type AvgsPotentialAnalysis_Info = {
   numAvailableLicenses: Scalars['Int']['output'];
 };
 
-export type AvgsPotentialAnalysis_InvitedForUser = AvgsPotentialAnalysis_ForUser & {
-  __typename?: 'AVGSPotentialAnalysis_InvitedForUser';
-  email: Scalars['String']['output'];
-  kind: AvgsPotentialAnalysis_ForUserKind;
-};
+export type AvgsPotentialAnalysis_InvitedForUser =
+  AvgsPotentialAnalysis_ForUser & {
+    __typename?: 'AVGSPotentialAnalysis_InvitedForUser';
+    email: Scalars['String']['output'];
+    kind: AvgsPotentialAnalysis_ForUserKind;
+  };
 
 export type AvgsPotentialAnalysis_LearnPotentialAnalysis = {
   __typename?: 'AVGSPotentialAnalysis_LearnPotentialAnalysis';
@@ -107,14 +118,12 @@ export type AcademiesAccountExtension = AccountExtension & {
   users: UserInAccountConnection;
 };
 
-
 export type AcademiesAccountExtensionLicensesArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
 };
-
 
 export type AcademiesAccountExtensionUsersArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -133,7 +142,6 @@ export type AcademiesChildTag = AcademiesTag & {
   kind: AcademiesTagKind;
   subId: Scalars['ID']['output'];
 };
-
 
 export type AcademiesChildTagChildrenArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -179,7 +187,6 @@ export type AcademiesRootTag = AcademiesTag & {
   subId: Scalars['ID']['output'];
 };
 
-
 export type AcademiesRootTagChildrenArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -213,7 +220,6 @@ export type AcademiesTag = {
   kind: AcademiesTagKind;
 };
 
-
 export type AcademiesTagChildrenArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -230,24 +236,20 @@ export type AcademiesTagAdminMutationSchema = {
   editTag?: Maybe<EditTagPayload>;
 };
 
-
 /** Data only accessible by the admin */
 export type AcademiesTagAdminMutationSchemaCreateAndAppendChildTagArgs = {
   input: CreateAndAppendChildTagInput;
 };
-
 
 /** Data only accessible by the admin */
 export type AcademiesTagAdminMutationSchemaCreateRootTagArgs = {
   input: CreateRootTagInput;
 };
 
-
 /** Data only accessible by the admin */
 export type AcademiesTagAdminMutationSchemaDeleteTagArgs = {
   input: DeleteTagInput;
 };
-
 
 /** Data only accessible by the admin */
 export type AcademiesTagAdminMutationSchemaEditTagArgs = {
@@ -261,7 +263,6 @@ export type AcademiesTagAdminSchema = {
   SelectTags: AcademiesTagsConnection;
 };
 
-
 /** Data only accessible by the admin */
 export type AcademiesTagAdminSchemaRootTagsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -272,7 +273,6 @@ export type AcademiesTagAdminSchemaRootTagsArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
 };
-
 
 /** Data only accessible by the admin */
 export type AcademiesTagAdminSchemaSelectTagsArgs = {
@@ -301,14 +301,13 @@ export type AcademiesTagData = {
 
 export enum AcademiesTagKind {
   Child = 'Child',
-  Root = 'Root'
+  Root = 'Root',
 }
 
 export type AcademiesTagQueries = {
   __typename?: 'AcademiesTagQueries';
   AcademiesTags: AcademiesRootTagsConnection;
 };
-
 
 export type AcademiesTagQueriesAcademiesTagsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -394,7 +393,6 @@ export type Account = Node & {
   registeredAt: Scalars['ZonedDateTIme']['output'];
 };
 
-
 export type AccountExtensionArgs = {
   accountExtensionKind: AccountExtensionKind;
 };
@@ -406,12 +404,10 @@ export type AccountBaseDataAdminMutationSchema = {
   editPrivateBaseData?: Maybe<EditPrivateBaseDataAdminPayload>;
 };
 
-
 /** Data only accessible by the admin */
 export type AccountBaseDataAdminMutationSchemaEditBusinessBaseDataArgs = {
   input: EditBusinessBaseDataAdminInput;
 };
-
 
 /** Data only accessible by the admin */
 export type AccountBaseDataAdminMutationSchemaEditPrivateBaseDataArgs = {
@@ -423,7 +419,6 @@ export type AccountBaseDataAdminSchema = {
   __typename?: 'AccountBaseDataAdminSchema';
   AccountBaseData: BaseData;
 };
-
 
 /** Data only accessible by the admin */
 export type AccountBaseDataAdminSchemaAccountBaseDataArgs = {
@@ -441,16 +436,13 @@ export type AccountBaseDataMutations = {
   setAccountBaseDataCountry?: Maybe<SetAccountBaseDataCountryPayload>;
 };
 
-
 export type AccountBaseDataMutationsEditBusinessBaseDataArgs = {
   input: EditBusinessBaseDataInput;
 };
 
-
 export type AccountBaseDataMutationsEditPrivateBaseDataArgs = {
   input: EditPrivateBaseDataInput;
 };
-
 
 export type AccountBaseDataMutationsSetAccountBaseDataCountryArgs = {
   input: SetAccountBaseDataCountryInput;
@@ -495,7 +487,7 @@ export type AccountExtension = {
 };
 
 export enum AccountExtensionKind {
-  Academies = 'Academies'
+  Academies = 'Academies',
 }
 
 export type AccountGroup = Node & {
@@ -507,17 +499,18 @@ export type AccountGroup = Node & {
   permissions: Array<Permission>;
 };
 
-export type AccountGroupAssignmentRule = AssignmentRule & Node & {
-  __typename?: 'AccountGroupAssignmentRule';
-  accountRef: Scalars['ID']['output'];
-  active: Scalars['Boolean']['output'];
-  amountEffectedUser: Scalars['Long']['output'];
-  /** The ID of an object */
-  id: Scalars['ID']['output'];
-  licenseGroupingId: Scalars['ID']['output'];
-  name: Scalars['String']['output'];
-  userInAccountGroups: Array<UserInAccountGroup>;
-};
+export type AccountGroupAssignmentRule = AssignmentRule &
+  Node & {
+    __typename?: 'AccountGroupAssignmentRule';
+    accountRef: Scalars['ID']['output'];
+    active: Scalars['Boolean']['output'];
+    amountEffectedUser: Scalars['Long']['output'];
+    /** The ID of an object */
+    id: Scalars['ID']['output'];
+    licenseGroupingId: Scalars['ID']['output'];
+    name: Scalars['String']['output'];
+    userInAccountGroups: Array<UserInAccountGroup>;
+  };
 
 export type AccountGroupAssociation = {
   __typename?: 'AccountGroupAssociation';
@@ -576,7 +569,7 @@ export type AccountMemberEdge = {
 
 export enum AccountMemberKind {
   Invitation = 'Invitation',
-  UserInAccount = 'UserInAccount'
+  UserInAccount = 'UserInAccount',
 }
 
 export type AccountMemberManagementMutations = {
@@ -591,45 +584,41 @@ export type AccountMemberManagementMutations = {
   removeUsersFromUserInAccountGroup?: Maybe<RemoveUsersFromUserInAccountGroupPayload>;
 };
 
-
 export type AccountMemberManagementMutationsAnonymizeAccountAsOwnerArgs = {
   input: AnonymizeAccountAsOwnerInput;
 };
 
-
-export type AccountMemberManagementMutationsCreateUserInAccountGroupAndAddOrInviteUsersMutationArgs = {
-  input: CreateUserInAccountGroupAndAddOrInviteUsersMutationInput;
-};
-
+export type AccountMemberManagementMutationsCreateUserInAccountGroupAndAddOrInviteUsersMutationArgs =
+  {
+    input: CreateUserInAccountGroupAndAddOrInviteUsersMutationInput;
+  };
 
 export type AccountMemberManagementMutationsDeleteInvitationArgs = {
   input: DeleteInvitationInput;
 };
 
-
 export type AccountMemberManagementMutationsDeleteUserInAccountGroupsArgs = {
   input: DeleteUserInAccountGroupsInput;
 };
 
+export type AccountMemberManagementMutationsEditUserInAccountGroupAndAddOrInviteUsersMutationArgs =
+  {
+    input: EditUserInAccountGroupAndAddOrInviteUsersMutationInput;
+  };
 
-export type AccountMemberManagementMutationsEditUserInAccountGroupAndAddOrInviteUsersMutationArgs = {
-  input: EditUserInAccountGroupAndAddOrInviteUsersMutationInput;
-};
-
-
-export type AccountMemberManagementMutationsInviteOrAddUsersToUserInAccountGroupsArgs = {
-  input: InviteOrAddUsersToUserInAccountGroupsInput;
-};
-
+export type AccountMemberManagementMutationsInviteOrAddUsersToUserInAccountGroupsArgs =
+  {
+    input: InviteOrAddUsersToUserInAccountGroupsInput;
+  };
 
 export type AccountMemberManagementMutationsRemoveUsersFromAccountArgs = {
   input: RemoveUsersFromAccountInput;
 };
 
-
-export type AccountMemberManagementMutationsRemoveUsersFromUserInAccountGroupArgs = {
-  input: RemoveUsersFromUserInAccountGroupInput;
-};
+export type AccountMemberManagementMutationsRemoveUsersFromUserInAccountGroupArgs =
+  {
+    input: RemoveUsersFromUserInAccountGroupInput;
+  };
 
 export type AccountMemberManagementQueries = {
   __typename?: 'AccountMemberManagementQueries';
@@ -638,18 +627,15 @@ export type AccountMemberManagementQueries = {
   UserInAccountGroupWrappers: UserInAccountGroupWrappersResult;
 };
 
-
 export type AccountMemberManagementQueriesAccountMembersArgs = {
   filterByAccountMemberKind?: InputMaybe<AccountMemberKind>;
   filterByGroupIds: Array<Scalars['ID']['input']>;
   filterByNameOrEmail?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type AccountMemberManagementQueriesUserInAccountGroupWrapperArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type AccountMemberManagementQueriesUserInAccountGroupWrappersArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -668,7 +654,6 @@ export type AccountMembersResult = {
   invitationCount: Scalars['Long']['output'];
   userCount: Scalars['Long']['output'];
 };
-
 
 export type AccountMembersResultAccountMembersArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -713,31 +698,36 @@ export type ActivateUserPayload = {
   clientMutationId?: Maybe<Scalars['String']['output']>;
 };
 
-export type ActiveAsyncContentSubmissionDefinition = AsyncContentSubmissionDefinition & ContentSubmissionDefinition & {
-  __typename?: 'ActiveAsyncContentSubmissionDefinition';
-  contentKind: ContentKind;
-  element?: Maybe<AsyncLearnElement>;
-  status: ContentSubmissionStatus;
-};
+export type ActiveAsyncContentSubmissionDefinition =
+  AsyncContentSubmissionDefinition &
+    ContentSubmissionDefinition & {
+      __typename?: 'ActiveAsyncContentSubmissionDefinition';
+      contentKind: ContentKind;
+      element?: Maybe<AsyncLearnElement>;
+      status: ContentSubmissionStatus;
+    };
 
-export type ActiveELearningContentSubmissionDefinition = ContentSubmissionDefinition & ELearningContentSubmissionDefinition & {
-  __typename?: 'ActiveELearningContentSubmissionDefinition';
-  canGoToNext: Scalars['Boolean']['output'];
-  canGoToPrevious: Scalars['Boolean']['output'];
-  contentKind: ContentKind;
-  currentElementState?: Maybe<ElementState>;
-  progress: ELearningContentSubmissionProgress;
-  relativeProgress: ELearningContentSubmissionRelativeProgress;
-  status: ContentSubmissionStatus;
-};
+export type ActiveELearningContentSubmissionDefinition =
+  ContentSubmissionDefinition &
+    ELearningContentSubmissionDefinition & {
+      __typename?: 'ActiveELearningContentSubmissionDefinition';
+      canGoToNext: Scalars['Boolean']['output'];
+      canGoToPrevious: Scalars['Boolean']['output'];
+      contentKind: ContentKind;
+      currentElementState?: Maybe<ElementState>;
+      progress: ELearningContentSubmissionProgress;
+      relativeProgress: ELearningContentSubmissionRelativeProgress;
+      status: ContentSubmissionStatus;
+    };
 
-export type ActiveELearningContentSubmissionProgress = ELearningContentSubmissionProgress & {
-  __typename?: 'ActiveELearningContentSubmissionProgress';
-  currentElementIndex: Scalars['Int']['output'];
-  isAtLastElement: Scalars['Boolean']['output'];
-  numElements: Scalars['Int']['output'];
-  percentage: Scalars['Int']['output'];
-};
+export type ActiveELearningContentSubmissionProgress =
+  ELearningContentSubmissionProgress & {
+    __typename?: 'ActiveELearningContentSubmissionProgress';
+    currentElementIndex: Scalars['Int']['output'];
+    isAtLastElement: Scalars['Boolean']['output'];
+    numElements: Scalars['Int']['output'];
+    percentage: Scalars['Int']['output'];
+  };
 
 export type AddAfterDateTimeVisibilityTreeConfigInput = {
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
@@ -882,18 +872,20 @@ export type AddExternalLicenseRewardPayload = {
   content: TreeNode;
 };
 
-export type AddGamificationPointsFinishContentSubmissionActionToActionResultToNextActionsInput = {
-  actionResultToNextActionsId: Scalars['ID']['input'];
-  clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  fieldValueKindAndIdMap: Array<TriggerAction_FieldValueKindAndIdMapEntryInput>;
-  name: Scalars['String']['input'];
-};
+export type AddGamificationPointsFinishContentSubmissionActionToActionResultToNextActionsInput =
+  {
+    actionResultToNextActionsId: Scalars['ID']['input'];
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    fieldValueKindAndIdMap: Array<TriggerAction_FieldValueKindAndIdMapEntryInput>;
+    name: Scalars['String']['input'];
+  };
 
-export type AddGamificationPointsFinishContentSubmissionActionToActionResultToNextActionsPayload = {
-  __typename?: 'AddGamificationPointsFinishContentSubmissionActionToActionResultToNextActionsPayload';
-  actionResultToNextActions: TriggerAction_ActionResultToNextActions;
-  clientMutationId?: Maybe<Scalars['String']['output']>;
-};
+export type AddGamificationPointsFinishContentSubmissionActionToActionResultToNextActionsPayload =
+  {
+    __typename?: 'AddGamificationPointsFinishContentSubmissionActionToActionResultToNextActionsPayload';
+    actionResultToNextActions: TriggerAction_ActionResultToNextActions;
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+  };
 
 export type AddGamificationPointsFinishContentSubmissionActionToTriggerInput = {
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
@@ -902,11 +894,12 @@ export type AddGamificationPointsFinishContentSubmissionActionToTriggerInput = {
   triggerId: Scalars['ID']['input'];
 };
 
-export type AddGamificationPointsFinishContentSubmissionActionToTriggerPayload = {
-  __typename?: 'AddGamificationPointsFinishContentSubmissionActionToTriggerPayload';
-  clientMutationId?: Maybe<Scalars['String']['output']>;
-  trigger: TriggerAction_Trigger;
-};
+export type AddGamificationPointsFinishContentSubmissionActionToTriggerPayload =
+  {
+    __typename?: 'AddGamificationPointsFinishContentSubmissionActionToTriggerPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    trigger: TriggerAction_Trigger;
+  };
 
 export type AddHideVisibilityCoachingConfigInput = {
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
@@ -930,18 +923,20 @@ export type AddHideVisibilityTreeConfigPayload = {
   rootNode: TreeNode;
 };
 
-export type AddIhkCertificateFinishContentSubmissionActionToActionResultToNextActionsInput = {
-  actionResultToNextActionsId: Scalars['ID']['input'];
-  clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  fieldValueKindAndIdMap: Array<TriggerAction_FieldValueKindAndIdMapEntryInput>;
-  name: Scalars['String']['input'];
-};
+export type AddIhkCertificateFinishContentSubmissionActionToActionResultToNextActionsInput =
+  {
+    actionResultToNextActionsId: Scalars['ID']['input'];
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    fieldValueKindAndIdMap: Array<TriggerAction_FieldValueKindAndIdMapEntryInput>;
+    name: Scalars['String']['input'];
+  };
 
-export type AddIhkCertificateFinishContentSubmissionActionToActionResultToNextActionsPayload = {
-  __typename?: 'AddIHKCertificateFinishContentSubmissionActionToActionResultToNextActionsPayload';
-  actionResultToNextActions: TriggerAction_ActionResultToNextActions;
-  clientMutationId?: Maybe<Scalars['String']['output']>;
-};
+export type AddIhkCertificateFinishContentSubmissionActionToActionResultToNextActionsPayload =
+  {
+    __typename?: 'AddIHKCertificateFinishContentSubmissionActionToActionResultToNextActionsPayload';
+    actionResultToNextActions: TriggerAction_ActionResultToNextActions;
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+  };
 
 export type AddIhkCertificateFinishContentSubmissionActionToTriggerInput = {
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
@@ -1414,7 +1409,7 @@ export type AnswerOptionWithoutCorrect = {
 export enum AnsweringTypeV2 {
   AllowMultipleAnswersAllCorrectMustBeGiven = 'allowMultipleAnswersAllCorrectMustBeGiven',
   AllowMultipleAnswersOnlySomeCorrectMustBeGiven = 'allowMultipleAnswersOnlySomeCorrectMustBeGiven',
-  AllowOnlyOneAnswer = 'allowOnlyOneAnswer'
+  AllowOnlyOneAnswer = 'allowOnlyOneAnswer',
 }
 
 export type AppleIapData = PaymentProviderData & {
@@ -1439,30 +1434,27 @@ export type AsyncContentAdminMutationSchema = {
   evaluateUploadAsyncElementTask?: Maybe<EvaluateUploadAsyncElementTaskPayload>;
 };
 
-
 /** Data only accessible by the admin */
 export type AsyncContentAdminMutationSchemaCreateUploadAsyncElementArgs = {
   input: CreateUploadAsyncElementInput;
 };
-
 
 /** Data only accessible by the admin */
 export type AsyncContentAdminMutationSchemaEditUploadAsyncElementArgs = {
   input: EditUploadAsyncElementInput;
 };
 
-
 /** Data only accessible by the admin */
-export type AsyncContentAdminMutationSchemaEvaluateUploadAsyncElementTaskArgs = {
-  input: EvaluateUploadAsyncElementTaskInput;
-};
+export type AsyncContentAdminMutationSchemaEvaluateUploadAsyncElementTaskArgs =
+  {
+    input: EvaluateUploadAsyncElementTaskInput;
+  };
 
 /** Data only accessible by the admin */
 export type AsyncContentAdminSchema = {
   __typename?: 'AsyncContentAdminSchema';
   GetAsyncElementTasks: AsyncElementTasksConnection;
 };
-
 
 /** Data only accessible by the admin */
 export type AsyncContentAdminSchemaGetAsyncElementTasksArgs = {
@@ -1477,7 +1469,6 @@ export type AsyncContentMutations = {
   submitUploadAsyncElement?: Maybe<SubmitUploadAsyncElementPayload>;
 };
 
-
 export type AsyncContentMutationsSubmitUploadAsyncElementArgs = {
   input: SubmitUploadAsyncElementInput;
 };
@@ -1488,21 +1479,22 @@ export type AsyncContentSubmissionDefinition = {
   status: ContentSubmissionStatus;
 };
 
-export type AsyncContentTypeDefinition = ContentTypeDefinition & TypeDefinition & {
-  __typename?: 'AsyncContentTypeDefinition';
-  contentKind: ContentKind;
-  continueConfig: ContinueContentConfig;
-  definitionType: TypeDefinitionType;
-  element?: Maybe<AsyncElement>;
-  extension: ContentExtension;
-  passConfig: PassContentConfig;
-  restartIfFailedConfigs: Array<RestartIfFailedContentConfig>;
-  restartIfPassedConfig: RestartIfPassedContentConfig;
-  rewardConfig: RewardContentConfig;
-  rewards: Array<Reward>;
-  startConfigs: Array<StartContentConfig>;
-  trigger?: Maybe<TriggerAction_Trigger>;
-};
+export type AsyncContentTypeDefinition = ContentTypeDefinition &
+  TypeDefinition & {
+    __typename?: 'AsyncContentTypeDefinition';
+    contentKind: ContentKind;
+    continueConfig: ContinueContentConfig;
+    definitionType: TypeDefinitionType;
+    element?: Maybe<AsyncElement>;
+    extension: ContentExtension;
+    passConfig: PassContentConfig;
+    restartIfFailedConfigs: Array<RestartIfFailedContentConfig>;
+    restartIfPassedConfig: RestartIfPassedContentConfig;
+    rewardConfig: RewardContentConfig;
+    rewards: Array<Reward>;
+    startConfigs: Array<StartContentConfig>;
+    trigger?: Maybe<TriggerAction_Trigger>;
+  };
 
 export type AsyncElement = {
   assignedEvaluator?: Maybe<User>;
@@ -1514,7 +1506,7 @@ export type AsyncElement = {
 };
 
 export enum AsyncElementKind {
-  Upload = 'Upload'
+  Upload = 'Upload',
 }
 
 export type AsyncElementTask = {
@@ -1545,7 +1537,7 @@ export type AsyncElementTaskHierarchy = {
 
 export enum AsyncElementTaskStatus {
   Evaluated = 'Evaluated',
-  Fresh = 'Fresh'
+  Fresh = 'Fresh',
 }
 
 export type AsyncElementTaskSubmissionInfo = {
@@ -1581,7 +1573,7 @@ export type AsyncLearnElement = {
 };
 
 export enum AttachmentKind {
-  DefaultFile = 'DefaultFile'
+  DefaultFile = 'DefaultFile',
 }
 
 export type AttachmentV2 = {
@@ -1610,78 +1602,65 @@ export type AuthAdminMutationSchema = {
   triggerResetPassword?: Maybe<TriggerResetPasswordPayload>;
 };
 
-
 /** Data only accessible by the admin */
 export type AuthAdminMutationSchemaAddUserToAccountArgs = {
   input: AddUserToAccountAdminInput;
 };
-
 
 /** Data only accessible by the admin */
 export type AuthAdminMutationSchemaAnonymizeAccountAdminArgs = {
   input: AnonymizeAccountInput;
 };
 
-
 /** Data only accessible by the admin */
 export type AuthAdminMutationSchemaAnonymizeUserArgs = {
   input: DeleteUserInput;
 };
-
 
 /** Data only accessible by the admin */
 export type AuthAdminMutationSchemaCreateAccountArgs = {
   input: CreateAccountInput;
 };
 
-
 /** Data only accessible by the admin */
 export type AuthAdminMutationSchemaCreateUserInAccountArgs = {
   input: CreateUserInAccountInput;
 };
-
 
 /** Data only accessible by the admin */
 export type AuthAdminMutationSchemaEditUserArgs = {
   input: EditUserInput;
 };
 
-
 /** Data only accessible by the admin */
 export type AuthAdminMutationSchemaLoginAsUserJwtArgs = {
   input: LoginAsUserJwtInput;
 };
-
 
 /** Data only accessible by the admin */
 export type AuthAdminMutationSchemaRemoveUserFromAccountArgs = {
   input: RemoveUserFromAccountInput;
 };
 
-
 /** Data only accessible by the admin */
 export type AuthAdminMutationSchemaSetAccountGroupsArgs = {
   input: SetAccountGroupsInput;
 };
-
 
 /** Data only accessible by the admin */
 export type AuthAdminMutationSchemaSetAccountNameArgs = {
   input: SetAccountNameInput;
 };
 
-
 /** Data only accessible by the admin */
 export type AuthAdminMutationSchemaSetUserInAccountGroupsArgs = {
   input: SetUserInAccountGroupsInput;
 };
 
-
 /** Data only accessible by the admin */
 export type AuthAdminMutationSchemaTriggerResendActivationArgs = {
   input: TriggerResendActivationInput;
 };
-
 
 /** Data only accessible by the admin */
 export type AuthAdminMutationSchemaTriggerResetPasswordArgs = {
@@ -1699,7 +1678,6 @@ export type AuthAdminSchema = {
   Users: UserConnection;
 };
 
-
 /** Data only accessible by the admin */
 export type AuthAdminSchemaAccountsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -1709,12 +1687,10 @@ export type AuthAdminSchemaAccountsArgs = {
   name?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 /** Data only accessible by the admin */
 export type AuthAdminSchemaGetUserInAccountGroupsArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 /** Data only accessible by the admin */
 export type AuthAdminSchemaSearchEditorsArgs = {
@@ -1724,7 +1700,6 @@ export type AuthAdminSchemaSearchEditorsArgs = {
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
 };
-
 
 /** Data only accessible by the admin */
 export type AuthAdminSchemaSelectAccountsArgs = {
@@ -1736,7 +1711,6 @@ export type AuthAdminSchemaSelectAccountsArgs = {
   nameOpt?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 /** Data only accessible by the admin */
 export type AuthAdminSchemaSelectUsersArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -1746,7 +1720,6 @@ export type AuthAdminSchemaSelectUsersArgs = {
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
 };
-
 
 /** Data only accessible by the admin */
 export type AuthAdminSchemaUsersArgs = {
@@ -1775,66 +1748,53 @@ export type AuthMutations = {
   switchAccount?: Maybe<SwitchAccountPayload>;
 };
 
-
 export type AuthMutationsAcceptInvitationArgs = {
   input: AcceptInvitationInput;
 };
-
 
 export type AuthMutationsAcceptInvitationWithNewUserArgs = {
   input: AcceptInviteWithNewUserInput;
 };
 
-
 export type AuthMutationsActivateUserArgs = {
   input: ActivateUserInput;
 };
-
 
 export type AuthMutationsForgotPasswordArgs = {
   input: ForgotPasswordInput;
 };
 
-
 export type AuthMutationsLeaveAccountArgs = {
   input: LeaveAccountInput;
 };
-
 
 export type AuthMutationsLoginArgs = {
   input: LoginInput;
 };
 
-
 export type AuthMutationsLoginJwtArgs = {
   input: LoginJwtInput;
 };
-
 
 export type AuthMutationsLogoutJwtArgs = {
   input: LogoutJwtInput;
 };
 
-
 export type AuthMutationsRegisterUserArgs = {
   input: RegisterUserInput;
 };
-
 
 export type AuthMutationsResendActivationArgs = {
   input: ResendActivationInput;
 };
 
-
 export type AuthMutationsResetPasswordAndActivateArgs = {
   input: ResetPasswordAndActivateInput;
 };
 
-
 export type AuthMutationsSetAccountNameUserArgs = {
   input: SetAccountNameUserInput;
 };
-
 
 export type AuthMutationsSwitchAccountArgs = {
   input: SwitchAccountInput;
@@ -1845,7 +1805,6 @@ export type AuthQueries = {
   InvitationByToken?: Maybe<Invitation>;
 };
 
-
 export type AuthQueriesInvitationByTokenArgs = {
   token: Scalars['String']['input'];
 };
@@ -1855,7 +1814,6 @@ export type AuthViewerMutationSchema = {
   __typename?: 'AuthViewerMutationSchema';
   anonymizeMyUser?: Maybe<AnonymizeMyUserPayload>;
 };
-
 
 /** Data partaining to the current user */
 export type AuthViewerMutationSchemaAnonymizeMyUserArgs = {
@@ -1949,35 +1907,34 @@ export type AvgsPotentialAnalysisAdminMutationSchema = {
   transformPrivateAccountToAVGSAccount?: Maybe<TransformPrivateAccountToAvgsAccountPayload>;
 };
 
-
 /** Data only accessible by the admin */
 export type AvgsPotentialAnalysisAdminMutationSchemaChangeInvitedForUserArgs = {
   input: ChangeInvitedForUserInput;
 };
 
+/** Data only accessible by the admin */
+export type AvgsPotentialAnalysisAdminMutationSchemaChangeReplacementCoachArgs =
+  {
+    input: ChangeReplacementCoachInput;
+  };
 
 /** Data only accessible by the admin */
-export type AvgsPotentialAnalysisAdminMutationSchemaChangeReplacementCoachArgs = {
-  input: ChangeReplacementCoachInput;
-};
-
-
-/** Data only accessible by the admin */
-export type AvgsPotentialAnalysisAdminMutationSchemaCreatePotentialAnalysisArgs = {
-  input: CreatePotentialAnalysisInput;
-};
-
+export type AvgsPotentialAnalysisAdminMutationSchemaCreatePotentialAnalysisArgs =
+  {
+    input: CreatePotentialAnalysisInput;
+  };
 
 /** Data only accessible by the admin */
-export type AvgsPotentialAnalysisAdminMutationSchemaTransformBusinessAccountToAvgsAccountArgs = {
-  input: TransformBusinessAccountToAvgsAccountInput;
-};
-
+export type AvgsPotentialAnalysisAdminMutationSchemaTransformBusinessAccountToAvgsAccountArgs =
+  {
+    input: TransformBusinessAccountToAvgsAccountInput;
+  };
 
 /** Data only accessible by the admin */
-export type AvgsPotentialAnalysisAdminMutationSchemaTransformPrivateAccountToAvgsAccountArgs = {
-  input: TransformPrivateAccountToAvgsAccountInput;
-};
+export type AvgsPotentialAnalysisAdminMutationSchemaTransformPrivateAccountToAvgsAccountArgs =
+  {
+    input: TransformPrivateAccountToAvgsAccountInput;
+  };
 
 /** Data only accessible by the admin */
 export type AvgsPotentialAnalysisAdminSchema = {
@@ -1988,7 +1945,6 @@ export type AvgsPotentialAnalysisAdminSchema = {
   SearchAVGSCoaches: UserConnection;
 };
 
-
 /** Data only accessible by the admin */
 export type AvgsPotentialAnalysisAdminSchemaAvgsPotentialAnalysisArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -1997,15 +1953,14 @@ export type AvgsPotentialAnalysisAdminSchemaAvgsPotentialAnalysisArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 /** Data only accessible by the admin */
-export type AvgsPotentialAnalysisAdminSchemaAvailableModulesAndDimensionsArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-};
-
+export type AvgsPotentialAnalysisAdminSchemaAvailableModulesAndDimensionsArgs =
+  {
+    after?: InputMaybe<Scalars['String']['input']>;
+    before?: InputMaybe<Scalars['String']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+  };
 
 /** Data only accessible by the admin */
 export type AvgsPotentialAnalysisAdminSchemaSearchAvgsCoachesArgs = {
@@ -2027,31 +1982,29 @@ export type AvgsPotentialAnalysisMutations = {
   setAnswerInTextQuestion?: Maybe<SetAnswerInTextQuestionPayload>;
 };
 
+export type AvgsPotentialAnalysisMutationsSetAnswerInMultipleChoiceFreeTextQuestionArgs =
+  {
+    input: SetAnswerInMultipleChoiceFreeTextQuestionInput;
+  };
 
-export type AvgsPotentialAnalysisMutationsSetAnswerInMultipleChoiceFreeTextQuestionArgs = {
-  input: SetAnswerInMultipleChoiceFreeTextQuestionInput;
-};
-
-
-export type AvgsPotentialAnalysisMutationsSetAnswerInMultipleChoiceQuestionArgs = {
-  input: SetAnswerInMultipleChoiceQuestionInput;
-};
-
+export type AvgsPotentialAnalysisMutationsSetAnswerInMultipleChoiceQuestionArgs =
+  {
+    input: SetAnswerInMultipleChoiceQuestionInput;
+  };
 
 export type AvgsPotentialAnalysisMutationsSetAnswerInScaleQuestionArgs = {
   input: SetAnswerInScaleQuestionInput;
 };
 
+export type AvgsPotentialAnalysisMutationsSetAnswerInSingleChoiceFreeTextQuestionArgs =
+  {
+    input: SetAnswerInSingleChoiceFreeTextQuestionInput;
+  };
 
-export type AvgsPotentialAnalysisMutationsSetAnswerInSingleChoiceFreeTextQuestionArgs = {
-  input: SetAnswerInSingleChoiceFreeTextQuestionInput;
-};
-
-
-export type AvgsPotentialAnalysisMutationsSetAnswerInSingleChoiceQuestionArgs = {
-  input: SetAnswerInSingleChoiceQuestionInput;
-};
-
+export type AvgsPotentialAnalysisMutationsSetAnswerInSingleChoiceQuestionArgs =
+  {
+    input: SetAnswerInSingleChoiceQuestionInput;
+  };
 
 export type AvgsPotentialAnalysisMutationsSetAnswerInTextQuestionArgs = {
   input: SetAnswerInTextQuestionInput;
@@ -2063,7 +2016,6 @@ export type AvgsPotentialAnalysisQueries = {
   LearnPotentialAnalysis?: Maybe<AvgsPotentialAnalysis_LearnPotentialAnalysis>;
 };
 
-
 export type AvgsPotentialAnalysisQueriesAvgsAccountsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -2071,7 +2023,6 @@ export type AvgsPotentialAnalysisQueriesAvgsAccountsArgs = {
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
 };
-
 
 export type AvgsPotentialAnalysisQueriesLearnPotentialAnalysisArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -2088,12 +2039,10 @@ export type AzavAdminMutationSchema = {
   transformPrivateAccountToAZAVAccount?: Maybe<TransformPrivateAccountToAzavAccountPayload>;
 };
 
-
 /** Data only accessible by the admin */
 export type AzavAdminMutationSchemaTransformBusinessAccountToAzavAccountArgs = {
   input: TransformBusinessAccountToAzavAccountInput;
 };
-
 
 /** Data only accessible by the admin */
 export type AzavAdminMutationSchemaTransformPrivateAccountToAzavAccountArgs = {
@@ -2153,234 +2102,195 @@ export type BillingAdminMutationSchema = {
   issueExternalLicense?: Maybe<IssueExternalLicensePayload>;
 };
 
-
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaAddProductSelectionConditionArgs = {
   input: AddProductSelectionConditionInput;
 };
-
 
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaCreateAccountGroupProductArgs = {
   input: CreateAccountGroupProductInput;
 };
 
-
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaCreateContractPartnerArgs = {
   input: CreateContractPartnerInput;
 };
-
 
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaCreateDiscountCodeArgs = {
   input: CreateDiscountCodeInput;
 };
 
-
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaCreateEuroDiscountActionArgs = {
   input: CreateEuroDiscountActionInput;
 };
-
 
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaCreateExternalLicenseArgs = {
   input: CreateExternalLicenseInput;
 };
 
-
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaCreateExternalLicensePoolArgs = {
   input: CreateExternalLicensePoolInput;
 };
-
 
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaCreateLicenseProductArgs = {
   input: CreateLicenseProductInput;
 };
 
-
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaCreateLicenseUsageReportArgs = {
   input: CreateLicenseUsageReportInput;
 };
-
 
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaCreateLicensesArgs = {
   input: CreateLicensesInput;
 };
 
-
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaCreateLimitedCartDiscountArgs = {
   input: CreateLimitedCartDiscountInput;
 };
-
 
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaCreatePercentageDiscountActionArgs = {
   input: CreatePercentageDiscountActionInput;
 };
 
-
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaCreatePlacementProductArgs = {
   input: CreatePlacementProductInput;
 };
-
 
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaCreateRandomDiscountCodesArgs = {
   input: CreateRandomDiscountCodesInput;
 };
 
-
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaCreateStripeConnectAccountArgs = {
   input: CreateStripeConnectAccountInput;
 };
-
 
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaCreateTransfersReportArgs = {
   input: CreateTransfersReportInput;
 };
 
-
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaDeleteConditionArgs = {
   input: DeleteConditionInput;
 };
-
 
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaDeleteContractPartnerArgs = {
   input: DeleteContractPartnerInput;
 };
 
-
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaDeleteDiscountActionArgs = {
   input: DeleteDiscountActionInput;
 };
-
 
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaDeleteDiscountCodeArgs = {
   input: DeleteDiscountCodeInput;
 };
 
-
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaDeleteExternalLicenseArgs = {
   input: DeleteExternalLicenseInput;
 };
-
 
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaDeleteExternalLicensePoolArgs = {
   input: DeleteExternalLicensePoolInput;
 };
 
-
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaDeleteLicenseArgs = {
   input: DeleteLicenseInput;
 };
-
 
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaDeleteLimitedCartDiscountArgs = {
   input: DeleteLimitedCartDiscountInput;
 };
 
-
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaDeleteProductArgs = {
   input: DeleteProductInput;
 };
-
 
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaEditAcademiesProductExtensionArgs = {
   input: EditAcademiesProductExtensionInput;
 };
 
-
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaEditAccountGroupProductArgs = {
   input: EditAccountGroupProductInput;
 };
-
 
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaEditContractPartnerDataArgs = {
   input: EditContractPartnerDataInput;
 };
 
-
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaEditDiscountCodeArgs = {
   input: EditDiscountCodeInput;
 };
-
 
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaEditEuroDiscountActionArgs = {
   input: EditEuroDiscountActionInput;
 };
 
-
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaEditExternalLicenseArgs = {
   input: EditExternalLicenseInput;
 };
-
 
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaEditExternalLicensePoolArgs = {
   input: EditExternalLicensePoolInput;
 };
 
-
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaEditLicenseProductArgs = {
   input: EditLicenseProductInput;
 };
-
 
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaEditLimitedCartDiscountArgs = {
   input: EditLimitedCartDiscountInput;
 };
 
-
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaEditPercentageDiscountActionArgs = {
   input: EditPercentageDiscountActionInput;
 };
-
 
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaEditProductArgs = {
   input: EditProductInput;
 };
 
-
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaEditProductSelectionConditionArgs = {
   input: EditProductSelectionConditionInput;
 };
 
-
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaGenerateAbsoluteCartLinkArgs = {
   input: GenerateAbsoluteCartLinkInput;
 };
-
 
 /** Data only accessible by the admin */
 export type BillingAdminMutationSchemaIssueExternalLicenseArgs = {
@@ -2401,7 +2311,6 @@ export type BillingAdminSchema = {
   selectDiscountCodes: DiscountCodesV2Connection;
 };
 
-
 /** Data only accessible by the admin */
 export type BillingAdminSchemaContractPartnersArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -2410,7 +2319,6 @@ export type BillingAdminSchemaContractPartnersArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
 };
-
 
 /** Data only accessible by the admin */
 export type BillingAdminSchemaDiscountActionsArgs = {
@@ -2423,7 +2331,6 @@ export type BillingAdminSchemaDiscountActionsArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 /** Data only accessible by the admin */
 export type BillingAdminSchemaDiscountsMultiselectArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -2434,7 +2341,6 @@ export type BillingAdminSchemaDiscountsMultiselectArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 /** Data only accessible by the admin */
 export type BillingAdminSchemaGetExternalLicensePoolsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -2443,7 +2349,6 @@ export type BillingAdminSchemaGetExternalLicensePoolsArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
   nameOpt?: InputMaybe<Scalars['String']['input']>;
 };
-
 
 /** Data only accessible by the admin */
 export type BillingAdminSchemaGetExternalLicensesArgs = {
@@ -2456,7 +2361,6 @@ export type BillingAdminSchemaGetExternalLicensesArgs = {
   pool?: InputMaybe<Scalars['ID']['input']>;
 };
 
-
 /** Data only accessible by the admin */
 export type BillingAdminSchemaLimitedCartDiscountsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -2465,7 +2369,6 @@ export type BillingAdminSchemaLimitedCartDiscountsArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
 };
-
 
 /** Data only accessible by the admin */
 export type BillingAdminSchemaOrdersArgs = {
@@ -2479,7 +2382,6 @@ export type BillingAdminSchemaOrdersArgs = {
   username?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 /** Data only accessible by the admin */
 export type BillingAdminSchemaSearchProductsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -2490,7 +2392,6 @@ export type BillingAdminSchemaSearchProductsArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
   titleOpt?: InputMaybe<Scalars['String']['input']>;
 };
-
 
 /** Data only accessible by the admin */
 export type BillingAdminSchemaSelectDiscountCodesArgs = {
@@ -2535,60 +2436,51 @@ export type BillingMutations = {
   updatePrivateBillingDetailsAndInitiateCheckout?: Maybe<UpdatePrivateBillingDetailsAndInitiateCheckoutPayload>;
 };
 
-
 export type BillingMutationsBookTreeArgs = {
   input: BookTreeInput;
 };
-
 
 export type BillingMutationsChangePaymentDateArgs = {
   input: ChangePaymentDateInput;
 };
 
-
 export type BillingMutationsChangePaymentMethodArgs = {
   input: ChangePaymentMethodInput;
 };
-
 
 export type BillingMutationsCreateOrderArgs = {
   input: CreateOrderInput;
 };
 
-
 export type BillingMutationsPayOrderArgs = {
   input: PayOrderInput;
 };
-
 
 export type BillingMutationsPayOrderViaIapArgs = {
   input: PayOrderViaIapInput;
 };
 
-
 export type BillingMutationsUpdateBusinessBillingDetailsArgs = {
   input: UpdateBusinessBillingDetailsInput;
 };
 
-
-export type BillingMutationsUpdateBusinessBillingDetailsAndInitiateCheckoutArgs = {
-  input: UpdateBusinessBillingDetailsAndInitiateCheckoutInput;
-};
-
+export type BillingMutationsUpdateBusinessBillingDetailsAndInitiateCheckoutArgs =
+  {
+    input: UpdateBusinessBillingDetailsAndInitiateCheckoutInput;
+  };
 
 export type BillingMutationsUpdateCartArgs = {
   input: UpdateCartInput;
 };
 
-
 export type BillingMutationsUpdatePrivateBillingDetailsArgs = {
   input: UpdatePrivateBillingDetailsInput;
 };
 
-
-export type BillingMutationsUpdatePrivateBillingDetailsAndInitiateCheckoutArgs = {
-  input: UpdatePrivateBillingDetailsAndInitiateCheckoutInput;
-};
+export type BillingMutationsUpdatePrivateBillingDetailsAndInitiateCheckoutArgs =
+  {
+    input: UpdatePrivateBillingDetailsAndInitiateCheckoutInput;
+  };
 
 /** Data partaining to the current user */
 export type BillingViewerSchema = {
@@ -2596,7 +2488,6 @@ export type BillingViewerSchema = {
   LicensesGroupedByDefinition: LicensesGroupedByDefinitionConnection;
   ViewerOrders: OrdersConnection;
 };
-
 
 /** Data partaining to the current user */
 export type BillingViewerSchemaLicensesGroupedByDefinitionArgs = {
@@ -2606,7 +2497,6 @@ export type BillingViewerSchemaLicensesGroupedByDefinitionArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 /** Data partaining to the current user */
 export type BillingViewerSchemaViewerOrdersArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -2615,26 +2505,29 @@ export type BillingViewerSchemaViewerOrdersArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
 };
 
-export type BlockPermanentlyRestartIfFailedContentConfig = RestartIfFailedContentConfig & {
-  __typename?: 'BlockPermanentlyRestartIfFailedContentConfig';
-  configType: RestartIfFailedContentConfigType;
-  /** The ID of an object */
-  id: Scalars['ID']['output'];
-  maximumTries: Scalars['Int']['output'];
-};
+export type BlockPermanentlyRestartIfFailedContentConfig =
+  RestartIfFailedContentConfig & {
+    __typename?: 'BlockPermanentlyRestartIfFailedContentConfig';
+    configType: RestartIfFailedContentConfigType;
+    /** The ID of an object */
+    id: Scalars['ID']['output'];
+    maximumTries: Scalars['Int']['output'];
+  };
 
-export type BlockTemporarilyRestartIfFailedContentConfig = RestartIfFailedContentConfig & {
-  __typename?: 'BlockTemporarilyRestartIfFailedContentConfig';
-  configType: RestartIfFailedContentConfigType;
-  daysToBlock: Scalars['Int']['output'];
-  /** The ID of an object */
-  id: Scalars['ID']['output'];
-};
+export type BlockTemporarilyRestartIfFailedContentConfig =
+  RestartIfFailedContentConfig & {
+    __typename?: 'BlockTemporarilyRestartIfFailedContentConfig';
+    configType: RestartIfFailedContentConfigType;
+    daysToBlock: Scalars['Int']['output'];
+    /** The ID of an object */
+    id: Scalars['ID']['output'];
+  };
 
-export type BlockedByTreeContentNodeAdvancementResult = ContentNodeAdvancementResult & {
-  __typename?: 'BlockedByTreeContentNodeAdvancementResult';
-  status: ContentNodeAdvancementStatus;
-};
+export type BlockedByTreeContentNodeAdvancementResult =
+  ContentNodeAdvancementResult & {
+    __typename?: 'BlockedByTreeContentNodeAdvancementResult';
+    status: ContentNodeAdvancementStatus;
+  };
 
 export type BlockoutDate = {
   __typename?: 'BlockoutDate';
@@ -2693,7 +2586,7 @@ export type BookingInterface = {
 export enum BookingKind {
   BookedForGroup = 'BookedForGroup',
   BookedOneToOne = 'BookedOneToOne',
-  NotBooked = 'NotBooked'
+  NotBooked = 'NotBooked',
 }
 
 export enum Branch {
@@ -2708,7 +2601,7 @@ export enum Branch {
   OtherFieldsOfActivity = 'otherFieldsOfActivity',
   PersonnelAndHr = 'personnelAndHr',
   ProcessPlanningAndQualityAssurance = 'processPlanningAndQualityAssurance',
-  ProductManagement = 'productManagement'
+  ProductManagement = 'productManagement',
 }
 
 export type BranchTypeDefinition = TypeDefinition & {
@@ -2807,7 +2700,6 @@ export type CachingAdminMutationSchema = {
   clearCache?: Maybe<ClearCachePayload>;
 };
 
-
 /** Data only accessible by the admin */
 export type CachingAdminMutationSchemaClearCacheArgs = {
   input: ClearCacheInput;
@@ -2826,20 +2718,23 @@ export type CanAfterStartingTreeStartContentConfig = StartContentConfig & {
   id: Scalars['ID']['output'];
 };
 
-export type CanBeRestartedAfterFailedContentNodeAdvancementResult = ContentNodeAdvancementResult & {
-  __typename?: 'CanBeRestartedAfterFailedContentNodeAdvancementResult';
-  status: ContentNodeAdvancementStatus;
-};
+export type CanBeRestartedAfterFailedContentNodeAdvancementResult =
+  ContentNodeAdvancementResult & {
+    __typename?: 'CanBeRestartedAfterFailedContentNodeAdvancementResult';
+    status: ContentNodeAdvancementStatus;
+  };
 
-export type CanBeRestartedAfterPassedContentNodeAdvancementResult = ContentNodeAdvancementResult & {
-  __typename?: 'CanBeRestartedAfterPassedContentNodeAdvancementResult';
-  status: ContentNodeAdvancementStatus;
-};
+export type CanBeRestartedAfterPassedContentNodeAdvancementResult =
+  ContentNodeAdvancementResult & {
+    __typename?: 'CanBeRestartedAfterPassedContentNodeAdvancementResult';
+    status: ContentNodeAdvancementStatus;
+  };
 
-export type CanBeStartedContentNodeAdvancementResult = ContentNodeAdvancementResult & {
-  __typename?: 'CanBeStartedContentNodeAdvancementResult';
-  status: ContentNodeAdvancementStatus;
-};
+export type CanBeStartedContentNodeAdvancementResult =
+  ContentNodeAdvancementResult & {
+    __typename?: 'CanBeStartedContentNodeAdvancementResult';
+    status: ContentNodeAdvancementStatus;
+  };
 
 export type CanBeStartedViewerTreeState = ViewerTreeState & {
   __typename?: 'CanBeStartedViewerTreeState';
@@ -2860,23 +2755,26 @@ export type CanIfUnlockedStartContentConfig = StartContentConfig & {
   id: Scalars['ID']['output'];
 };
 
-export type CanNotBeRestartedAfterFailedContentNodeAdvancementResult = ContentNodeAdvancementResult & {
-  __typename?: 'CanNotBeRestartedAfterFailedContentNodeAdvancementResult';
-  configResults: Array<RestartIfFailedContentConfigResult>;
-  status: ContentNodeAdvancementStatus;
-};
+export type CanNotBeRestartedAfterFailedContentNodeAdvancementResult =
+  ContentNodeAdvancementResult & {
+    __typename?: 'CanNotBeRestartedAfterFailedContentNodeAdvancementResult';
+    configResults: Array<RestartIfFailedContentConfigResult>;
+    status: ContentNodeAdvancementStatus;
+  };
 
-export type CanNotBeRestartedAfterPassedContentNodeAdvancementResult = ContentNodeAdvancementResult & {
-  __typename?: 'CanNotBeRestartedAfterPassedContentNodeAdvancementResult';
-  reasonConfigTypes: Array<RestartIfPassedContentConfigType>;
-  status: ContentNodeAdvancementStatus;
-};
+export type CanNotBeRestartedAfterPassedContentNodeAdvancementResult =
+  ContentNodeAdvancementResult & {
+    __typename?: 'CanNotBeRestartedAfterPassedContentNodeAdvancementResult';
+    reasonConfigTypes: Array<RestartIfPassedContentConfigType>;
+    status: ContentNodeAdvancementStatus;
+  };
 
-export type CanNotBeStartedContentNodeAdvancementResult = ContentNodeAdvancementResult & {
-  __typename?: 'CanNotBeStartedContentNodeAdvancementResult';
-  reasonConfigTypes: Array<StartContentConfigType>;
-  status: ContentNodeAdvancementStatus;
-};
+export type CanNotBeStartedContentNodeAdvancementResult =
+  ContentNodeAdvancementResult & {
+    __typename?: 'CanNotBeStartedContentNodeAdvancementResult';
+    reasonConfigTypes: Array<StartContentConfigType>;
+    status: ContentNodeAdvancementStatus;
+  };
 
 export type CanNotBeStartedViewerTreeState = ViewerTreeState & {
   __typename?: 'CanNotBeStartedViewerTreeState';
@@ -2884,19 +2782,21 @@ export type CanNotBeStartedViewerTreeState = ViewerTreeState & {
   reasonConfigTypes: Array<StartTreeConfigType>;
 };
 
-export type CanNotRestartIfFailedContentConfig = RestartIfFailedContentConfig & {
-  __typename?: 'CanNotRestartIfFailedContentConfig';
-  configType: RestartIfFailedContentConfigType;
-  /** The ID of an object */
-  id: Scalars['ID']['output'];
-};
+export type CanNotRestartIfFailedContentConfig =
+  RestartIfFailedContentConfig & {
+    __typename?: 'CanNotRestartIfFailedContentConfig';
+    configType: RestartIfFailedContentConfigType;
+    /** The ID of an object */
+    id: Scalars['ID']['output'];
+  };
 
-export type CanNotRestartIfPassedContentConfig = RestartIfPassedContentConfig & {
-  __typename?: 'CanNotRestartIfPassedContentConfig';
-  configType: RestartIfPassedContentConfigType;
-  /** The ID of an object */
-  id: Scalars['ID']['output'];
-};
+export type CanNotRestartIfPassedContentConfig =
+  RestartIfPassedContentConfig & {
+    __typename?: 'CanNotRestartIfPassedContentConfig';
+    configType: RestartIfPassedContentConfigType;
+    /** The ID of an object */
+    id: Scalars['ID']['output'];
+  };
 
 export type CanNotStartContentConfig = StartContentConfig & {
   __typename?: 'CanNotStartContentConfig';
@@ -2975,7 +2875,6 @@ export type Cart = {
   taxTotals?: Maybe<TaxTotals>;
   totals: CartTotals;
 };
-
 
 export type CartOtherAvailableProductsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -3173,12 +3072,13 @@ export type ClozeTextElementV2 = ElementV2 & {
   title: Scalars['String']['output'];
 };
 
-export type ClozeTextInputElementState = ElementState & InputElementState & {
-  __typename?: 'ClozeTextInputElementState';
-  checkedAnswers: Array<Scalars['ID']['output']>;
-  element: LearnElement;
-  kind: ElementStateKind;
-};
+export type ClozeTextInputElementState = ElementState &
+  InputElementState & {
+    __typename?: 'ClozeTextInputElementState';
+    checkedAnswers: Array<Scalars['ID']['output']>;
+    element: LearnElement;
+    kind: ElementStateKind;
+  };
 
 export type ClozeTextLearnElement = LearnElement & {
   __typename?: 'ClozeTextLearnElement';
@@ -3198,16 +3098,17 @@ export type ClozeTextPart = {
 
 export enum ClozeTextPartKind {
   Cloze = 'cloze',
-  Text = 'text'
+  Text = 'text',
 }
 
-export type ClozeTextShowAnswerElementState = ElementState & ShowAnswerElementState & {
-  __typename?: 'ClozeTextShowAnswerElementState';
-  correctAnswers: Array<Scalars['ID']['output']>;
-  element: LearnElement;
-  kind: ElementStateKind;
-  lastCheckedAnswers: Array<Scalars['ID']['output']>;
-};
+export type ClozeTextShowAnswerElementState = ElementState &
+  ShowAnswerElementState & {
+    __typename?: 'ClozeTextShowAnswerElementState';
+    correctAnswers: Array<Scalars['ID']['output']>;
+    element: LearnElement;
+    kind: ElementStateKind;
+    lastCheckedAnswers: Array<Scalars['ID']['output']>;
+  };
 
 export type CoachFeedback = Node & {
   __typename?: 'CoachFeedback';
@@ -3249,7 +3150,6 @@ export type CoachProfile = Node & {
   id: Scalars['ID']['output'];
   profileData: ProfileData;
 };
-
 
 export type CoachProfileFeedbacksArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -3357,144 +3257,124 @@ export type CoachingAdminMutationSchema = {
   removeVisibilityCoachingConfig?: Maybe<RemoveVisibilityCoachingConfigPayload>;
 };
 
-
 /** Data only accessible by the admin */
 export type CoachingAdminMutationSchemaAddHideVisibilityCoachingConfigArgs = {
   input: AddHideVisibilityCoachingConfigInput;
 };
 
+/** Data only accessible by the admin */
+export type CoachingAdminMutationSchemaAddOnlyAzavAccountVisibilityCoachingConfigArgs =
+  {
+    input: AddOnlyAzavAccountVisibilityCoachingConfigInput;
+  };
 
 /** Data only accessible by the admin */
-export type CoachingAdminMutationSchemaAddOnlyAzavAccountVisibilityCoachingConfigArgs = {
-  input: AddOnlyAzavAccountVisibilityCoachingConfigInput;
-};
-
-
-/** Data only accessible by the admin */
-export type CoachingAdminMutationSchemaAddOnlyBusinessAccountVisibilityCoachingConfigArgs = {
-  input: AddOnlyBusinessAccountVisibilityCoachingConfigInput;
-};
-
+export type CoachingAdminMutationSchemaAddOnlyBusinessAccountVisibilityCoachingConfigArgs =
+  {
+    input: AddOnlyBusinessAccountVisibilityCoachingConfigInput;
+  };
 
 /** Data only accessible by the admin */
-export type CoachingAdminMutationSchemaAddOnlyWithLicenseVisibilityCoachingConfigArgs = {
-  input: AddOnlyWithLicenseVisibilityCoachingConfigInput;
-};
-
+export type CoachingAdminMutationSchemaAddOnlyWithLicenseVisibilityCoachingConfigArgs =
+  {
+    input: AddOnlyWithLicenseVisibilityCoachingConfigInput;
+  };
 
 /** Data only accessible by the admin */
 export type CoachingAdminMutationSchemaAddParticipantArgs = {
   input: AddParticipantAdminInput;
 };
 
-
 /** Data only accessible by the admin */
 export type CoachingAdminMutationSchemaCreateAvailabilityArgs = {
   input: CreateAvailabilityInput;
 };
-
 
 /** Data only accessible by the admin */
 export type CoachingAdminMutationSchemaCreateCoachProfileArgs = {
   input: CreateCoachProfileInput;
 };
 
-
 /** Data only accessible by the admin */
 export type CoachingAdminMutationSchemaCreateCoachingOfferArgs = {
   input: CreateCoachingOfferInput;
 };
-
 
 /** Data only accessible by the admin */
 export type CoachingAdminMutationSchemaDeleteAvailabilityArgs = {
   input: DeleteAvailabilityInput;
 };
 
-
 /** Data only accessible by the admin */
 export type CoachingAdminMutationSchemaDeleteCoachProfileArgs = {
   input: DeleteCoachProfileInput;
 };
-
 
 /** Data only accessible by the admin */
 export type CoachingAdminMutationSchemaDeleteCoachingOfferArgs = {
   input: DeleteCoachingOfferInput;
 };
 
-
 /** Data only accessible by the admin */
 export type CoachingAdminMutationSchemaEditAssociatedCoachesArgs = {
   input: EditAssociatedCoachesInput;
 };
-
 
 /** Data only accessible by the admin */
 export type CoachingAdminMutationSchemaEditAvailabilityArgs = {
   input: EditAvailabilityInput;
 };
 
-
 /** Data only accessible by the admin */
 export type CoachingAdminMutationSchemaEditAvailabilityScheduleArgs = {
   input: EditAvailabilityScheduleInput;
 };
-
 
 /** Data only accessible by the admin */
 export type CoachingAdminMutationSchemaEditBaseDataArgs = {
   input: EditBaseDataInput;
 };
 
-
 /** Data only accessible by the admin */
 export type CoachingAdminMutationSchemaEditBusinessDataArgs = {
   input: EditBusinessDataInput;
 };
 
-
 /** Data only accessible by the admin */
-export type CoachingAdminMutationSchemaEditCoachingOfferParticipationCertificateArgs = {
-  input: EditCoachingOfferParticipationCertificateInput;
-};
-
+export type CoachingAdminMutationSchemaEditCoachingOfferParticipationCertificateArgs =
+  {
+    input: EditCoachingOfferParticipationCertificateInput;
+  };
 
 /** Data only accessible by the admin */
 export type CoachingAdminMutationSchemaEditCoachingRemunerationArgs = {
   input: EditRenumerationInput;
 };
 
-
 /** Data only accessible by the admin */
 export type CoachingAdminMutationSchemaEditGroupSettingArgs = {
   input: EditOneToOneSettingInput;
 };
-
 
 /** Data only accessible by the admin */
 export type CoachingAdminMutationSchemaEditOfferDescriptionArgs = {
   input: EditOfferDescriptionInput;
 };
 
-
 /** Data only accessible by the admin */
 export type CoachingAdminMutationSchemaEditProfileDataArgs = {
   input: EditProfileDataInput;
 };
-
 
 /** Data only accessible by the admin */
 export type CoachingAdminMutationSchemaRegisterParticipationAdminArgs = {
   input: RegisterParticipationAdminInput;
 };
 
-
 /** Data only accessible by the admin */
 export type CoachingAdminMutationSchemaRemoveParticipantArgs = {
   input: RemoveParticipantAdminInput;
 };
-
 
 /** Data only accessible by the admin */
 export type CoachingAdminMutationSchemaRemoveVisibilityCoachingConfigArgs = {
@@ -3514,7 +3394,6 @@ export type CoachingAdminSchema = {
   GetCoachingOffer?: Maybe<CoachingOffer>;
 };
 
-
 /** Data only accessible by the admin */
 export type CoachingAdminSchemaAvailabilitiesArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -3530,7 +3409,6 @@ export type CoachingAdminSchemaAvailabilitiesArgs = {
   onlyNeedConfirmation?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-
 /** Data only accessible by the admin */
 export type CoachingAdminSchemaAvailabilitySchedulesArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -3540,7 +3418,6 @@ export type CoachingAdminSchemaAvailabilitySchedulesArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 /** Data only accessible by the admin */
 export type CoachingAdminSchemaCoachFeedbacksArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -3548,7 +3425,6 @@ export type CoachingAdminSchemaCoachFeedbacksArgs = {
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
 };
-
 
 /** Data only accessible by the admin */
 export type CoachingAdminSchemaCoachProfilesArgs = {
@@ -3560,7 +3436,6 @@ export type CoachingAdminSchemaCoachProfilesArgs = {
   userName?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 /** Data only accessible by the admin */
 export type CoachingAdminSchemaCoachStatementsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -3569,7 +3444,6 @@ export type CoachingAdminSchemaCoachStatementsArgs = {
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
 };
-
 
 /** Data only accessible by the admin */
 export type CoachingAdminSchemaCoachingOffersArgs = {
@@ -3580,12 +3454,10 @@ export type CoachingAdminSchemaCoachingOffersArgs = {
   name?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 /** Data only accessible by the admin */
 export type CoachingAdminSchemaFreeCalendarWeeksArgs = {
   coachUserId?: InputMaybe<Scalars['ID']['input']>;
 };
-
 
 /** Data only accessible by the admin */
 export type CoachingAdminSchemaGetCoachingOfferArgs = {
@@ -3635,86 +3507,69 @@ export type CoachingMutations = {
   removeParticipantFromMyBooking?: Maybe<RemoveParticipantFromMyBookingPayload>;
 };
 
-
 export type CoachingMutationsAddParticipantToBookingAsCoachArgs = {
   input: AddParticipantToBookingAsCoachInput;
 };
-
 
 export type CoachingMutationsAddParticipantToMyBookingArgs = {
   input: AddParticipantToMyBookingInput;
 };
 
-
 export type CoachingMutationsBookCoachingArgs = {
   input: BookCoachingInput;
 };
-
 
 export type CoachingMutationsCancelBookingAsCoachArgs = {
   input: CancelBookingAsCoachInput;
 };
 
-
 export type CoachingMutationsCancelBookingAsParticipantArgs = {
   input: CancelBookingAsParticipantInput;
 };
-
 
 export type CoachingMutationsCreateMyAvailabilityArgs = {
   input: CreateMyAvailabilityInput;
 };
 
-
 export type CoachingMutationsDeleteMyAvailabilityArgs = {
   input: DeleteMyAvailabilityInput;
 };
-
 
 export type CoachingMutationsEditMyAvailabilityArgs = {
   input: EditMyAvailabilityInput;
 };
 
-
 export type CoachingMutationsEditMyAvailabilityScheduleArgs = {
   input: EditMyAvailabilityScheduleInput;
 };
-
 
 export type CoachingMutationsEditMyBaseDataArgs = {
   input: EditMyBaseDataInput;
 };
 
-
 export type CoachingMutationsEditMyBusinessDataArgs = {
   input: EditMyBusinessDataInput;
 };
-
 
 export type CoachingMutationsEditMyProfileDataArgs = {
   input: EditMyProfileDataInput;
 };
 
-
 export type CoachingMutationsInitializeFreeCalendarWeekOverrideArgs = {
   input: InitializeFreeCalendarWeekOverrideInput;
 };
-
 
 export type CoachingMutationsLeaveFeedbackArgs = {
   input: LeaveFeedbackInput;
 };
 
-
 export type CoachingMutationsRegisterParticipationArgs = {
   input: RegisterParticipationInput;
 };
 
-
 export type CoachingMutationsRemoveParticipantFromBookingAsCoachArgs = {
   input: RemoveParticipantFromBookingAsCoachInput;
 };
-
 
 export type CoachingMutationsRemoveParticipantFromMyBookingArgs = {
   input: RemoveParticipantFromMyBookingInput;
@@ -3790,22 +3645,24 @@ export type CoachingOfferRemunerationData = {
 
 export enum CoachingOfferRemunerationDataKind {
   NotRemunerated = 'NotRemunerated',
-  PerSession = 'PerSession'
+  PerSession = 'PerSession',
 }
 
-export type CoachingOfferRemunerationDataNotRemunerated = CoachingOfferRemunerationData & {
-  __typename?: 'CoachingOfferRemunerationDataNotRemunerated';
-  kind: CoachingOfferRemunerationDataKind;
-  percentageShare: Scalars['Int']['output'];
-};
+export type CoachingOfferRemunerationDataNotRemunerated =
+  CoachingOfferRemunerationData & {
+    __typename?: 'CoachingOfferRemunerationDataNotRemunerated';
+    kind: CoachingOfferRemunerationDataKind;
+    percentageShare: Scalars['Int']['output'];
+  };
 
-export type CoachingOfferRemunerationDataPerSession = CoachingOfferRemunerationData & {
-  __typename?: 'CoachingOfferRemunerationDataPerSession';
-  additionalInformation?: Maybe<Scalars['String']['output']>;
-  kind: CoachingOfferRemunerationDataKind;
-  percentageShare: Scalars['Int']['output'];
-  sessionRate: Price;
-};
+export type CoachingOfferRemunerationDataPerSession =
+  CoachingOfferRemunerationData & {
+    __typename?: 'CoachingOfferRemunerationDataPerSession';
+    additionalInformation?: Maybe<Scalars['String']['output']>;
+    kind: CoachingOfferRemunerationDataKind;
+    percentageShare: Scalars['Int']['output'];
+    sessionRate: Price;
+  };
 
 export type CoachingQueries = {
   __typename?: 'CoachingQueries';
@@ -3813,7 +3670,6 @@ export type CoachingQueries = {
   CoachingOffersToCoach: CoachingOfferConnection;
   FreeAvailabilities: AvailabilityConnection;
 };
-
 
 export type CoachingQueriesCoachAvailabilitiesArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -3827,7 +3683,6 @@ export type CoachingQueriesCoachAvailabilitiesArgs = {
   onlyNeedConfirmation?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-
 export type CoachingQueriesCoachingOffersToCoachArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -3835,7 +3690,6 @@ export type CoachingQueriesCoachingOffersToCoachArgs = {
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
 };
-
 
 export type CoachingQueriesFreeAvailabilitiesArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -3853,7 +3707,7 @@ export type CoachingSetting = {
 
 export enum CoachingSettingKind {
   Group = 'Group',
-  OneToOne = 'OneToOne'
+  OneToOne = 'OneToOne',
 }
 
 /** Data partaining to the current user */
@@ -3868,7 +3722,6 @@ export type CoachingViewerSchema = {
   MyDocuments: Array<File>;
 };
 
-
 /** Data partaining to the current user */
 export type CoachingViewerSchemaCoachCoachingAppointmentsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -3879,7 +3732,6 @@ export type CoachingViewerSchemaCoachCoachingAppointmentsArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 /** Data partaining to the current user */
 export type CoachingViewerSchemaCoachingOffersArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -3887,7 +3739,6 @@ export type CoachingViewerSchemaCoachingOffersArgs = {
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
 };
-
 
 /** Data partaining to the current user */
 export type CoachingViewerSchemaMyCoachingAppointmentsArgs = {
@@ -3911,7 +3762,7 @@ export enum CompanyType {
   Ohg = 'Ohg',
   PartmbH = 'PartmbH',
   Ug = 'Ug',
-  Unknown = 'Unknown'
+  Unknown = 'Unknown',
 }
 
 export enum CompanyTypeInput {
@@ -3926,7 +3777,7 @@ export enum CompanyTypeInput {
   Ohg = 'Ohg',
   PartmbH = 'PartmbH',
   Ug = 'Ug',
-  Unknown = 'Unknown'
+  Unknown = 'Unknown',
 }
 
 export type ConstellationCreateBranchRootInput = {
@@ -3965,7 +3816,7 @@ export type ContentExtensionImpl = ContentExtension & {
 
 export enum ContentKind {
   Async = 'Async',
-  ELearning = 'ELearning'
+  ELearning = 'ELearning',
 }
 
 export type ContentNodeAdvancementResult = {
@@ -3982,7 +3833,7 @@ export enum ContentNodeAdvancementStatus {
   CanNotBeStarted = 'CanNotBeStarted',
   Continue = 'Continue',
   NotContentNode = 'NotContentNode',
-  ViolatesTreeFlow = 'ViolatesTreeFlow'
+  ViolatesTreeFlow = 'ViolatesTreeFlow',
 }
 
 export type ContentSubmission = Node & {
@@ -4003,7 +3854,7 @@ export type ContentSubmissionDefinition = {
 export enum ContentSubmissionStatus {
   Active = 'active',
   Failed = 'failed',
-  Passed = 'passed'
+  Passed = 'passed',
 }
 
 /** A connection to a list of items. */
@@ -4045,14 +3896,15 @@ export type ContinueContentConfig = {
 };
 
 export enum ContinueContentConfigType {
-  ContinueContentAlwaysRestart = 'ContinueContent_AlwaysRestart'
+  ContinueContentAlwaysRestart = 'ContinueContent_AlwaysRestart',
 }
 
-export type ContinueContentNodeAdvancementResult = ContentNodeAdvancementResult & {
-  __typename?: 'ContinueContentNodeAdvancementResult';
-  activeContentSubmissionId: Scalars['ID']['output'];
-  status: ContentNodeAdvancementStatus;
-};
+export type ContinueContentNodeAdvancementResult =
+  ContentNodeAdvancementResult & {
+    __typename?: 'ContinueContentNodeAdvancementResult';
+    activeContentSubmissionId: Scalars['ID']['output'];
+    status: ContentNodeAdvancementStatus;
+  };
 
 export type ContractPartner = Node & {
   __typename?: 'ContractPartner';
@@ -4116,7 +3968,7 @@ export type CoordinatesV2 = {
 export enum CountryCode {
   At = 'AT',
   Ch = 'CH',
-  De = 'DE'
+  De = 'DE',
 }
 
 export type CreatableInvoiceData = InvoiceData & {
@@ -5001,18 +4853,15 @@ export type CustomerFeedbackAdminMutationSchema = {
   editCustomerFeedback?: Maybe<EditCustomerFeedbackPayload>;
 };
 
-
 /** Data only accessible by the admin */
 export type CustomerFeedbackAdminMutationSchemaCreateCustomerFeedbackArgs = {
   input: CreateCustomerFeedbackInput;
 };
 
-
 /** Data only accessible by the admin */
 export type CustomerFeedbackAdminMutationSchemaDeleteCustomerFeedbackArgs = {
   input: DeleteCustomerFeedbackInput;
 };
-
 
 /** Data only accessible by the admin */
 export type CustomerFeedbackAdminMutationSchemaEditCustomerFeedbackArgs = {
@@ -5044,14 +4893,12 @@ export type CustomerJourneyQueries = {
   trend: TrendConnection;
 };
 
-
 export type CustomerJourneyQueriesCustomerFeedbackArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
 };
-
 
 export type CustomerJourneyQueriesDashboardArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -5063,7 +4910,6 @@ export type CustomerJourneyQueriesDashboardArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 export type CustomerJourneyQueriesTrendArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -5073,7 +4919,7 @@ export type CustomerJourneyQueriesTrendArgs = {
 
 export enum CustomerType {
   Business = 'Business',
-  Private = 'Private'
+  Private = 'Private',
 }
 
 export type DsaReport = Node & {
@@ -5133,14 +4979,14 @@ export enum DsaReportProblemType {
   PrivacyRequest = 'PrivacyRequest',
   ProtectionOfMinors = 'ProtectionOfMinors',
   TransparencyForOnlineAds = 'TransparencyForOnlineAds',
-  UserRightsAndComplaints = 'UserRightsAndComplaints'
+  UserRightsAndComplaints = 'UserRightsAndComplaints',
 }
 
 export enum DsaReportType {
   Complaint = 'Complaint',
   Feedback = 'Feedback',
   Other = 'Other',
-  Report = 'Report'
+  Report = 'Report',
 }
 
 export type Dashboard = {
@@ -5149,7 +4995,6 @@ export type Dashboard = {
   sortedLearnables: SortedLearnablesConnection;
   userData?: Maybe<User>;
 };
-
 
 export type DashboardSortedLearnablesArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -5178,15 +5023,16 @@ export type DayAndTimesInput = {
   timeSlots: Array<Scalars['LocalTime']['input']>;
 };
 
-export type DefaultFileAttachment = AttachmentV2 & FileAttachment & {
-  __typename?: 'DefaultFileAttachment';
-  description?: Maybe<Scalars['String']['output']>;
-  file?: Maybe<File>;
-  /** The ID of an object */
-  id: Scalars['ID']['output'];
-  kind: AttachmentKind;
-  title?: Maybe<Scalars['String']['output']>;
-};
+export type DefaultFileAttachment = AttachmentV2 &
+  FileAttachment & {
+    __typename?: 'DefaultFileAttachment';
+    description?: Maybe<Scalars['String']['output']>;
+    file?: Maybe<File>;
+    /** The ID of an object */
+    id: Scalars['ID']['output'];
+    kind: AttachmentKind;
+    title?: Maybe<Scalars['String']['output']>;
+  };
 
 export type DefaultPaymentProviderData = PaymentProviderData & {
   __typename?: 'DefaultPaymentProviderData';
@@ -5572,13 +5418,14 @@ export type DeleteWordPayload = {
   wordPackage: WordPackage;
 };
 
-export type DirectFeedbackFlowELearningContentConfig = FlowELearningContentConfig & {
-  __typename?: 'DirectFeedbackFlowELearningContentConfig';
-  configType: FlowELearningContentConfigType;
-  /** The ID of an object */
-  id: Scalars['ID']['output'];
-  minNumTriesTillShowAnswer: Scalars['Int']['output'];
-};
+export type DirectFeedbackFlowELearningContentConfig =
+  FlowELearningContentConfig & {
+    __typename?: 'DirectFeedbackFlowELearningContentConfig';
+    configType: FlowELearningContentConfigType;
+    /** The ID of an object */
+    id: Scalars['ID']['output'];
+    minNumTriesTillShowAnswer: Scalars['Int']['output'];
+  };
 
 /** a discount action is a common wrapper of 0 - n discount codes. */
 export type DiscountAction = Node & {
@@ -5596,7 +5443,6 @@ export type DiscountAction = Node & {
   validUntil: DiscountActionValidUntil;
 };
 
-
 /** a discount action is a common wrapper of 0 - n discount codes. */
 export type DiscountActionDiscountCodesArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -5611,7 +5457,7 @@ export type DiscountActionAmountLimitation = {
 
 export enum DiscountActionAmountLimitationKind {
   Limited = 'limited',
-  Unlimited = 'unlimited'
+  Unlimited = 'unlimited',
 }
 
 export type DiscountActionAmountLimited = DiscountActionAmountLimitation & {
@@ -5631,7 +5477,7 @@ export type DiscountActionCalcType = {
 
 export enum DiscountActionCalcTypeKind {
   Euro = 'euro',
-  Percentage = 'percentage'
+  Percentage = 'percentage',
 }
 
 export type DiscountActionEuroCalcType = DiscountActionCalcType & {
@@ -5652,7 +5498,7 @@ export type DiscountActionUsageLimitation = {
 
 export enum DiscountActionUsageLimitationKind {
   Limited = 'limited',
-  Unlimited = 'unlimited'
+  Unlimited = 'unlimited',
 }
 
 export type DiscountActionUsageLimited = DiscountActionUsageLimitation & {
@@ -5686,7 +5532,7 @@ export type DiscountActionValidUntilForever = DiscountActionValidUntil & {
 
 export enum DiscountActionValidUntilKind {
   UntilDateTime = 'untilDateTime',
-  UntilForever = 'untilForever'
+  UntilForever = 'untilForever',
 }
 
 /** A connection to a list of items. */
@@ -5717,7 +5563,6 @@ export type DiscountCode = Node & {
   numUsages: Scalars['Int']['output'];
   searchUsages: SearchDiscountCodeUsagesResult;
 };
-
 
 /** a discount code. */
 export type DiscountCodeSearchUsagesArgs = {
@@ -5779,12 +5624,12 @@ export type DiscountType = {
 
 export enum DiscountTypeKind {
   System = 'system',
-  User = 'user'
+  User = 'user',
 }
 
 export enum DiscountTypeKindInput {
   System = 'system',
-  User = 'user'
+  User = 'user',
 }
 
 export type DisplayMatrixElementCell = MatrixElementCell & {
@@ -5849,7 +5694,7 @@ export type DynamicVocabElementNumWordsAll = DynamicVocabElementNumWords & {
 
 export enum DynamicVocabElementNumWordsKind {
   All = 'All',
-  Num = 'Num'
+  Num = 'Num',
 }
 
 export type ELearningContentSubmissionDefinition = {
@@ -5870,22 +5715,23 @@ export type ELearningContentSubmissionRelativeProgress = {
   percentageCorrect: Scalars['Int']['output'];
 };
 
-export type ELearningContentTypeDefinition = ContentTypeDefinition & TypeDefinition & {
-  __typename?: 'ELearningContentTypeDefinition';
-  contentKind: ContentKind;
-  continueConfig: ContinueContentConfig;
-  definitionType: TypeDefinitionType;
-  elements: Array<ElementV2>;
-  extension: ContentExtension;
-  flowConfig: FlowELearningContentConfig;
-  passConfig: PassContentConfig;
-  restartIfFailedConfigs: Array<RestartIfFailedContentConfig>;
-  restartIfPassedConfig: RestartIfPassedContentConfig;
-  rewardConfig: RewardContentConfig;
-  rewards: Array<Reward>;
-  startConfigs: Array<StartContentConfig>;
-  trigger?: Maybe<TriggerAction_Trigger>;
-};
+export type ELearningContentTypeDefinition = ContentTypeDefinition &
+  TypeDefinition & {
+    __typename?: 'ELearningContentTypeDefinition';
+    contentKind: ContentKind;
+    continueConfig: ContinueContentConfig;
+    definitionType: TypeDefinitionType;
+    elements: Array<ElementV2>;
+    extension: ContentExtension;
+    flowConfig: FlowELearningContentConfig;
+    passConfig: PassContentConfig;
+    restartIfFailedConfigs: Array<RestartIfFailedContentConfig>;
+    restartIfPassedConfig: RestartIfPassedContentConfig;
+    rewardConfig: RewardContentConfig;
+    rewards: Array<Reward>;
+    startConfigs: Array<StartContentConfig>;
+    trigger?: Maybe<TriggerAction_Trigger>;
+  };
 
 export type ELearningMutations = {
   __typename?: 'ELearningMutations';
@@ -5896,26 +5742,21 @@ export type ELearningMutations = {
   showElementAnswerElement?: Maybe<ShowElementAnswerElementPayload>;
 };
 
-
 export type ELearningMutationsCanShowElementAnswerArgs = {
   input: CanShowElementAnswerInput;
 };
-
 
 export type ELearningMutationsCanSubmitElementArgs = {
   input: CanSubmitElementInput;
 };
 
-
 export type ELearningMutationsGoToNextElementArgs = {
   input: GoToNextElementInput;
 };
 
-
 export type ELearningMutationsGoToPreviousElementArgs = {
   input: GoToPreviousElementInput;
 };
-
 
 export type ELearningMutationsShowElementAnswerElementArgs = {
   input: ShowElementAnswerElementInput;
@@ -6955,264 +6796,226 @@ export type ElearningV2AdminMutationSchema = {
   setMatrixElementRowTitle?: Maybe<SetMatrixElementRowTitlePayload>;
 };
 
-
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaAddColumnToMatrixElementArgs = {
   input: AddColumnToMatrixElementInput;
 };
-
 
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaAddOrderItemArgs = {
   input: AddOrderItemInput;
 };
 
-
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaAddRowToMatrixElementArgs = {
   input: AddRowToMatrixElementInput;
 };
 
-
 /** Data only accessible by the admin */
-export type ElearningV2AdminMutationSchemaAddWrongAnswerInMatrixElementCellArgs = {
-  input: AddWrongAnswerInMatrixElementCellInput;
-};
-
+export type ElearningV2AdminMutationSchemaAddWrongAnswerInMatrixElementCellArgs =
+  {
+    input: AddWrongAnswerInMatrixElementCellInput;
+  };
 
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaCreateClozeTextElementArgs = {
   input: CreateClozeTextElementV2Input;
 };
 
-
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaCreateDynamicVocabElementArgs = {
   input: CreateDynamicVocabElementInput;
 };
-
 
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaCreateEnhancedTextElementArgs = {
   input: CreateEnhancedTextElementInput;
 };
 
-
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaCreateFileElementArgs = {
   input: CreateFileElementV2Input;
 };
-
 
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaCreateGlobalVocabElementArgs = {
   input: CreateGlobalVocabElementInput;
 };
 
-
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaCreateMarkMistakesElementArgs = {
   input: CreateMarkMistakesElementInput;
 };
-
 
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaCreateMatrixElementArgs = {
   input: CreateMatrixElementInput;
 };
 
-
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaCreateMultipleChoiceElementArgs = {
   input: CreateMultipleChoiceElementV2Input;
 };
-
 
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaCreateOrderElementArgs = {
   input: CreateOrderElementInput;
 };
 
-
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaCreatePodcastElementArgs = {
   input: CreatePodcastElementV2Input;
 };
 
-
 /** Data only accessible by the admin */
-export type ElearningV2AdminMutationSchemaCreatePodcastWithTimestampElementArgs = {
-  input: CreatePodcastWithTimestampInput;
-};
-
+export type ElearningV2AdminMutationSchemaCreatePodcastWithTimestampElementArgs =
+  {
+    input: CreatePodcastWithTimestampInput;
+  };
 
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaCreateTextElementArgs = {
   input: CreateTextElementV2Input;
 };
 
-
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaCreateVideoElementArgs = {
   input: CreateVideoElementV2Input;
 };
-
 
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaDeleteElementArgs = {
   input: DeleteElementV2Input;
 };
 
-
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaEditClozeTextElementArgs = {
   input: EditClozeTextElementV2Input;
 };
-
 
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaEditDynamicVocabElementArgs = {
   input: EditDynamicVocabElementInput;
 };
 
-
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaEditEnhancedTextElementArgs = {
   input: EditEnhancedTextElementInput;
 };
-
 
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaEditFileElementArgs = {
   input: EditFileElementV2Input;
 };
 
-
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaEditGlobalVocabElementArgs = {
   input: EditGlobalVocabElementInput;
 };
-
 
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaEditMarkMistakesElementArgs = {
   input: EditMarkMistakesElementInput;
 };
 
-
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaEditMatrixElementArgs = {
   input: EditMatrixElementInput;
 };
-
 
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaEditMultipleChoiceElementArgs = {
   input: EditMultipleChoiceElementV2Input;
 };
 
-
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaEditOrderElementArgs = {
   input: EditOrderElementInput;
 };
-
 
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaEditOrderItemArgs = {
   input: EditOrderItemInput;
 };
 
-
 /** Data only accessible by the admin */
-export type ElearningV2AdminMutationSchemaEditPodcastWithTimestampElementArgs = {
-  input: EditPodcastWithTimestampInput;
-};
-
+export type ElearningV2AdminMutationSchemaEditPodcastWithTimestampElementArgs =
+  {
+    input: EditPodcastWithTimestampInput;
+  };
 
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaEditPodigeePodcastElementArgs = {
   input: EditPodigeePodcastElementV2Input;
 };
 
-
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaEditTextElementArgs = {
   input: EditTextElementV2Input;
 };
-
 
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaEditVideoElementArgs = {
   input: EditVideoElementV2Input;
 };
 
-
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaEditVimeoPodcastElementArgs = {
   input: EditVimeoPodcastElementV2Input;
 };
 
-
 /** Data only accessible by the admin */
-export type ElearningV2AdminMutationSchemaEditWrongAnswerInMatrixElementCellArgs = {
-  input: EditWrongAnswerInMatrixElementCellInput;
-};
-
+export type ElearningV2AdminMutationSchemaEditWrongAnswerInMatrixElementCellArgs =
+  {
+    input: EditWrongAnswerInMatrixElementCellInput;
+  };
 
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaGetVideoDataArgs = {
   input: GetVideoDataV2Input;
 };
 
-
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaMoveOrderItemsArgs = {
   input: MoveOrderItemsInput;
 };
-
 
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaRearrangeElementsArgs = {
   input: RearrangeElementsV2Input;
 };
 
-
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaRemoveColumnFromMatrixElementArgs = {
   input: RemoveColumnFromMatrixElementInput;
 };
-
 
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaRemoveOrderItemArgs = {
   input: RemoveOrderItemInput;
 };
 
-
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaRemoveRowFromMatrixElementArgs = {
   input: RemoveRowFromMatrixElementInput;
 };
 
+/** Data only accessible by the admin */
+export type ElearningV2AdminMutationSchemaRemoveWrongAnswerFromMatrixElementCellArgs =
+  {
+    input: RemoveWrongAnswerFromMatrixElementCellInput;
+  };
 
 /** Data only accessible by the admin */
-export type ElearningV2AdminMutationSchemaRemoveWrongAnswerFromMatrixElementCellArgs = {
-  input: RemoveWrongAnswerFromMatrixElementCellInput;
-};
-
-
-/** Data only accessible by the admin */
-export type ElearningV2AdminMutationSchemaSetCorrectAnswerInMatrixElementCellArgs = {
-  input: SetCorrectAnswerInMatrixElementCellInput;
-};
-
+export type ElearningV2AdminMutationSchemaSetCorrectAnswerInMatrixElementCellArgs =
+  {
+    input: SetCorrectAnswerInMatrixElementCellInput;
+  };
 
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaSetMatrixElementColumnTitleArgs = {
   input: SetMatrixElementColumnTitleInput;
 };
-
 
 /** Data only accessible by the admin */
 export type ElearningV2AdminMutationSchemaSetMatrixElementRowTitleArgs = {
@@ -7239,7 +7042,7 @@ export enum ElementStateKind {
   InputAndIsCorrect = 'InputAndIsCorrect',
   ShowAnswer = 'ShowAnswer',
   Untouched = 'Untouched',
-  UntouchedAndPreviouslyIncorrect = 'UntouchedAndPreviouslyIncorrect'
+  UntouchedAndPreviouslyIncorrect = 'UntouchedAndPreviouslyIncorrect',
 }
 
 export enum ElementTypeV2 {
@@ -7255,7 +7058,7 @@ export enum ElementTypeV2 {
   Podcast = 'podcast',
   PodcastWithTimestamp = 'podcastWithTimestamp',
   Text = 'text',
-  Video = 'video'
+  Video = 'video',
 }
 
 export type ElementV2 = {
@@ -7284,24 +7087,20 @@ export type EmailAdminMutationSchema = {
   updatePersonalizedEmailTemplate?: Maybe<UpdatePersonalizedEmailTemplatePayload>;
 };
 
-
 /** Data only accessible by the admin */
 export type EmailAdminMutationSchemaCreatePersonalizedEmailTemplateArgs = {
   input: CreatePersonalizedEmailTemplateInput;
 };
-
 
 /** Data only accessible by the admin */
 export type EmailAdminMutationSchemaDeletePersonalizedEmailTemplateArgs = {
   input: DeletePersonalizedEmailTemplateInput;
 };
 
-
 /** Data only accessible by the admin */
 export type EmailAdminMutationSchemaSendEmailArgs = {
   input: SendEmailInput;
 };
-
 
 /** Data only accessible by the admin */
 export type EmailAdminMutationSchemaUpdatePersonalizedEmailTemplateArgs = {
@@ -7315,7 +7114,6 @@ export type EmailAdminSchema = {
   PersonalizedEmailTemplates: PersonalizedEmailTemplatesConnection;
 };
 
-
 /** Data only accessible by the admin */
 export type EmailAdminSchemaAvailableSystemTemplatesArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -7323,7 +7121,6 @@ export type EmailAdminSchemaAvailableSystemTemplatesArgs = {
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
 };
-
 
 /** Data only accessible by the admin */
 export type EmailAdminSchemaPersonalizedEmailTemplatesArgs = {
@@ -7399,17 +7196,19 @@ export type EvaluateUploadAsyncElementTaskPayload = {
   evaluatedTask: EvaluatedUploadAsyncElementTask;
 };
 
-export type EvaluatedUploadAsyncElementTask = AsyncElementTask & Node & UploadAsyncElementTask & {
-  __typename?: 'EvaluatedUploadAsyncElementTask';
-  assignedEvaluator?: Maybe<User>;
-  elementKind: AsyncElementKind;
-  evaluation: UploadEvaluation;
-  extension: AsyncElementTaskExtension;
-  file?: Maybe<File>;
-  id: Scalars['ID']['output'];
-  status: AsyncElementTaskStatus;
-  submissionInfo: AsyncElementTaskSubmissionInfo;
-};
+export type EvaluatedUploadAsyncElementTask = AsyncElementTask &
+  Node &
+  UploadAsyncElementTask & {
+    __typename?: 'EvaluatedUploadAsyncElementTask';
+    assignedEvaluator?: Maybe<User>;
+    elementKind: AsyncElementKind;
+    evaluation: UploadEvaluation;
+    extension: AsyncElementTaskExtension;
+    file?: Maybe<File>;
+    id: Scalars['ID']['output'];
+    status: AsyncElementTaskStatus;
+    submissionInfo: AsyncElementTaskSubmissionInfo;
+  };
 
 export type ExternalLicense = Node & {
   __typename?: 'ExternalLicense';
@@ -7431,14 +7230,15 @@ export type ExternalLicenseDataInput = {
   name?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type ExternalLicenseIssuedToUserIssuingInfoType = ExternalLicenseIssuingInfoInterface & {
-  __typename?: 'ExternalLicenseIssuedToUserIssuingInfoType';
-  hasBeenIssued: Scalars['Boolean']['output'];
-  issuedAt: Scalars['ZonedDateTIme']['output'];
-  issuedTo?: Maybe<User>;
-  kind: ExternalLicenseIssuingInfoKind;
-  validUntil: Scalars['ZonedDateTIme']['output'];
-};
+export type ExternalLicenseIssuedToUserIssuingInfoType =
+  ExternalLicenseIssuingInfoInterface & {
+    __typename?: 'ExternalLicenseIssuedToUserIssuingInfoType';
+    hasBeenIssued: Scalars['Boolean']['output'];
+    issuedAt: Scalars['ZonedDateTIme']['output'];
+    issuedTo?: Maybe<User>;
+    kind: ExternalLicenseIssuingInfoKind;
+    validUntil: Scalars['ZonedDateTIme']['output'];
+  };
 
 export type ExternalLicenseIssuingInfoInterface = {
   hasBeenIssued: Scalars['Boolean']['output'];
@@ -7447,14 +7247,15 @@ export type ExternalLicenseIssuingInfoInterface = {
 
 export enum ExternalLicenseIssuingInfoKind {
   IssuedToUser = 'issuedToUser',
-  NotIssued = 'notIssued'
+  NotIssued = 'notIssued',
 }
 
-export type ExternalLicenseNotIssuedIssuingInfoType = ExternalLicenseIssuingInfoInterface & {
-  __typename?: 'ExternalLicenseNotIssuedIssuingInfoType';
-  hasBeenIssued: Scalars['Boolean']['output'];
-  kind: ExternalLicenseIssuingInfoKind;
-};
+export type ExternalLicenseNotIssuedIssuingInfoType =
+  ExternalLicenseIssuingInfoInterface & {
+    __typename?: 'ExternalLicenseNotIssuedIssuingInfoType';
+    hasBeenIssued: Scalars['Boolean']['output'];
+    kind: ExternalLicenseIssuingInfoKind;
+  };
 
 export type ExternalLicensePool = Node & {
   __typename?: 'ExternalLicensePool';
@@ -7554,18 +7355,21 @@ export type ExternalLicensesEdge = {
   node: ExternalLicense;
 };
 
-export type FailedELearningContentSubmissionDefinition = ContentSubmissionDefinition & ELearningContentSubmissionDefinition & FinishedELearningContentSubmissionDefinitionInterface & {
-  __typename?: 'FailedELearningContentSubmissionDefinition';
-  contentKind: ContentKind;
-  progress: ELearningContentSubmissionProgress;
-  relativeProgress: ELearningContentSubmissionRelativeProgress;
-  rewardResults: Array<RewardResult>;
-  status: ContentSubmissionStatus;
-};
+export type FailedELearningContentSubmissionDefinition =
+  ContentSubmissionDefinition &
+    ELearningContentSubmissionDefinition &
+    FinishedELearningContentSubmissionDefinitionInterface & {
+      __typename?: 'FailedELearningContentSubmissionDefinition';
+      contentKind: ContentKind;
+      progress: ELearningContentSubmissionProgress;
+      relativeProgress: ELearningContentSubmissionRelativeProgress;
+      rewardResults: Array<RewardResult>;
+      status: ContentSubmissionStatus;
+    };
 
 export enum FeatureId {
   PotentialAnalysisV2 = 'potentialAnalysisV2',
-  Test = 'test'
+  Test = 'test',
 }
 
 export type FeatureToggle = Node & {
@@ -7581,7 +7385,6 @@ export type FeatureToggleAdminMutationSchema = {
   editFeatureToggleData?: Maybe<EditFeatureToggleDataPayload>;
 };
 
-
 /** Data only accessible by the admin */
 export type FeatureToggleAdminMutationSchemaEditFeatureToggleDataArgs = {
   input: EditFeatureToggleDataInput;
@@ -7592,7 +7395,6 @@ export type FeatureToggleAdminSchema = {
   __typename?: 'FeatureToggleAdminSchema';
   FeatureToggles: FeatureTogglesConnection;
 };
-
 
 /** Data only accessible by the admin */
 export type FeatureToggleAdminSchemaFeatureTogglesArgs = {
@@ -7661,7 +7463,7 @@ export type File = Node & {
 
 export enum FileAccessType {
   Public = 'public',
-  SignedUrl = 'signedUrl'
+  SignedUrl = 'signedUrl',
 }
 
 export type FileAttachment = {
@@ -7676,7 +7478,7 @@ export type FileAttachment = {
 export enum FileContentTypeV2 {
   Jpg = 'jpg',
   Pdf = 'pdf',
-  Png = 'png'
+  Png = 'png',
 }
 
 export type FileElementV2 = ElementV2 & {
@@ -7706,7 +7508,6 @@ export type FilesAdminMutationSchema = {
   deleteFile?: Maybe<DeleteFilePayload>;
 };
 
-
 /** Data only accessible by the admin */
 export type FilesAdminMutationSchemaDeleteFileArgs = {
   input: DeleteFileInput;
@@ -7717,7 +7518,6 @@ export type FilesAdminSchema = {
   __typename?: 'FilesAdminSchema';
   Files: FilesConnection;
 };
-
 
 /** Data only accessible by the admin */
 export type FilesAdminSchemaFilesArgs = {
@@ -7766,10 +7566,11 @@ export type FinishedELearningContentSubmissionDefinitionInterface = {
   status: ContentSubmissionStatus;
 };
 
-export type FinishedELearningContentSubmissionProgress = ELearningContentSubmissionProgress & {
-  __typename?: 'FinishedELearningContentSubmissionProgress';
-  percentage: Scalars['Int']['output'];
-};
+export type FinishedELearningContentSubmissionProgress =
+  ELearningContentSubmissionProgress & {
+    __typename?: 'FinishedELearningContentSubmissionProgress';
+    percentage: Scalars['Int']['output'];
+  };
 
 export type FinishedTreeStateDefinition = TreeStateDefinition & {
   __typename?: 'FinishedTreeStateDefinition';
@@ -7791,7 +7592,7 @@ export type FlowELearningContentConfig = {
 
 export enum FlowELearningContentConfigType {
   FlowELearningContentDirectFeedback = 'FlowELearningContent_DirectFeedback',
-  FlowELearningContentSimplyContinue = 'FlowELearningContent_SimplyContinue'
+  FlowELearningContentSimplyContinue = 'FlowELearningContent_SimplyContinue',
 }
 
 export type ForgotPasswordInput = {
@@ -7804,16 +7605,18 @@ export type ForgotPasswordPayload = {
   clientMutationId?: Maybe<Scalars['String']['output']>;
 };
 
-export type FreshUploadAsyncElementTask = AsyncElementTask & Node & UploadAsyncElementTask & {
-  __typename?: 'FreshUploadAsyncElementTask';
-  assignedEvaluator?: Maybe<User>;
-  elementKind: AsyncElementKind;
-  extension: AsyncElementTaskExtension;
-  file?: Maybe<File>;
-  id: Scalars['ID']['output'];
-  status: AsyncElementTaskStatus;
-  submissionInfo: AsyncElementTaskSubmissionInfo;
-};
+export type FreshUploadAsyncElementTask = AsyncElementTask &
+  Node &
+  UploadAsyncElementTask & {
+    __typename?: 'FreshUploadAsyncElementTask';
+    assignedEvaluator?: Maybe<User>;
+    elementKind: AsyncElementKind;
+    extension: AsyncElementTaskExtension;
+    file?: Maybe<File>;
+    id: Scalars['ID']['output'];
+    status: AsyncElementTaskStatus;
+    submissionInfo: AsyncElementTaskSubmissionInfo;
+  };
 
 export type GamificationPoints = {
   id: Scalars['ID']['output'];
@@ -7824,7 +7627,7 @@ export type GamificationPoints = {
 };
 
 export enum GamificationPointsKind {
-  ReceivedByContent = 'ReceivedByContent'
+  ReceivedByContent = 'ReceivedByContent',
 }
 
 export type GamificationPointsReceivedByContent = GamificationPoints & {
@@ -7845,12 +7648,13 @@ export type GamificationPointsReward = Reward & {
   superId: Scalars['ID']['output'];
 };
 
-export type GamificationPoints_AlreadyReceivedPointsRewardResult = RewardResult & {
-  __typename?: 'GamificationPoints_AlreadyReceivedPointsRewardResult';
-  kind: RewardResultKind;
-  rewardId: Scalars['ID']['output'];
-  rewardKind: RewardKind;
-};
+export type GamificationPoints_AlreadyReceivedPointsRewardResult =
+  RewardResult & {
+    __typename?: 'GamificationPoints_AlreadyReceivedPointsRewardResult';
+    kind: RewardResultKind;
+    rewardId: Scalars['ID']['output'];
+    rewardKind: RewardKind;
+  };
 
 export type GamificationPoints_ErrorOccurredRewardResult = RewardResult & {
   __typename?: 'GamificationPoints_ErrorOccurredRewardResult';
@@ -7866,12 +7670,13 @@ export type GamificationPoints_NoPointsReceivedRewardResult = RewardResult & {
   rewardKind: RewardKind;
 };
 
-export type GamificationPoints_NotPassedIhkTestFlowRewardResult = RewardResult & {
-  __typename?: 'GamificationPoints_NotPassedIHKTestFlowRewardResult';
-  kind: RewardResultKind;
-  rewardId: Scalars['ID']['output'];
-  rewardKind: RewardKind;
-};
+export type GamificationPoints_NotPassedIhkTestFlowRewardResult =
+  RewardResult & {
+    __typename?: 'GamificationPoints_NotPassedIHKTestFlowRewardResult';
+    kind: RewardResultKind;
+    rewardId: Scalars['ID']['output'];
+    rewardKind: RewardKind;
+  };
 
 export type GamificationPoints_PointsReceivedRewardResult = RewardResult & {
   __typename?: 'GamificationPoints_PointsReceivedRewardResult';
@@ -7885,7 +7690,7 @@ export enum Gender {
   Diverse = 'Diverse',
   Female = 'Female',
   Male = 'Male',
-  NotDefined = 'NotDefined'
+  NotDefined = 'NotDefined',
 }
 
 export type GenerateAbsoluteCartLinkInput = {
@@ -7900,22 +7705,25 @@ export type GenerateAbsoluteCartLinkPayload = {
   link: Scalars['String']['output'];
 };
 
-export type GetActiveContentNodeOrFallbackRoot_ActiveContentNode = GetActiveContentNodeOrFallbackRoot_Result & {
-  __typename?: 'GetActiveContentNodeOrFallbackRoot_ActiveContentNode';
-  contentNode: LearnOpportunityV2;
-  kind: GetActiveContentNodeOrFallbackRoot_ResultKind;
-};
+export type GetActiveContentNodeOrFallbackRoot_ActiveContentNode =
+  GetActiveContentNodeOrFallbackRoot_Result & {
+    __typename?: 'GetActiveContentNodeOrFallbackRoot_ActiveContentNode';
+    contentNode: LearnOpportunityV2;
+    kind: GetActiveContentNodeOrFallbackRoot_ResultKind;
+  };
 
-export type GetActiveContentNodeOrFallbackRoot_Empty = GetActiveContentNodeOrFallbackRoot_Result & {
-  __typename?: 'GetActiveContentNodeOrFallbackRoot_Empty';
-  kind: GetActiveContentNodeOrFallbackRoot_ResultKind;
-};
+export type GetActiveContentNodeOrFallbackRoot_Empty =
+  GetActiveContentNodeOrFallbackRoot_Result & {
+    __typename?: 'GetActiveContentNodeOrFallbackRoot_Empty';
+    kind: GetActiveContentNodeOrFallbackRoot_ResultKind;
+  };
 
-export type GetActiveContentNodeOrFallbackRoot_FallbackRoot = GetActiveContentNodeOrFallbackRoot_Result & {
-  __typename?: 'GetActiveContentNodeOrFallbackRoot_FallbackRoot';
-  fallbackRoot: LearnOpportunityV2;
-  kind: GetActiveContentNodeOrFallbackRoot_ResultKind;
-};
+export type GetActiveContentNodeOrFallbackRoot_FallbackRoot =
+  GetActiveContentNodeOrFallbackRoot_Result & {
+    __typename?: 'GetActiveContentNodeOrFallbackRoot_FallbackRoot';
+    fallbackRoot: LearnOpportunityV2;
+    kind: GetActiveContentNodeOrFallbackRoot_ResultKind;
+  };
 
 export type GetActiveContentNodeOrFallbackRoot_Result = {
   kind: GetActiveContentNodeOrFallbackRoot_ResultKind;
@@ -7924,7 +7732,7 @@ export type GetActiveContentNodeOrFallbackRoot_Result = {
 export enum GetActiveContentNodeOrFallbackRoot_ResultKind {
   ActiveContentNode = 'ActiveContentNode',
   Empty = 'Empty',
-  FallbackRoot = 'FallbackRoot'
+  FallbackRoot = 'FallbackRoot',
 }
 
 export type GetVideoDataV2Input = {
@@ -8036,7 +7844,7 @@ export enum HistoryEventType {
   OrderCreationUpdate = 'OrderCreationUpdate',
   PaymentInProcessUpdate = 'PaymentInProcessUpdate',
   PaymentMethodUpdate = 'PaymentMethodUpdate',
-  PurchaseUpdate = 'PurchaseUpdate'
+  PurchaseUpdate = 'PurchaseUpdate',
 }
 
 /** Data only accessible by the admin */
@@ -8044,7 +7852,6 @@ export type HubspotAdminMutationSchema = {
   __typename?: 'HubspotAdminMutationSchema';
   syncHubspotContactsWithUsers?: Maybe<SyncHubspotContactsWithUsersPayload>;
 };
-
 
 /** Data only accessible by the admin */
 export type HubspotAdminMutationSchemaSyncHubspotContactsWithUsersArgs = {
@@ -8056,7 +7863,7 @@ export enum IhkCertificateOrderStateKind {
   NotIhk = 'NotIHK',
   Ordered = 'Ordered',
   ReadyToOrder = 'ReadyToOrder',
-  RewardNotAchievedYet = 'RewardNotAchievedYet'
+  RewardNotAchievedYet = 'RewardNotAchievedYet',
 }
 
 export type IhkCertificateOrderUserDataInput = {
@@ -8120,7 +7927,7 @@ export enum Icon {
   PeopleHighFive = 'peopleHighFive',
   PersonWithStars = 'personWithStars',
   Rocket = 'rocket',
-  WorkingDesk = 'workingDesk'
+  WorkingDesk = 'workingDesk',
 }
 
 export type ImageTrendMedia = TrendMedia & {
@@ -8183,18 +7990,15 @@ export type InstructorAdminMutationSchema = {
   updateInstructorImpl?: Maybe<UpdateInstructorImplPayload>;
 };
 
-
 /** Data only accessible by the admin */
 export type InstructorAdminMutationSchemaCreateInstructorImplArgs = {
   input: CreateInstructorImplInput;
 };
 
-
 /** Data only accessible by the admin */
 export type InstructorAdminMutationSchemaDeleteInstructorImplArgs = {
   input: DeleteInstructorImplInput;
 };
-
 
 /** Data only accessible by the admin */
 export type InstructorAdminMutationSchemaUpdateInstructorImplArgs = {
@@ -8207,7 +8011,6 @@ export type InstructorAdminSchema = {
   InstructorImpls: InstructorImplsConnection;
 };
 
-
 /** Data only accessible by the admin */
 export type InstructorAdminSchemaInstructorImplsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -8216,17 +8019,18 @@ export type InstructorAdminSchemaInstructorImplsArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
 };
 
-export type InstructorImpl = Instructor & Node & {
-  __typename?: 'InstructorImpl';
-  description?: Maybe<Scalars['String']['output']>;
-  /** The ID of an object */
-  id: Scalars['ID']['output'];
-  image?: Maybe<File>;
-  name: Scalars['String']['output'];
-  position?: Maybe<Scalars['String']['output']>;
-  shortDescription?: Maybe<Scalars['String']['output']>;
-  superId: Scalars['ID']['output'];
-};
+export type InstructorImpl = Instructor &
+  Node & {
+    __typename?: 'InstructorImpl';
+    description?: Maybe<Scalars['String']['output']>;
+    /** The ID of an object */
+    id: Scalars['ID']['output'];
+    image?: Maybe<File>;
+    name: Scalars['String']['output'];
+    position?: Maybe<Scalars['String']['output']>;
+    shortDescription?: Maybe<Scalars['String']['output']>;
+    superId: Scalars['ID']['output'];
+  };
 
 export type InstructorImplInput = {
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
@@ -8329,7 +8133,7 @@ export enum InvoiceDataKind {
   Creatable = 'Creatable',
   Created = 'Created',
   Empty = 'Empty',
-  StripeEmpty = 'StripeEmpty'
+  StripeEmpty = 'StripeEmpty',
 }
 
 export type InvoiceSentUpdate = HistoryEventInterface & {
@@ -8373,7 +8177,7 @@ export enum ItemType {
   CartDiscount = 'CartDiscount',
   CartGlobalDiscount = 'CartGlobalDiscount',
   CartLimitedDiscount = 'CartLimitedDiscount',
-  CartProduct = 'CartProduct'
+  CartProduct = 'CartProduct',
 }
 
 export type JwtLoginInformation = {
@@ -8384,18 +8188,20 @@ export type JwtLoginInformation = {
 
 export enum Kind {
   Assigment = 'Assigment',
-  FreeForAll = 'FreeForAll'
+  FreeForAll = 'FreeForAll',
 }
 
-export type LearnAsyncContentTypeDefinition = LearnOpportunityContentTypeDefinition & LearnOpportunityTypeDefinition & {
-  __typename?: 'LearnAsyncContentTypeDefinition';
-  contentKind: ContentKind;
-  contentNodeAdvancementResult: ContentNodeAdvancementResult;
-  definitionType: TypeDefinitionType;
-  extension: LearnContentExtension;
-  task?: Maybe<AsyncElementTask>;
-  taskDescription?: Maybe<Scalars['String']['output']>;
-};
+export type LearnAsyncContentTypeDefinition =
+  LearnOpportunityContentTypeDefinition &
+    LearnOpportunityTypeDefinition & {
+      __typename?: 'LearnAsyncContentTypeDefinition';
+      contentKind: ContentKind;
+      contentNodeAdvancementResult: ContentNodeAdvancementResult;
+      definitionType: TypeDefinitionType;
+      extension: LearnContentExtension;
+      task?: Maybe<AsyncElementTask>;
+      taskDescription?: Maybe<Scalars['String']['output']>;
+    };
 
 export type LearnContentExtension = {
   doNotUse: Scalars['String']['output'];
@@ -8411,7 +8217,6 @@ export type LearnContentExtensionImpl = LearnContentExtension & {
   receivableGamificationPoints: Scalars['Int']['output'];
   receivedGamificationPoints: Scalars['Int']['output'];
 };
-
 
 export type LearnContentExtensionImplInstructorsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -8431,7 +8236,6 @@ export type LearnMutations = {
   __typename?: 'LearnMutations';
   orderIHKCertificate?: Maybe<OrderIhkCertificatePayload>;
 };
-
 
 export type LearnMutationsOrderIhkCertificateArgs = {
   input: OrderIhkCertificateInput;
@@ -8455,17 +8259,19 @@ export type LearnOpportunitiesV2Edge = {
   node: LearnOpportunityV2;
 };
 
-export type LearnOpportunityBranchTypeDefinition = LearnOpportunityTypeDefinition & {
-  __typename?: 'LearnOpportunityBranchTypeDefinition';
-  children: Array<LearnOpportunityV2>;
-  definitionType: TypeDefinitionType;
-};
+export type LearnOpportunityBranchTypeDefinition =
+  LearnOpportunityTypeDefinition & {
+    __typename?: 'LearnOpportunityBranchTypeDefinition';
+    children: Array<LearnOpportunityV2>;
+    definitionType: TypeDefinitionType;
+  };
 
-export type LearnOpportunityChildStructureDefinition = LearnOpportunityStructureDefinition & {
-  __typename?: 'LearnOpportunityChildStructureDefinition';
-  definitionType: StructureType;
-  title: Scalars['String']['output'];
-};
+export type LearnOpportunityChildStructureDefinition =
+  LearnOpportunityStructureDefinition & {
+    __typename?: 'LearnOpportunityChildStructureDefinition';
+    definitionType: StructureType;
+    title: Scalars['String']['output'];
+  };
 
 export type LearnOpportunityContentTypeDefinition = {
   contentKind: ContentKind;
@@ -8474,30 +8280,33 @@ export type LearnOpportunityContentTypeDefinition = {
   extension: LearnContentExtension;
 };
 
-export type LearnOpportunityELearningContentTypeDefinition = LearnOpportunityContentTypeDefinition & LearnOpportunityTypeDefinition & {
-  __typename?: 'LearnOpportunityELearningContentTypeDefinition';
-  containedElementTypes: Array<ElementTypeV2>;
-  contentKind: ContentKind;
-  contentNodeAdvancementResult: ContentNodeAdvancementResult;
-  definitionType: TypeDefinitionType;
-  extension: LearnContentExtension;
-  showAnswerElements?: Maybe<Array<ElementV2>>;
-};
+export type LearnOpportunityELearningContentTypeDefinition =
+  LearnOpportunityContentTypeDefinition &
+    LearnOpportunityTypeDefinition & {
+      __typename?: 'LearnOpportunityELearningContentTypeDefinition';
+      containedElementTypes: Array<ElementTypeV2>;
+      contentKind: ContentKind;
+      contentNodeAdvancementResult: ContentNodeAdvancementResult;
+      definitionType: TypeDefinitionType;
+      extension: LearnContentExtension;
+      showAnswerElements?: Maybe<Array<ElementV2>>;
+    };
 
 export type LearnOpportunityRootExtension = {
   doNotUse: Scalars['String']['output'];
 };
 
-export type LearnOpportunityRootStructureDefinition = LearnOpportunityStructureDefinition & {
-  __typename?: 'LearnOpportunityRootStructureDefinition';
-  definitionType: StructureType;
-  extension: LearnOpportunityRootExtension;
-  icon?: Maybe<File>;
-  progressPercentage?: Maybe<Scalars['Int']['output']>;
-  tags: Array<Tag>;
-  title: Scalars['String']['output'];
-  viewerTreeState: ViewerTreeState;
-};
+export type LearnOpportunityRootStructureDefinition =
+  LearnOpportunityStructureDefinition & {
+    __typename?: 'LearnOpportunityRootStructureDefinition';
+    definitionType: StructureType;
+    extension: LearnOpportunityRootExtension;
+    icon?: Maybe<File>;
+    progressPercentage?: Maybe<Scalars['Int']['output']>;
+    tags: Array<Tag>;
+    title: Scalars['String']['output'];
+    viewerTreeState: ViewerTreeState;
+  };
 
 export type LearnOpportunityStructureDefinition = {
   definitionType: StructureType;
@@ -8529,7 +8338,6 @@ export type LearnOpportunityV2 = Node & {
   typeDefinition: LearnOpportunityTypeDefinition;
 };
 
-
 export type LearnOpportunityV2InstructorsV2Args = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -8541,7 +8349,6 @@ export type LearnQueries = {
   __typename?: 'LearnQueries';
   Tags: TagsConnection;
 };
-
 
 export type LearnQueriesTagsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -8558,18 +8365,15 @@ export type LearnV2AdminMutationSchema = {
   setTreeStateHead?: Maybe<SetTreeStateHeadPayload>;
 };
 
-
 /** Data only accessible by the admin */
 export type LearnV2AdminMutationSchemaCreateTreeStateForUserArgs = {
   input: CreateTreeStateForUserInput;
 };
 
-
 /** Data only accessible by the admin */
 export type LearnV2AdminMutationSchemaDeleteTreeArgs = {
   input: DeleteTreeInput;
 };
-
 
 /** Data only accessible by the admin */
 export type LearnV2AdminMutationSchemaSetTreeStateHeadArgs = {
@@ -8585,7 +8389,6 @@ export type LearnV2AdminSchema = {
   SearchLearnOpportunityV2: LearnOpportunitiesV2Connection;
 };
 
-
 /** Data only accessible by the admin */
 export type LearnV2AdminSchemaGetContentSubmissionsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -8594,7 +8397,6 @@ export type LearnV2AdminSchemaGetContentSubmissionsArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
   treeStateId: Scalars['ID']['input'];
 };
-
 
 /** Data only accessible by the admin */
 export type LearnV2AdminSchemaGetTreeStatesArgs = {
@@ -8606,7 +8408,6 @@ export type LearnV2AdminSchemaGetTreeStatesArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 /** Data only accessible by the admin */
 export type LearnV2AdminSchemaRootNodesWithTreeStatesForUserArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -8616,7 +8417,6 @@ export type LearnV2AdminSchemaRootNodesWithTreeStatesForUserArgs = {
   name?: InputMaybe<Scalars['String']['input']>;
   userId: Scalars['ID']['input'];
 };
-
 
 /** Data only accessible by the admin */
 export type LearnV2AdminSchemaSearchLearnOpportunityV2Args = {
@@ -8641,51 +8441,41 @@ export type LearnV2Mutations = {
   submitOrderElement?: Maybe<SubmitOrderElementPayload>;
 };
 
-
 export type LearnV2MutationsRestartContentNodeAfterFailedArgs = {
   input: RestartContentNodeAfterFailedInput;
 };
-
 
 export type LearnV2MutationsRestartContentNodeAfterPassedArgs = {
   input: RestartContentNodeAfterPassedInput;
 };
 
-
 export type LearnV2MutationsStartContentNodeArgs = {
   input: StartContentNodeInput;
 };
-
 
 export type LearnV2MutationsStartTreeArgs = {
   input: StartTreeInput;
 };
 
-
 export type LearnV2MutationsSubmitClozeTextElementArgs = {
   input: SubmitClozeTextElementV2Input;
 };
-
 
 export type LearnV2MutationsSubmitDisplayElementArgs = {
   input: SubmitDisplayElementInput;
 };
 
-
 export type LearnV2MutationsSubmitMarkMistakesElementArgs = {
   input: SubmitMarkMistakesElementV2Input;
 };
-
 
 export type LearnV2MutationsSubmitMatrixElementArgs = {
   input: SubmitMatrixElementV2Input;
 };
 
-
 export type LearnV2MutationsSubmitMultipleChoiceElementArgs = {
   input: SubmitMultipleChoiceElementV2Input;
 };
-
 
 export type LearnV2MutationsSubmitOrderElementArgs = {
   input: SubmitOrderElementInput;
@@ -8705,7 +8495,6 @@ export type LearnableAdminSchema = {
   UnpublishedLearnables: UnpublishedLearnablesConnection;
 };
 
-
 /** Data only accessible by the admin */
 export type LearnableAdminSchemaUnpublishedLearnablesArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -8722,7 +8511,7 @@ export enum LearnableKind {
   Course = 'Course',
   GroupCoaching = 'GroupCoaching',
   MicroLearning = 'MicroLearning',
-  OneToOneCoaching = 'OneToOneCoaching'
+  OneToOneCoaching = 'OneToOneCoaching',
 }
 
 export type LearnableLicenseGrouping = LicenseGrouping & {
@@ -8741,7 +8530,6 @@ export type LearnableQueries = {
   __typename?: 'LearnableQueries';
   PublishedLearnables: PublishedLearnablesConnection;
 };
-
 
 export type LearnableQueriesPublishedLearnablesArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -8800,7 +8588,7 @@ export type LicenseAvailabilityFreeLicensesAvailable = LicenseAvailability & {
 
 export enum LicenseAvailabilityKind {
   FreeLicensesAvailable = 'FreeLicensesAvailable',
-  NoneAvailable = 'NoneAvailable'
+  NoneAvailable = 'NoneAvailable',
 }
 
 export type LicenseAvailabilityNoneAvailableType = LicenseAvailability & {
@@ -8867,7 +8655,7 @@ export enum LicenseCreationInfoKind {
   Order = 'Order',
   Placement = 'Placement',
   PotentialAnalysis = 'PotentialAnalysis',
-  Registration = 'Registration'
+  Registration = 'Registration',
 }
 
 export type LicenseDefinition = Node & {
@@ -8891,66 +8679,64 @@ export type LicenseDefinitionAdminMutationSchema = {
   editTreeLicenseDefinitionAdminMutation?: Maybe<EditTreeLicenseDefinitionAdminMutationPayload>;
 };
 
+/** Data only accessible by the admin */
+export type LicenseDefinitionAdminMutationSchemaCreateAvgsPotentialAnalysisLicenseDefinitionArgs =
+  {
+    input: CreateAvgsPotentialAnalysisLicenseDefinitionInput;
+  };
 
 /** Data only accessible by the admin */
-export type LicenseDefinitionAdminMutationSchemaCreateAvgsPotentialAnalysisLicenseDefinitionArgs = {
-  input: CreateAvgsPotentialAnalysisLicenseDefinitionInput;
-};
-
-
-/** Data only accessible by the admin */
-export type LicenseDefinitionAdminMutationSchemaCreateCoachingLicenseDefinitionArgs = {
-  input: CreateCoachingLicenseDefinitionInput;
-};
-
+export type LicenseDefinitionAdminMutationSchemaCreateCoachingLicenseDefinitionArgs =
+  {
+    input: CreateCoachingLicenseDefinitionInput;
+  };
 
 /** Data only accessible by the admin */
-export type LicenseDefinitionAdminMutationSchemaCreateMicroLearningLicenseDefinitionArgs = {
-  input: CreateMicroLearningLicenseDefinitionInput;
-};
-
+export type LicenseDefinitionAdminMutationSchemaCreateMicroLearningLicenseDefinitionArgs =
+  {
+    input: CreateMicroLearningLicenseDefinitionInput;
+  };
 
 /** Data only accessible by the admin */
-export type LicenseDefinitionAdminMutationSchemaCreateTreeLicenseDefinitionArgs = {
-  input: CreateTreeLicenseDefinitionInput;
-};
-
+export type LicenseDefinitionAdminMutationSchemaCreateTreeLicenseDefinitionArgs =
+  {
+    input: CreateTreeLicenseDefinitionInput;
+  };
 
 /** Data only accessible by the admin */
 export type LicenseDefinitionAdminMutationSchemaDeleteLicenseDefinitionArgs = {
   input: DeleteLicenseDefinitionInput;
 };
 
+/** Data only accessible by the admin */
+export type LicenseDefinitionAdminMutationSchemaEditAvgsPotentialAnalysisLicenseDefinitionAdminMutationArgs =
+  {
+    input: EditAvgsPotentialAnalysisLicenseDefinitionAdminMutationInput;
+  };
 
 /** Data only accessible by the admin */
-export type LicenseDefinitionAdminMutationSchemaEditAvgsPotentialAnalysisLicenseDefinitionAdminMutationArgs = {
-  input: EditAvgsPotentialAnalysisLicenseDefinitionAdminMutationInput;
-};
-
-
-/** Data only accessible by the admin */
-export type LicenseDefinitionAdminMutationSchemaEditCoachingLicenseDefinitionAdminMutationArgs = {
-  input: EditCoachingLicenseDefinitionAdminMutationInput;
-};
-
+export type LicenseDefinitionAdminMutationSchemaEditCoachingLicenseDefinitionAdminMutationArgs =
+  {
+    input: EditCoachingLicenseDefinitionAdminMutationInput;
+  };
 
 /** Data only accessible by the admin */
-export type LicenseDefinitionAdminMutationSchemaEditMicroLicenseDefinitionAdminMutationArgs = {
-  input: EditMicroLearningLicenseDefinitionAdminMutationInput;
-};
-
+export type LicenseDefinitionAdminMutationSchemaEditMicroLicenseDefinitionAdminMutationArgs =
+  {
+    input: EditMicroLearningLicenseDefinitionAdminMutationInput;
+  };
 
 /** Data only accessible by the admin */
-export type LicenseDefinitionAdminMutationSchemaEditTreeLicenseDefinitionAdminMutationArgs = {
-  input: EditTreeLicenseDefinitionAdminMutationInput;
-};
+export type LicenseDefinitionAdminMutationSchemaEditTreeLicenseDefinitionAdminMutationArgs =
+  {
+    input: EditTreeLicenseDefinitionAdminMutationInput;
+  };
 
 /** Data only accessible by the admin */
 export type LicenseDefinitionAdminSchema = {
   __typename?: 'LicenseDefinitionAdminSchema';
   SearchLicenseDefinitions: LicenseDefinitionsConnection;
 };
-
 
 /** Data only accessible by the admin */
 export type LicenseDefinitionAdminSchemaSearchLicenseDefinitionsArgs = {
@@ -8979,7 +8765,7 @@ export enum LicenseDefinitionDataKind {
   AvgsPotentialAnalysis = 'AVGSPotentialAnalysis',
   Coaching = 'Coaching',
   MicroLearning = 'MicroLearning',
-  Tree = 'Tree'
+  Tree = 'Tree',
 }
 
 export type LicenseDefinitionRootInfo = {
@@ -9029,7 +8815,7 @@ export type LicenseGrouping = {
 
 export enum LicenseGroupingKind {
   Learnable = 'Learnable',
-  MicroLearning = 'MicroLearning'
+  MicroLearning = 'MicroLearning',
 }
 
 export type LicenseGroupingQueries = {
@@ -9039,11 +8825,9 @@ export type LicenseGroupingQueries = {
   MyLicenses: LicenseGroupingsConnection;
 };
 
-
 export type LicenseGroupingQueriesLicenseGroupingArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type LicenseGroupingQueriesLicenseGroupingsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -9055,7 +8839,6 @@ export type LicenseGroupingQueriesLicenseGroupingsArgs = {
   licensesConsumed?: InputMaybe<Scalars['Boolean']['input']>;
   text?: InputMaybe<Scalars['String']['input']>;
 };
-
 
 export type LicenseGroupingQueriesMyLicensesArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -9095,26 +8878,21 @@ export type LicenseManagementMutations = {
   editSingleUserAssignmentRule?: Maybe<EditSingleUserAssignmentRulePayload>;
 };
 
-
 export type LicenseManagementMutationsCreateAccountGroupAssignmentRuleArgs = {
   input: CreateAccountGroupAssignmentRuleInput;
 };
-
 
 export type LicenseManagementMutationsCreateSingleUserAssignmentRuleArgs = {
   input: CreateSingleUserAssignmentRuleInput;
 };
 
-
 export type LicenseManagementMutationsDeleteAssignmentRuleArgs = {
   input: DeleteAssignmentRuleInput;
 };
 
-
 export type LicenseManagementMutationsEditAccountGroupAssignmentRuleArgs = {
   input: EditAccountGroupAssignmentRuleInput;
 };
-
 
 export type LicenseManagementMutationsEditSingleUserAssignmentRuleArgs = {
   input: EditSingleUserAssignmentRuleInput;
@@ -9124,7 +8902,6 @@ export type LicenseModelMutations = {
   __typename?: 'LicenseModelMutations';
   editLicenseModel?: Maybe<EditLicenseModelPayload>;
 };
-
 
 export type LicenseModelMutationsEditLicenseModelArgs = {
   input: EditLicenseModelInput;
@@ -9150,22 +8927,24 @@ export enum LicenseUsageKind {
   Free = 'Free',
   UsedForAvgsPotentialAnalysis = 'UsedForAVGSPotentialAnalysis',
   UsedForCoaching = 'UsedForCoaching',
-  UsedForTree = 'UsedForTree'
+  UsedForTree = 'UsedForTree',
 }
 
-export type LicenseUsageUsedForCoaching = LicenseUsage & LicenseUsed & {
-  __typename?: 'LicenseUsageUsedForCoaching';
-  at: Scalars['ZonedDateTIme']['output'];
-  forUser?: Maybe<User>;
-  kind: LicenseUsageKind;
-};
+export type LicenseUsageUsedForCoaching = LicenseUsage &
+  LicenseUsed & {
+    __typename?: 'LicenseUsageUsedForCoaching';
+    at: Scalars['ZonedDateTIme']['output'];
+    forUser?: Maybe<User>;
+    kind: LicenseUsageKind;
+  };
 
-export type LicenseUsageUsedForTree = LicenseUsage & LicenseUsed & {
-  __typename?: 'LicenseUsageUsedForTree';
-  at: Scalars['ZonedDateTIme']['output'];
-  forUser?: Maybe<User>;
-  kind: LicenseUsageKind;
-};
+export type LicenseUsageUsedForTree = LicenseUsage &
+  LicenseUsed & {
+    __typename?: 'LicenseUsageUsedForTree';
+    at: Scalars['ZonedDateTIme']['output'];
+    forUser?: Maybe<User>;
+    kind: LicenseUsageKind;
+  };
 
 export type LicenseUsed = {
   at: Scalars['ZonedDateTIme']['output'];
@@ -9173,12 +8952,13 @@ export type LicenseUsed = {
   kind: LicenseUsageKind;
 };
 
-export type LicenseUsedForCreatingAvgsPotentialAnalysis = LicenseUsage & LicenseUsed & {
-  __typename?: 'LicenseUsedForCreatingAVGSPotentialAnalysis';
-  at: Scalars['ZonedDateTIme']['output'];
-  forUser?: Maybe<User>;
-  kind: LicenseUsageKind;
-};
+export type LicenseUsedForCreatingAvgsPotentialAnalysis = LicenseUsage &
+  LicenseUsed & {
+    __typename?: 'LicenseUsedForCreatingAVGSPotentialAnalysis';
+    at: Scalars['ZonedDateTIme']['output'];
+    forUser?: Maybe<User>;
+    kind: LicenseUsageKind;
+  };
 
 export type LicensesGroupedByDefinition = {
   __typename?: 'LicensesGroupedByDefinition';
@@ -9223,7 +9003,7 @@ export type LimitedCartDiscountCondition = {
 };
 
 export enum LimitedCartDiscountConditionKindEnum {
-  ProductSelectionCondition = 'ProductSelectionCondition'
+  ProductSelectionCondition = 'ProductSelectionCondition',
 }
 
 /** A connection to a list of items. */
@@ -9310,7 +9090,6 @@ export type ManagementAdminSchema = {
   UsersAdmin: UserConnection;
 };
 
-
 /** Data only accessible by the admin */
 export type ManagementAdminSchemaAccountGroupsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -9318,7 +9097,6 @@ export type ManagementAdminSchemaAccountGroupsArgs = {
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
 };
-
 
 /** Data only accessible by the admin */
 export type ManagementAdminSchemaUsersAdminArgs = {
@@ -9335,7 +9113,6 @@ export type ManagementQueries = {
   __typename?: 'ManagementQueries';
   Groups: UserInAccountGroupsConnection;
 };
-
 
 export type ManagementQueriesGroupsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -9360,12 +9137,13 @@ export type MarkMistakesElement = ElementV2 & {
   title: Scalars['String']['output'];
 };
 
-export type MarkMistakesInputElementState = ElementState & InputElementState & {
-  __typename?: 'MarkMistakesInputElementState';
-  checkedMistakeIndices: Array<Scalars['Int']['output']>;
-  element: LearnElement;
-  kind: ElementStateKind;
-};
+export type MarkMistakesInputElementState = ElementState &
+  InputElementState & {
+    __typename?: 'MarkMistakesInputElementState';
+    checkedMistakeIndices: Array<Scalars['Int']['output']>;
+    element: LearnElement;
+    kind: ElementStateKind;
+  };
 
 export type MarkMistakesLearnElement = LearnElement & {
   __typename?: 'MarkMistakesLearnElement';
@@ -9376,13 +9154,14 @@ export type MarkMistakesLearnElement = LearnElement & {
   title: Scalars['String']['output'];
 };
 
-export type MarkMistakesShowAnswerElementState = ElementState & ShowAnswerElementState & {
-  __typename?: 'MarkMistakesShowAnswerElementState';
-  correctMistakeIndices: Array<Scalars['Int']['output']>;
-  element: LearnElement;
-  kind: ElementStateKind;
-  lastCheckedMistakeIndices?: Maybe<Array<Scalars['Int']['output']>>;
-};
+export type MarkMistakesShowAnswerElementState = ElementState &
+  ShowAnswerElementState & {
+    __typename?: 'MarkMistakesShowAnswerElementState';
+    correctMistakeIndices: Array<Scalars['Int']['output']>;
+    element: LearnElement;
+    kind: ElementStateKind;
+    lastCheckedMistakeIndices?: Maybe<Array<Scalars['Int']['output']>>;
+  };
 
 export type MarkMistakes_Snippet = {
   __typename?: 'MarkMistakes_Snippet';
@@ -9420,7 +9199,7 @@ export type MatrixElementCellCorrectAnswer = MatrixElementCellAnswer & {
 
 export enum MatrixElementCellKind {
   Answer = 'Answer',
-  Display = 'Display'
+  Display = 'Display',
 }
 
 export type MatrixElementCellWrongAnswer = MatrixElementCellAnswer & {
@@ -9431,12 +9210,13 @@ export type MatrixElementCellWrongAnswer = MatrixElementCellAnswer & {
   isCorrect: Scalars['Boolean']['output'];
 };
 
-export type MatrixInputElementState = ElementState & InputElementState & {
-  __typename?: 'MatrixInputElementState';
-  checkedIndices: Array<MatrixLearnElementIndexCell>;
-  element: LearnElement;
-  kind: ElementStateKind;
-};
+export type MatrixInputElementState = ElementState &
+  InputElementState & {
+    __typename?: 'MatrixInputElementState';
+    checkedIndices: Array<MatrixLearnElementIndexCell>;
+    element: LearnElement;
+    kind: ElementStateKind;
+  };
 
 export type MatrixLearnElement = LearnElement & {
   __typename?: 'MatrixLearnElement';
@@ -9465,13 +9245,14 @@ export type MatrixLearnElementIndexCell = {
   yIdx: Scalars['Int']['output'];
 };
 
-export type MatrixShowAnswerElementState = ElementState & ShowAnswerElementState & {
-  __typename?: 'MatrixShowAnswerElementState';
-  correctIndices: Array<MatrixLearnElementIndexCell>;
-  element: LearnElement;
-  kind: ElementStateKind;
-  lastCheckedIndices?: Maybe<Array<MatrixLearnElementIndexCell>>;
-};
+export type MatrixShowAnswerElementState = ElementState &
+  ShowAnswerElementState & {
+    __typename?: 'MatrixShowAnswerElementState';
+    correctIndices: Array<MatrixLearnElementIndexCell>;
+    element: LearnElement;
+    kind: ElementStateKind;
+    lastCheckedIndices?: Maybe<Array<MatrixLearnElementIndexCell>>;
+  };
 
 export type MicroLearningLicenseDefinitionData = LicenseDefinitionData & {
   __typename?: 'MicroLearningLicenseDefinitionData';
@@ -9551,12 +9332,13 @@ export type MultipleChoiceElementV2 = ElementV2 & {
   title: Scalars['String']['output'];
 };
 
-export type MultipleChoiceInputElementState = ElementState & InputElementState & {
-  __typename?: 'MultipleChoiceInputElementState';
-  checkedAnswerIndices: Array<Scalars['Int']['output']>;
-  element: LearnElement;
-  kind: ElementStateKind;
-};
+export type MultipleChoiceInputElementState = ElementState &
+  InputElementState & {
+    __typename?: 'MultipleChoiceInputElementState';
+    checkedAnswerIndices: Array<Scalars['Int']['output']>;
+    element: LearnElement;
+    kind: ElementStateKind;
+  };
 
 export type MultipleChoiceLearnElement = LearnElement & {
   __typename?: 'MultipleChoiceLearnElement';
@@ -9571,13 +9353,14 @@ export type MultipleChoiceLearnElement = LearnElement & {
   title: Scalars['String']['output'];
 };
 
-export type MultipleChoiceShowAnswerElementState = ElementState & ShowAnswerElementState & {
-  __typename?: 'MultipleChoiceShowAnswerElementState';
-  correctAnswerIndices: Array<Scalars['Int']['output']>;
-  element: LearnElement;
-  kind: ElementStateKind;
-  lastCheckedAnswerIndices?: Maybe<Array<Scalars['Int']['output']>>;
-};
+export type MultipleChoiceShowAnswerElementState = ElementState &
+  ShowAnswerElementState & {
+    __typename?: 'MultipleChoiceShowAnswerElementState';
+    correctAnswerIndices: Array<Scalars['Int']['output']>;
+    element: LearnElement;
+    kind: ElementStateKind;
+    lastCheckedAnswerIndices?: Maybe<Array<Scalars['Int']['output']>>;
+  };
 
 export type Mutation = {
   __typename?: 'Mutation';
@@ -9604,24 +9387,30 @@ export type Mutation = {
   Vocab: VocabMutations;
 };
 
-export type NegativeBlockPermanentlyRestartIfFailedContentConfigResult = NegativeRestartIfFailedContentConfigResult & RestartIfFailedContentConfigResult & {
-  __typename?: 'NegativeBlockPermanentlyRestartIfFailedContentConfigResult';
-  canBeRestarted: Scalars['Boolean']['output'];
-  configType: RestartIfFailedContentConfigType;
-};
+export type NegativeBlockPermanentlyRestartIfFailedContentConfigResult =
+  NegativeRestartIfFailedContentConfigResult &
+    RestartIfFailedContentConfigResult & {
+      __typename?: 'NegativeBlockPermanentlyRestartIfFailedContentConfigResult';
+      canBeRestarted: Scalars['Boolean']['output'];
+      configType: RestartIfFailedContentConfigType;
+    };
 
-export type NegativeBlockTemporarilyRestartIfFailedContentConfigResult = NegativeRestartIfFailedContentConfigResult & RestartIfFailedContentConfigResult & {
-  __typename?: 'NegativeBlockTemporarilyRestartIfFailedContentConfigResult';
-  blockedUntil: Scalars['ZonedDateTIme']['output'];
-  canBeRestarted: Scalars['Boolean']['output'];
-  configType: RestartIfFailedContentConfigType;
-};
+export type NegativeBlockTemporarilyRestartIfFailedContentConfigResult =
+  NegativeRestartIfFailedContentConfigResult &
+    RestartIfFailedContentConfigResult & {
+      __typename?: 'NegativeBlockTemporarilyRestartIfFailedContentConfigResult';
+      blockedUntil: Scalars['ZonedDateTIme']['output'];
+      canBeRestarted: Scalars['Boolean']['output'];
+      configType: RestartIfFailedContentConfigType;
+    };
 
-export type NegativeCanNotRestartIfFailedContentConfigResult = NegativeRestartIfFailedContentConfigResult & RestartIfFailedContentConfigResult & {
-  __typename?: 'NegativeCanNotRestartIfFailedContentConfigResult';
-  canBeRestarted: Scalars['Boolean']['output'];
-  configType: RestartIfFailedContentConfigType;
-};
+export type NegativeCanNotRestartIfFailedContentConfigResult =
+  NegativeRestartIfFailedContentConfigResult &
+    RestartIfFailedContentConfigResult & {
+      __typename?: 'NegativeCanNotRestartIfFailedContentConfigResult';
+      canBeRestarted: Scalars['Boolean']['output'];
+      configType: RestartIfFailedContentConfigType;
+    };
 
 export type NegativeRestartIfFailedContentConfigResult = {
   canBeRestarted: Scalars['Boolean']['output'];
@@ -9652,10 +9441,11 @@ export type NotBooked = BookingInterface & {
   kind: BookingKind;
 };
 
-export type NotContentNodeContentNodeAdvancementResult = ContentNodeAdvancementResult & {
-  __typename?: 'NotContentNodeContentNodeAdvancementResult';
-  status: ContentNodeAdvancementStatus;
-};
+export type NotContentNodeContentNodeAdvancementResult =
+  ContentNodeAdvancementResult & {
+    __typename?: 'NotContentNodeContentNodeAdvancementResult';
+    status: ContentNodeAdvancementStatus;
+  };
 
 export type NotVisibleViewerTreeState = ViewerTreeState & {
   __typename?: 'NotVisibleViewerTreeState';
@@ -9671,23 +9461,23 @@ export type NotificationAdminMutationSchema = {
   updatePersonalizedNotificationTemplate?: Maybe<UpdatePersonalizedNotificationTemplatePayload>;
 };
 
+/** Data only accessible by the admin */
+export type NotificationAdminMutationSchemaCreatePersonalizedNotificationTemplateArgs =
+  {
+    input: CreatePersonalizedNotificationTemplateInput;
+  };
 
 /** Data only accessible by the admin */
-export type NotificationAdminMutationSchemaCreatePersonalizedNotificationTemplateArgs = {
-  input: CreatePersonalizedNotificationTemplateInput;
-};
-
-
-/** Data only accessible by the admin */
-export type NotificationAdminMutationSchemaDeletePersonalizedNotificationTemplateArgs = {
-  input: DeletePersonalizedNotificationTemplateInput;
-};
-
+export type NotificationAdminMutationSchemaDeletePersonalizedNotificationTemplateArgs =
+  {
+    input: DeletePersonalizedNotificationTemplateInput;
+  };
 
 /** Data only accessible by the admin */
-export type NotificationAdminMutationSchemaUpdatePersonalizedNotificationTemplateArgs = {
-  input: UpdatePersonalizedNotificationTemplateInput;
-};
+export type NotificationAdminMutationSchemaUpdatePersonalizedNotificationTemplateArgs =
+  {
+    input: UpdatePersonalizedNotificationTemplateInput;
+  };
 
 /** Data only accessible by the admin */
 export type NotificationAdminSchema = {
@@ -9696,7 +9486,6 @@ export type NotificationAdminSchema = {
   PersonalizedNotificationTemplates: PersonalizedNotificationTemplatesConnection;
 };
 
-
 /** Data only accessible by the admin */
 export type NotificationAdminSchemaAvailableSystemTemplatesArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -9704,7 +9493,6 @@ export type NotificationAdminSchemaAvailableSystemTemplatesArgs = {
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
 };
-
 
 /** Data only accessible by the admin */
 export type NotificationAdminSchemaPersonalizedNotificationTemplatesArgs = {
@@ -9719,14 +9507,13 @@ export type NotificationMutations = {
   registerForNotification?: Maybe<RegisterForNotificationPayload>;
 };
 
-
 export type NotificationMutationsRegisterForNotificationArgs = {
   input: RegisterForNotificationInput;
 };
 
 export enum NotificationServiceType {
   Apns = 'Apns',
-  Gcm = 'Gcm'
+  Gcm = 'Gcm',
 }
 
 export type NotificationTemplate = {
@@ -9749,12 +9536,13 @@ export type OneToOneCoachingSetting = CoachingSetting & {
   kind: CoachingSettingKind;
 };
 
-export type OnlyAzavAccountVisibilityCoachingConfig = VisibilityCoachingConfig & {
-  __typename?: 'OnlyAZAVAccountVisibilityCoachingConfig';
-  configType: VisibilityCoachingConfigType;
-  /** The ID of an object */
-  id: Scalars['ID']['output'];
-};
+export type OnlyAzavAccountVisibilityCoachingConfig =
+  VisibilityCoachingConfig & {
+    __typename?: 'OnlyAZAVAccountVisibilityCoachingConfig';
+    configType: VisibilityCoachingConfigType;
+    /** The ID of an object */
+    id: Scalars['ID']['output'];
+  };
 
 export type OnlyAzavAccountVisibilityTreeConfig = VisibilityTreeConfig & {
   __typename?: 'OnlyAZAVAccountVisibilityTreeConfig';
@@ -9770,12 +9558,13 @@ export type OnlyAdminsVisibilityTreeConfig = VisibilityTreeConfig & {
   id: Scalars['ID']['output'];
 };
 
-export type OnlyBusinessAccountVisibilityCoachingConfig = VisibilityCoachingConfig & {
-  __typename?: 'OnlyBusinessAccountVisibilityCoachingConfig';
-  configType: VisibilityCoachingConfigType;
-  /** The ID of an object */
-  id: Scalars['ID']['output'];
-};
+export type OnlyBusinessAccountVisibilityCoachingConfig =
+  VisibilityCoachingConfig & {
+    __typename?: 'OnlyBusinessAccountVisibilityCoachingConfig';
+    configType: VisibilityCoachingConfigType;
+    /** The ID of an object */
+    id: Scalars['ID']['output'];
+  };
 
 export type OnlyBusinessAccountVisibilityTreeConfig = VisibilityTreeConfig & {
   __typename?: 'OnlyBusinessAccountVisibilityTreeConfig';
@@ -9805,12 +9594,13 @@ export type OnlyPermissionsImplVisibilityTreeConfig = VisibilityTreeConfig & {
   id: Scalars['ID']['output'];
 };
 
-export type OnlyWithLicenseVisibilityCoachingConfig = VisibilityCoachingConfig & {
-  __typename?: 'OnlyWithLicenseVisibilityCoachingConfig';
-  configType: VisibilityCoachingConfigType;
-  /** The ID of an object */
-  id: Scalars['ID']['output'];
-};
+export type OnlyWithLicenseVisibilityCoachingConfig =
+  VisibilityCoachingConfig & {
+    __typename?: 'OnlyWithLicenseVisibilityCoachingConfig';
+    configType: VisibilityCoachingConfigType;
+    /** The ID of an object */
+    id: Scalars['ID']['output'];
+  };
 
 export type Order = Node & {
   __typename?: 'Order';
@@ -9830,7 +9620,6 @@ export type Order = Node & {
   selectedPaymentMethod?: Maybe<SelectedPaymentMethod>;
   status: OrderStatus;
 };
-
 
 export type OrderHistoryArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -9860,7 +9649,7 @@ export type OrderExtension = {
 };
 
 export enum OrderExtensionKind {
-  Empty = 'Empty'
+  Empty = 'Empty',
 }
 
 /** A connection to a list of items. */
@@ -9903,12 +9692,13 @@ export type OrderIhkCertificatePayload = {
   root: LearnOpportunityV2;
 };
 
-export type OrderInputElementState = ElementState & InputElementState & {
-  __typename?: 'OrderInputElementState';
-  element: LearnElement;
-  kind: ElementStateKind;
-  selectedOrder: Array<Scalars['ID']['output']>;
-};
+export type OrderInputElementState = ElementState &
+  InputElementState & {
+    __typename?: 'OrderInputElementState';
+    element: LearnElement;
+    kind: ElementStateKind;
+    selectedOrder: Array<Scalars['ID']['output']>;
+  };
 
 export type OrderItem = {
   __typename?: 'OrderItem';
@@ -9927,13 +9717,14 @@ export type OrderLearnElement = LearnElement & {
   title: Scalars['String']['output'];
 };
 
-export type OrderShowAnswerElementState = ElementState & ShowAnswerElementState & {
-  __typename?: 'OrderShowAnswerElementState';
-  correctOrder: Array<Scalars['ID']['output']>;
-  element: LearnElement;
-  kind: ElementStateKind;
-  lastSelectedOrder: Array<Scalars['ID']['output']>;
-};
+export type OrderShowAnswerElementState = ElementState &
+  ShowAnswerElementState & {
+    __typename?: 'OrderShowAnswerElementState';
+    correctOrder: Array<Scalars['ID']['output']>;
+    element: LearnElement;
+    kind: ElementStateKind;
+    lastSelectedOrder: Array<Scalars['ID']['output']>;
+  };
 
 export enum OrderStatus {
   HasBillingDetails = 'HasBillingDetails',
@@ -9941,7 +9732,7 @@ export enum OrderStatus {
   HasPaymentDetails = 'HasPaymentDetails',
   PaymentReceived = 'PaymentReceived',
   Purchased = 'Purchased',
-  Transient = 'Transient'
+  Transient = 'Transient',
 }
 
 /** A connection to a list of items. */
@@ -10028,15 +9819,16 @@ export enum ParticipationCertificateRewardVariables {
   LastName = 'lastName',
   PartnerName = 'partnerName',
   ShortDesc = 'shortDesc',
-  SubmissionDate = 'submissionDate'
+  SubmissionDate = 'submissionDate',
 }
 
-export type ParticipationCertificate_ErrorOccurredRewardResult = RewardResult & {
-  __typename?: 'ParticipationCertificate_ErrorOccurredRewardResult';
-  kind: RewardResultKind;
-  rewardId: Scalars['ID']['output'];
-  rewardKind: RewardKind;
-};
+export type ParticipationCertificate_ErrorOccurredRewardResult =
+  RewardResult & {
+    __typename?: 'ParticipationCertificate_ErrorOccurredRewardResult';
+    kind: RewardResultKind;
+    rewardId: Scalars['ID']['output'];
+    rewardKind: RewardKind;
+  };
 
 export type ParticipationCertificate_NotPassedRewardResult = RewardResult & {
   __typename?: 'ParticipationCertificate_NotPassedRewardResult';
@@ -10045,25 +9837,27 @@ export type ParticipationCertificate_NotPassedRewardResult = RewardResult & {
   rewardKind: RewardKind;
 };
 
-export type ParticipationCertificate_ParticipationCertificateRewardResult = RewardResult & {
-  __typename?: 'ParticipationCertificate_ParticipationCertificateRewardResult';
-  data: ParticipationCertificate_ParticipationCertificateRewardResultData;
-  kind: RewardResultKind;
-  rewardId: Scalars['ID']['output'];
-  rewardKind: RewardKind;
-};
+export type ParticipationCertificate_ParticipationCertificateRewardResult =
+  RewardResult & {
+    __typename?: 'ParticipationCertificate_ParticipationCertificateRewardResult';
+    data: ParticipationCertificate_ParticipationCertificateRewardResultData;
+    kind: RewardResultKind;
+    rewardId: Scalars['ID']['output'];
+    rewardKind: RewardKind;
+  };
 
-export type ParticipationCertificate_ParticipationCertificateRewardResultData = {
-  __typename?: 'ParticipationCertificate_ParticipationCertificateRewardResultData';
-  file?: Maybe<File>;
-  name: Scalars['String']['output'];
-};
+export type ParticipationCertificate_ParticipationCertificateRewardResultData =
+  {
+    __typename?: 'ParticipationCertificate_ParticipationCertificateRewardResultData';
+    file?: Maybe<File>;
+    name: Scalars['String']['output'];
+  };
 
 export enum ParticipationStatus {
   Absent = 'Absent',
   AbsentExcused = 'AbsentExcused',
   NotConfirmed = 'NotConfirmed',
-  Participated = 'Participated'
+  Participated = 'Participated',
 }
 
 export type PassContentConfig = {
@@ -10074,25 +9868,31 @@ export type PassContentConfig = {
 
 export enum PassContentConfigType {
   PassContentAlways = 'PassContent_Always',
-  PassContentIhkFlow = 'PassContent_IHKFlow'
+  PassContentIhkFlow = 'PassContent_IHKFlow',
 }
 
-export type PassedAsyncContentSubmissionDefinition = AsyncContentSubmissionDefinition & ContentSubmissionDefinition & FinishedAsyncContentSubmissionDefinitionInterface & {
-  __typename?: 'PassedAsyncContentSubmissionDefinition';
-  contentKind: ContentKind;
-  element?: Maybe<AsyncLearnElement>;
-  rewardResults: Array<RewardResult>;
-  status: ContentSubmissionStatus;
-};
+export type PassedAsyncContentSubmissionDefinition =
+  AsyncContentSubmissionDefinition &
+    ContentSubmissionDefinition &
+    FinishedAsyncContentSubmissionDefinitionInterface & {
+      __typename?: 'PassedAsyncContentSubmissionDefinition';
+      contentKind: ContentKind;
+      element?: Maybe<AsyncLearnElement>;
+      rewardResults: Array<RewardResult>;
+      status: ContentSubmissionStatus;
+    };
 
-export type PassedELearningContentSubmissionDefinition = ContentSubmissionDefinition & ELearningContentSubmissionDefinition & FinishedELearningContentSubmissionDefinitionInterface & {
-  __typename?: 'PassedELearningContentSubmissionDefinition';
-  contentKind: ContentKind;
-  progress: ELearningContentSubmissionProgress;
-  relativeProgress: ELearningContentSubmissionRelativeProgress;
-  rewardResults: Array<RewardResult>;
-  status: ContentSubmissionStatus;
-};
+export type PassedELearningContentSubmissionDefinition =
+  ContentSubmissionDefinition &
+    ELearningContentSubmissionDefinition &
+    FinishedELearningContentSubmissionDefinitionInterface & {
+      __typename?: 'PassedELearningContentSubmissionDefinition';
+      contentKind: ContentKind;
+      progress: ELearningContentSubmissionProgress;
+      relativeProgress: ELearningContentSubmissionRelativeProgress;
+      rewardResults: Array<RewardResult>;
+      status: ContentSubmissionStatus;
+    };
 
 export type PayOrderInput = {
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
@@ -10136,7 +9936,7 @@ export enum PaymentMethodType {
   MonthlyTk = 'MonthlyTk',
   Paypal = 'Paypal',
   Sepa = 'Sepa',
-  Sofort = 'Sofort'
+  Sofort = 'Sofort',
 }
 
 export type PaymentMethodUpdate = HistoryEventInterface & {
@@ -10155,13 +9955,13 @@ export enum PaymentProviderDataType {
   GoogleIap = 'GoogleIap',
   Sepa = 'Sepa',
   Stripe = 'Stripe',
-  StripeSepa = 'StripeSepa'
+  StripeSepa = 'StripeSepa',
 }
 
 export enum PaymentType {
   EmployerInvoice = 'EmployerInvoice',
   MonthlyPayment = 'MonthlyPayment',
-  OneTimePayment = 'OneTimePayment'
+  OneTimePayment = 'OneTimePayment',
 }
 
 export type PercentageProductSelectionConfig = ProductSelectionConfig & {
@@ -10259,7 +10059,7 @@ export enum Permission {
   UserInAccountPermissionVimeoVideoSourceAdminModify = 'UserInAccountPermission_VimeoVideoSourceAdmin_Modify',
   UserInAccountPermissionVimeoVideoSourceAdminRead = 'UserInAccountPermission_VimeoVideoSourceAdmin_Read',
   UserInAccountPermissionVocabAdminModifyWordPackages = 'UserInAccountPermission_VocabAdmin_ModifyWordPackages',
-  UserInAccountPermissionVocabAdminReadWordPackages = 'UserInAccountPermission_VocabAdmin_ReadWordPackages'
+  UserInAccountPermissionVocabAdminReadWordPackages = 'UserInAccountPermission_VocabAdmin_ReadWordPackages',
 }
 
 export type PersonalizedEmailTemplate = Node & {
@@ -10357,101 +10157,83 @@ export type PlacementMutations = {
   sendUserIsInterestedForJobListing?: Maybe<SendUserIsInterestedForJobListingPayload>;
 };
 
-
 export type PlacementMutationsAddMatchingPlacementArgs = {
   input: AddMatchingPlacementInput;
 };
-
 
 export type PlacementMutationsCreateClickOutByLinkIdArgs = {
   input: CreateClickOutByLinkIdInput;
 };
 
-
 export type PlacementMutationsCreateClickOutForUserOrBusinessArgs = {
   input: CreateClickOutForUserOrBusinessInput;
 };
-
 
 export type PlacementMutationsGrantPlacementPermissionAndRedirectArgs = {
   input: GrantPlacementPermissionAndRedirectInput;
 };
 
-
 export type PlacementMutationsInformAboutSuccessfulPlacementArgs = {
   input: InformAboutSuccessfulPlacementInput;
 };
-
 
 export type PlacementMutationsSendAskCompanyIfContractWasConcludedArgs = {
   input: SendAskCompanyIfContractWasConcludedInput;
 };
 
-
 export type PlacementMutationsSendCompanyIsInterestedInUserProfileArgs = {
   input: SendCompanyIsInterestedInUserProfileInput;
 };
-
 
 export type PlacementMutationsSendInformAboutAcceptedMatchingArgs = {
   input: SendInformAboutAcceptedMatchingInput;
 };
 
-
 export type PlacementMutationsSendInformAboutAvailableDossierArgs = {
   input: SendInformAboutAvailableDossierInput;
 };
-
 
 export type PlacementMutationsSendInformAboutClosedProfileAfterMatchingArgs = {
   input: SendInformAboutClosedProfileAfterMatchingInput;
 };
 
-
 export type PlacementMutationsSendMatchingResultsAvailableToBusinessArgs = {
   input: SendMatchingResultsAvailableToBusinessInput;
 };
-
 
 export type PlacementMutationsSendMatchingResultsAvailableToUserArgs = {
   input: SendMatchingResultsAvailableToUserInput;
 };
 
-
 export type PlacementMutationsSendRemindCompanyToPayFeeArgs = {
   input: SendRemindCompanyToPayFeeInput;
 };
-
 
 export type PlacementMutationsSendReminderForInviteToSecondInterviewArgs = {
   input: SendReminderForInviteToSecondInterviewInput;
 };
 
-
 export type PlacementMutationsSendReminderForSecondInterviewToUserArgs = {
   input: SendReminderForSecondInterviewToUserInput;
 };
 
-
-export type PlacementMutationsSendSummaryForFirstInterviewToContactPersonArgs = {
-  input: SendSummaryForFirstInterviewToContactPersonInput;
-};
-
+export type PlacementMutationsSendSummaryForFirstInterviewToContactPersonArgs =
+  {
+    input: SendSummaryForFirstInterviewToContactPersonInput;
+  };
 
 export type PlacementMutationsSendSummaryForFirstInterviewToUserArgs = {
   input: SendSummaryForFirstInterviewToUserInput;
 };
 
-
-export type PlacementMutationsSendSummaryForSecondInterviewToContactPersonArgs = {
-  input: SendSummaryForSecondInterviewToContactPersonInput;
-};
-
+export type PlacementMutationsSendSummaryForSecondInterviewToContactPersonArgs =
+  {
+    input: SendSummaryForSecondInterviewToContactPersonInput;
+  };
 
 export type PlacementMutationsSendSummaryForSecondInterviewToUserArgs = {
   input: SendSummaryForSecondInterviewToUserInput;
 };
-
 
 export type PlacementMutationsSendUserIsInterestedForJobListingArgs = {
   input: SendUserIsInterestedForJobListingInput;
@@ -10468,7 +10250,6 @@ export type PlacementQueries = {
   permissionCartClickOut: Scalars['String']['output'];
 };
 
-
 export type PlacementQueriesPlacementBusinessBaseDataArgs = {
   accountId: Scalars['ID']['input'];
   after?: InputMaybe<Scalars['String']['input']>;
@@ -10477,7 +10258,6 @@ export type PlacementQueriesPlacementBusinessBaseDataArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
   userId: Scalars['ID']['input'];
 };
-
 
 export type PlacementQueriesPermissionCartClickOutArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -10514,7 +10294,7 @@ export type PodcastLearnElement = LearnElement & {
 export enum PodcastSourceTypeV2 {
   None = 'none',
   Podigee = 'podigee',
-  Vimeo = 'vimeo'
+  Vimeo = 'vimeo',
 }
 
 export type PodcastSourceV2 = {
@@ -10552,11 +10332,12 @@ export type PodigeePodcastSourceV2 = PodcastSourceV2 & {
   sourceType: PodcastSourceTypeV2;
 };
 
-export type PositiveRestartIfFailedContentConfigResult = RestartIfFailedContentConfigResult & {
-  __typename?: 'PositiveRestartIfFailedContentConfigResult';
-  canBeRestarted: Scalars['Boolean']['output'];
-  configType: RestartIfFailedContentConfigType;
-};
+export type PositiveRestartIfFailedContentConfigResult =
+  RestartIfFailedContentConfigResult & {
+    __typename?: 'PositiveRestartIfFailedContentConfigResult';
+    canBeRestarted: Scalars['Boolean']['output'];
+    configType: RestartIfFailedContentConfigType;
+  };
 
 export type PotentialAnalysisAnswerOption = {
   answerOptionId: Scalars['Int']['output'];
@@ -10586,12 +10367,13 @@ export type PotentialAnalysisFreeTextAnswerOptionInput = {
   text: Scalars['String']['input'];
 };
 
-export type PotentialAnalysisFreetextAnswerOption = PotentialAnalysisAnswerOption & {
-  __typename?: 'PotentialAnalysisFreetextAnswerOption';
-  answerOptionId: Scalars['Int']['output'];
-  isFreeText: Scalars['Boolean']['output'];
-  text: Scalars['String']['output'];
-};
+export type PotentialAnalysisFreetextAnswerOption =
+  PotentialAnalysisAnswerOption & {
+    __typename?: 'PotentialAnalysisFreetextAnswerOption';
+    answerOptionId: Scalars['Int']['output'];
+    isFreeText: Scalars['Boolean']['output'];
+    text: Scalars['String']['output'];
+  };
 
 export type PotentialAnalysisGivenAnswer = {
   kind: PotentialAnalysisGivenAnswerKind;
@@ -10600,26 +10382,28 @@ export type PotentialAnalysisGivenAnswer = {
 export enum PotentialAnalysisGivenAnswerKind {
   SelectedWithFreetext = 'SelectedWithFreetext',
   Text = 'Text',
-  Selected = 'selected'
+  Selected = 'selected',
 }
 
-export type PotentialAnalysisMultipleChoiceFreetextQuestion = PotentialAnalysisQuestion & {
-  __typename?: 'PotentialAnalysisMultipleChoiceFreetextQuestion';
-  answerOptions: Array<PotentialAnalysisFreetextAnswerOption>;
-  givenAnswers: Array<PotentialAnalysisSelectedWithFreetextGivenAnswer>;
-  id: Scalars['ID']['output'];
-  kind: PotentialAnalysisQuestionDataKind;
-  questionText: Scalars['String']['output'];
-};
+export type PotentialAnalysisMultipleChoiceFreetextQuestion =
+  PotentialAnalysisQuestion & {
+    __typename?: 'PotentialAnalysisMultipleChoiceFreetextQuestion';
+    answerOptions: Array<PotentialAnalysisFreetextAnswerOption>;
+    givenAnswers: Array<PotentialAnalysisSelectedWithFreetextGivenAnswer>;
+    id: Scalars['ID']['output'];
+    kind: PotentialAnalysisQuestionDataKind;
+    questionText: Scalars['String']['output'];
+  };
 
-export type PotentialAnalysisMultipleChoiceQuestion = PotentialAnalysisQuestion & {
-  __typename?: 'PotentialAnalysisMultipleChoiceQuestion';
-  answerOptions: Array<PotentialAnalysisSelectAnswerOption>;
-  givenAnswers: Array<PotentialAnalysisSelectedGivenAnswer>;
-  id: Scalars['ID']['output'];
-  kind: PotentialAnalysisQuestionDataKind;
-  questionText: Scalars['String']['output'];
-};
+export type PotentialAnalysisMultipleChoiceQuestion =
+  PotentialAnalysisQuestion & {
+    __typename?: 'PotentialAnalysisMultipleChoiceQuestion';
+    answerOptions: Array<PotentialAnalysisSelectAnswerOption>;
+    givenAnswers: Array<PotentialAnalysisSelectedGivenAnswer>;
+    id: Scalars['ID']['output'];
+    kind: PotentialAnalysisQuestionDataKind;
+    questionText: Scalars['String']['output'];
+  };
 
 export type PotentialAnalysisMutations = {
   __typename?: 'PotentialAnalysisMutations';
@@ -10627,11 +10411,10 @@ export type PotentialAnalysisMutations = {
   createPotentialAnalysisClickout?: Maybe<CreatePotentialAnalysisClickoutPayload>;
 };
 
-
-export type PotentialAnalysisMutationsAcknowledgePotentialAnalysisMaxRewardArgs = {
-  input: AcknowledgePotentialAnalysisMaxRewardInput;
-};
-
+export type PotentialAnalysisMutationsAcknowledgePotentialAnalysisMaxRewardArgs =
+  {
+    input: AcknowledgePotentialAnalysisMaxRewardInput;
+  };
 
 export type PotentialAnalysisMutationsCreatePotentialAnalysisClickoutArgs = {
   input: CreatePotentialAnalysisClickoutInput;
@@ -10648,7 +10431,7 @@ export enum PotentialAnalysisQuestionDataKind {
   Scale = 'SCALE',
   SingleChoice = 'SINGLE_CHOICE',
   SingleChoiceFreetext = 'SINGLE_CHOICE_FREETEXT',
-  Text = 'TEXT'
+  Text = 'TEXT',
 }
 
 export type PotentialAnalysisRegistrationDataInput = {
@@ -10676,56 +10459,61 @@ export type PotentialAnalysisScaleQuestion = PotentialAnalysisQuestion & {
   questionText: Scalars['String']['output'];
 };
 
-export type PotentialAnalysisSelectAnswerOption = PotentialAnalysisAnswerOption & {
-  __typename?: 'PotentialAnalysisSelectAnswerOption';
-  answerOptionId: Scalars['Int']['output'];
-  text: Scalars['String']['output'];
-};
+export type PotentialAnalysisSelectAnswerOption =
+  PotentialAnalysisAnswerOption & {
+    __typename?: 'PotentialAnalysisSelectAnswerOption';
+    answerOptionId: Scalars['Int']['output'];
+    text: Scalars['String']['output'];
+  };
 
 export type PotentialAnalysisSelectAnswerOptionInput = {
   answerOptionId: Scalars['Int']['input'];
   text: Scalars['String']['input'];
 };
 
-export type PotentialAnalysisSelectedGivenAnswer = PotentialAnalysisGivenAnswer & {
-  __typename?: 'PotentialAnalysisSelectedGivenAnswer';
-  answerOptionId: Scalars['Int']['output'];
-  kind: PotentialAnalysisGivenAnswerKind;
-};
+export type PotentialAnalysisSelectedGivenAnswer =
+  PotentialAnalysisGivenAnswer & {
+    __typename?: 'PotentialAnalysisSelectedGivenAnswer';
+    answerOptionId: Scalars['Int']['output'];
+    kind: PotentialAnalysisGivenAnswerKind;
+  };
 
 export type PotentialAnalysisSelectedGivenAnswerInput = {
   answerOptionId: Scalars['Int']['input'];
 };
 
-export type PotentialAnalysisSelectedWithFreetextGivenAnswer = PotentialAnalysisGivenAnswer & {
-  __typename?: 'PotentialAnalysisSelectedWithFreetextGivenAnswer';
-  answerOptionId: Scalars['Int']['output'];
-  freeText?: Maybe<Scalars['String']['output']>;
-  kind: PotentialAnalysisGivenAnswerKind;
-};
+export type PotentialAnalysisSelectedWithFreetextGivenAnswer =
+  PotentialAnalysisGivenAnswer & {
+    __typename?: 'PotentialAnalysisSelectedWithFreetextGivenAnswer';
+    answerOptionId: Scalars['Int']['output'];
+    freeText?: Maybe<Scalars['String']['output']>;
+    kind: PotentialAnalysisGivenAnswerKind;
+  };
 
 export type PotentialAnalysisSelectedWithFreetextGivenAnswerInput = {
   answerOptionId: Scalars['Int']['input'];
   text?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type PotentialAnalysisSingleChoiceFreetextQuestion = PotentialAnalysisQuestion & {
-  __typename?: 'PotentialAnalysisSingleChoiceFreetextQuestion';
-  answerOptions: Array<PotentialAnalysisFreetextAnswerOption>;
-  givenAnswer?: Maybe<PotentialAnalysisSelectedWithFreetextGivenAnswer>;
-  id: Scalars['ID']['output'];
-  kind: PotentialAnalysisQuestionDataKind;
-  questionText: Scalars['String']['output'];
-};
+export type PotentialAnalysisSingleChoiceFreetextQuestion =
+  PotentialAnalysisQuestion & {
+    __typename?: 'PotentialAnalysisSingleChoiceFreetextQuestion';
+    answerOptions: Array<PotentialAnalysisFreetextAnswerOption>;
+    givenAnswer?: Maybe<PotentialAnalysisSelectedWithFreetextGivenAnswer>;
+    id: Scalars['ID']['output'];
+    kind: PotentialAnalysisQuestionDataKind;
+    questionText: Scalars['String']['output'];
+  };
 
-export type PotentialAnalysisSingleChoiceQuestion = PotentialAnalysisQuestion & {
-  __typename?: 'PotentialAnalysisSingleChoiceQuestion';
-  answerOptions: Array<PotentialAnalysisSelectAnswerOption>;
-  givenAnswer?: Maybe<PotentialAnalysisSelectedGivenAnswer>;
-  id: Scalars['ID']['output'];
-  kind: PotentialAnalysisQuestionDataKind;
-  questionText: Scalars['String']['output'];
-};
+export type PotentialAnalysisSingleChoiceQuestion =
+  PotentialAnalysisQuestion & {
+    __typename?: 'PotentialAnalysisSingleChoiceQuestion';
+    answerOptions: Array<PotentialAnalysisSelectAnswerOption>;
+    givenAnswer?: Maybe<PotentialAnalysisSelectedGivenAnswer>;
+    id: Scalars['ID']['output'];
+    kind: PotentialAnalysisQuestionDataKind;
+    questionText: Scalars['String']['output'];
+  };
 
 export type PotentialAnalysisTextGivenAnswer = PotentialAnalysisGivenAnswer & {
   __typename?: 'PotentialAnalysisTextGivenAnswer';
@@ -10830,13 +10618,13 @@ export type ProductExtension = {
 };
 
 export enum ProductExtensionKind {
-  Academies = 'Academies'
+  Academies = 'Academies',
 }
 
 export enum ProductKind {
   AccountGroup = 'AccountGroup',
   License = 'License',
-  Placement = 'Placement'
+  Placement = 'Placement',
 }
 
 export type ProductSelectionCondition = LimitedCartDiscountCondition & {
@@ -10854,7 +10642,7 @@ export type ProductSelectionConfig = {
 };
 
 export enum ProductSelectionConfigKindEnum {
-  Percentage = 'Percentage'
+  Percentage = 'Percentage',
 }
 
 /** A connection to a list of items. */
@@ -10986,13 +10774,14 @@ export type PublishTriggerPayload = {
   trigger: TriggerAction_Trigger;
 };
 
-export type PublishedConstellationRootExtensionExtension = PublishedRootExtensionExtension & {
-  __typename?: 'PublishedConstellationRootExtensionExtension';
-  contractPartner?: Maybe<ContractPartner>;
-  doNotUse: Scalars['String']['output'];
-  isMicroLearning: Scalars['Boolean']['output'];
-  licenseAvailability: LicenseAvailability;
-};
+export type PublishedConstellationRootExtensionExtension =
+  PublishedRootExtensionExtension & {
+    __typename?: 'PublishedConstellationRootExtensionExtension';
+    contractPartner?: Maybe<ContractPartner>;
+    doNotUse: Scalars['String']['output'];
+    isMicroLearning: Scalars['Boolean']['output'];
+    licenseAvailability: LicenseAvailability;
+  };
 
 export type PublishedCourseLearnable = PublishedLearnable & {
   __typename?: 'PublishedCourseLearnable';
@@ -11077,7 +10866,7 @@ export enum PublishingStatus {
   Acknowledged = 'acknowledged',
   Failed = 'failed',
   Inprogress = 'inprogress',
-  Succeeded = 'succeeded'
+  Succeeded = 'succeeded',
 }
 
 export type PublishingUpdatedEventV2 = {
@@ -11105,12 +10894,10 @@ export type PublishingV2AdminMutationSchema = {
   startPublishingV2?: Maybe<StartPublishingV2Payload>;
 };
 
-
 /** Data only accessible by the admin */
 export type PublishingV2AdminMutationSchemaAcknowledgePublishingV2Args = {
   input: AcknowledgePublishingV2Input;
 };
-
 
 /** Data only accessible by the admin */
 export type PublishingV2AdminMutationSchemaStartPublishingV2Args = {
@@ -11122,7 +10909,6 @@ export type PublishingV2AdminSchema = {
   __typename?: 'PublishingV2AdminSchema';
   ActivePublishing?: Maybe<PublishingV2>;
 };
-
 
 /** Data only accessible by the admin */
 export type PublishingV2AdminSchemaActivePublishingArgs = {
@@ -11167,11 +10953,9 @@ export type Query = {
   nodes: Array<Maybe<Node>>;
 };
 
-
 export type QueryNodeArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryNodesArgs = {
   ids: Array<Scalars['ID']['input']>;
@@ -11215,7 +10999,7 @@ export enum RefusalReason {
   OverLimit = 'OverLimit',
   OverUserLimit = 'OverUserLimit',
   WrongAccount = 'WrongAccount',
-  WrongProducts = 'WrongProducts'
+  WrongProducts = 'WrongProducts',
 }
 
 export type RegisterForNotificationInput = {
@@ -11522,7 +11306,6 @@ export type ReportsAdminSchema = {
   Reports: DsaReportConnection;
 };
 
-
 /** Data only accessible by the admin */
 export type ReportsAdminSchemaReportsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -11536,7 +11319,6 @@ export type ReportsMutations = {
   __typename?: 'ReportsMutations';
   createReport?: Maybe<CreateReportPayload>;
 };
-
 
 export type ReportsMutationsCreateReportArgs = {
   input: CreateReportInput;
@@ -11632,7 +11414,7 @@ export type RestartIfFailedContentConfigResult = {
 export enum RestartIfFailedContentConfigType {
   RestartIfFailedContentBlockPermanently = 'RestartIfFailedContent_BlockPermanently',
   RestartIfFailedContentBlockTemporarily = 'RestartIfFailedContent_BlockTemporarily',
-  RestartIfFailedContentCanNot = 'RestartIfFailedContent_CanNot'
+  RestartIfFailedContentCanNot = 'RestartIfFailedContent_CanNot',
 }
 
 export type RestartIfPassedContentConfig = {
@@ -11643,7 +11425,7 @@ export type RestartIfPassedContentConfig = {
 
 export enum RestartIfPassedContentConfigType {
   RestartIfPassedContentCan = 'RestartIfPassedContent_Can',
-  RestartIfPassedContentCanNot = 'RestartIfPassedContent_CanNot'
+  RestartIfPassedContentCanNot = 'RestartIfPassedContent_CanNot',
 }
 
 export type Reward = {
@@ -11660,7 +11442,7 @@ export type RewardContentConfig = {
 };
 
 export enum RewardContentConfigType {
-  RewardContentDo = 'RewardContent_Do'
+  RewardContentDo = 'RewardContent_Do',
 }
 
 export enum RewardKind {
@@ -11670,7 +11452,7 @@ export enum RewardKind {
   IhkCertificate = 'IHKCertificate',
   ParticipationCertificate = 'ParticipationCertificate',
   WordPackage = 'WordPackage',
-  WordProficiencies = 'WordProficiencies'
+  WordProficiencies = 'WordProficiencies',
 }
 
 export type RewardResult = {
@@ -11698,7 +11480,7 @@ export enum RewardResultKind {
   WordPackageNothingNewToUnlock = 'WordPackage_NothingNewToUnlock',
   WordPackagePackageUnlocked = 'WordPackage_PackageUnlocked',
   WordProficienciesErrorOccurred = 'WordProficiencies_ErrorOccurred',
-  WordProficienciesProficienciesChanged = 'WordProficiencies_ProficienciesChanged'
+  WordProficienciesProficienciesChanged = 'WordProficiencies_ProficienciesChanged',
 }
 
 export type RewardTreeConfig = {
@@ -11708,7 +11490,7 @@ export type RewardTreeConfig = {
 };
 
 export enum RewardTreeConfigType {
-  RewardTreeDoNot = 'RewardTree_DoNot'
+  RewardTreeDoNot = 'RewardTree_DoNot',
 }
 
 export type RootCost = {
@@ -11771,7 +11553,7 @@ export enum SalutationType {
   Divers = 'Divers',
   Mr = 'Mr',
   Mrs = 'Mrs',
-  Unknown = 'Unknown'
+  Unknown = 'Unknown',
 }
 
 export type ScheduleData = {
@@ -11796,7 +11578,6 @@ export type SearchDiscountCodeUsagesResult = {
   usages: DiscountCodeUsagesConnection;
 };
 
-
 /** result of searching discount code usages. */
 export type SearchDiscountCodeUsagesResultUsagesArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -11813,7 +11594,7 @@ export type SelectedPaymentMethod = {
 export enum SelectedPaymentMethodType {
   EmployerInvoice = 'EmployerInvoice',
   MonthlyPayment = 'MonthlyPayment',
-  OneTimePayment = 'OneTimePayment'
+  OneTimePayment = 'OneTimePayment',
 }
 
 export type SelectedProduct = {
@@ -12502,7 +12283,6 @@ export type SettingsAdminMutationSchema = {
   setGlobalDiscountCodeId?: Maybe<SetGlobalDiscountCodeIdPayload>;
 };
 
-
 /** Data only accessible by the admin */
 export type SettingsAdminMutationSchemaSetGlobalDiscountCodeIdArgs = {
   input: SetGlobalDiscountCodeIdInput;
@@ -12513,7 +12293,6 @@ export type SettingsAdminSchema = {
   __typename?: 'SettingsAdminSchema';
   Settings: Settings;
 };
-
 
 /** Data only accessible by the admin */
 export type SettingsAdminSchemaSettingsArgs = {
@@ -12535,7 +12314,7 @@ export type ShowAnswerTreeConfig = {
 };
 
 export enum ShowAnswerTreeConfigType {
-  ShowAnswerTreeDoNot = 'ShowAnswerTree_DoNot'
+  ShowAnswerTreeDoNot = 'ShowAnswerTree_DoNot',
 }
 
 export type ShowElementAnswerElementInput = {
@@ -12550,23 +12329,25 @@ export type ShowElementAnswerElementPayload = {
   contentSubmission: ContentSubmission;
 };
 
-export type SimplyContinueFlowELearningContentConfig = FlowELearningContentConfig & {
-  __typename?: 'SimplyContinueFlowELearningContentConfig';
-  configType: FlowELearningContentConfigType;
-  /** The ID of an object */
-  id: Scalars['ID']['output'];
-};
+export type SimplyContinueFlowELearningContentConfig =
+  FlowELearningContentConfig & {
+    __typename?: 'SimplyContinueFlowELearningContentConfig';
+    configType: FlowELearningContentConfigType;
+    /** The ID of an object */
+    id: Scalars['ID']['output'];
+  };
 
-export type SingleUserAssignmentRule = AssignmentRule & Node & {
-  __typename?: 'SingleUserAssignmentRule';
-  accountRef: Scalars['ID']['output'];
-  /** The ID of an object */
-  id: Scalars['ID']['output'];
-  licenseGroupingId: Scalars['ID']['output'];
-  licensesUsedByUser: Scalars['Int']['output'];
-  maxLicenseAmount: Scalars['Int']['output'];
-  userId: Scalars['ID']['output'];
-};
+export type SingleUserAssignmentRule = AssignmentRule &
+  Node & {
+    __typename?: 'SingleUserAssignmentRule';
+    accountRef: Scalars['ID']['output'];
+    /** The ID of an object */
+    id: Scalars['ID']['output'];
+    licenseGroupingId: Scalars['ID']['output'];
+    licensesUsedByUser: Scalars['Int']['output'];
+    maxLicenseAmount: Scalars['Int']['output'];
+    userId: Scalars['ID']['output'];
+  };
 
 /** A connection to a list of items. */
 export type SortedLearnablesConnection = {
@@ -12596,30 +12377,25 @@ export type StagingAdminMutationSchema = {
   resetStagingUsers?: Maybe<ResetStagingUsersPayload>;
 };
 
-
 /** Data only accessible by the admin */
 export type StagingAdminMutationSchemaCleanUpUserInputRelatedToStagingArgs = {
   input: CleanUpUserInputRelatedToStagingInput;
 };
-
 
 /** Data only accessible by the admin */
 export type StagingAdminMutationSchemaCreateCoachStatementsFromUnbilledArgs = {
   input: CreateCoachStatementsFromUnbilledInput;
 };
 
-
 /** Data only accessible by the admin */
 export type StagingAdminMutationSchemaResetAllStagingDataArgs = {
   input: ResetAllStagingDataInput;
 };
 
-
 /** Data only accessible by the admin */
 export type StagingAdminMutationSchemaResetStagingBillingArgs = {
   input: ResetStagingBillingInput;
 };
-
 
 /** Data only accessible by the admin */
 export type StagingAdminMutationSchemaResetStagingUsersArgs = {
@@ -12633,7 +12409,7 @@ export type StartAtTreeConfig = {
 };
 
 export enum StartAtTreeConfigType {
-  StartAtTreeFirstContentNode = 'StartAtTree_FirstContentNode'
+  StartAtTreeFirstContentNode = 'StartAtTree_FirstContentNode',
 }
 
 export type StartContentConfig = {
@@ -12646,7 +12422,7 @@ export enum StartContentConfigType {
   StartContentCanAfterStartingTree = 'StartContent_CanAfterStartingTree',
   StartContentCanIfInTreeFlow = 'StartContent_CanIfInTreeFlow',
   StartContentCanIfUnlocked = 'StartContent_CanIfUnlocked',
-  StartContentCanNot = 'StartContent_CanNot'
+  StartContentCanNot = 'StartContent_CanNot',
 }
 
 export type StartContentNodeInput = {
@@ -12690,7 +12466,7 @@ export type StartTreeConfig = {
 };
 
 export enum StartTreeConfigType {
-  StartTreeCanNot = 'StartTree_CanNot'
+  StartTreeCanNot = 'StartTree_CanNot',
 }
 
 export type StartTreeInput = {
@@ -12749,7 +12525,7 @@ export type StructureDefinition = {
 
 export enum StructureType {
   Child = 'child',
-  Root = 'root'
+  Root = 'root',
 }
 
 export type SubmitClozeTextElementV2Input = {
@@ -12855,7 +12631,7 @@ export type Subscription = {
 
 export enum SubtitleLanguage {
   De = 'de',
-  En = 'en'
+  En = 'en',
 }
 
 export type SubtitleV2 = {
@@ -12907,7 +12683,7 @@ export enum SystemTag {
   Finished = 'finished',
   FullAccess = 'fullAccess',
   New = 'new',
-  TestAccess = 'testAccess'
+  TestAccess = 'testAccess',
 }
 
 export type Tag = Node & {
@@ -12926,18 +12702,15 @@ export type TagAdminMutationSchema = {
   updateTag?: Maybe<UpdateTagPayload>;
 };
 
-
 /** Data only accessible by the admin */
 export type TagAdminMutationSchemaCreateTagArgs = {
   input: CreateTagInput;
 };
 
-
 /** Data only accessible by the admin */
 export type TagAdminMutationSchemaDeleteTagArgs = {
   input: DeleteTagInput;
 };
-
 
 /** Data only accessible by the admin */
 export type TagAdminMutationSchemaUpdateTagArgs = {
@@ -12949,7 +12722,6 @@ export type TagAdminSchema = {
   __typename?: 'TagAdminSchema';
   Tags: TagsConnection;
 };
-
 
 /** Data only accessible by the admin */
 export type TagAdminSchemaTagsArgs = {
@@ -12992,7 +12764,7 @@ export type TagsEdge = {
 
 export enum TargetSystem {
   Android = 'android',
-  Ios = 'ios'
+  Ios = 'ios',
 }
 
 export type TaxData = {
@@ -13020,7 +12792,7 @@ export enum TeamSize {
   OneToTen = 'oneToTen',
   OverHundred = 'overHundred',
   TenToTwentyFive = 'tenToTwentyFive',
-  TwentyFiveToFifty = 'twentyFiveToFifty'
+  TwentyFiveToFifty = 'twentyFiveToFifty',
 }
 
 export type TextElementV2 = ElementV2 & {
@@ -13185,371 +12957,328 @@ export type TreeAdminMutationSchema = {
   setSimplyContinueFlowELearningContentConfig?: Maybe<SetSimplyContinueFlowELearningContentConfigPayload>;
 };
 
-
 /** Data only accessible by the admin */
-export type TreeAdminMutationSchemaAddOnlyIfTreeStateVisibilityTreeConfigArgs = {
-  input: AddOnlyIfTreeStateVisibilityTreeConfigInput;
-};
-
+export type TreeAdminMutationSchemaAddOnlyIfTreeStateVisibilityTreeConfigArgs =
+  {
+    input: AddOnlyIfTreeStateVisibilityTreeConfigInput;
+  };
 
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaEditDefaultFileAttachmentArgs = {
   input: EditDefaultFileAttachmentInput;
 };
 
-
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaAddAfterDateTimeVisibilityTreeConfigArgs = {
   input: AddAfterDateTimeVisibilityTreeConfigInput;
 };
 
+/** Data only accessible by the admin */
+export type TreeAdminMutationSchemaAddBlockPermanentlyRestartIfFailedContentConfigArgs =
+  {
+    input: AddBlockPermanentlyRestartIfFailedContentConfigInput;
+  };
 
 /** Data only accessible by the admin */
-export type TreeAdminMutationSchemaAddBlockPermanentlyRestartIfFailedContentConfigArgs = {
-  input: AddBlockPermanentlyRestartIfFailedContentConfigInput;
-};
-
-
-/** Data only accessible by the admin */
-export type TreeAdminMutationSchemaAddBlockTemporarilyRestartIfFailedContentConfigArgs = {
-  input: AddBlockTemporarilyRestartIfFailedContentConfigInput;
-};
-
+export type TreeAdminMutationSchemaAddBlockTemporarilyRestartIfFailedContentConfigArgs =
+  {
+    input: AddBlockTemporarilyRestartIfFailedContentConfigInput;
+  };
 
 /** Data only accessible by the admin */
-export type TreeAdminMutationSchemaAddCanAfterStartingTreeStartContentConfigArgs = {
-  input: AddCanAfterStartingTreeStartContentConfigInput;
-};
-
+export type TreeAdminMutationSchemaAddCanAfterStartingTreeStartContentConfigArgs =
+  {
+    input: AddCanAfterStartingTreeStartContentConfigInput;
+  };
 
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaAddCanIfUnlockedStartContentConfigArgs = {
   input: AddCanIfUnlockedStartContentConfigInput;
 };
 
-
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaAddCanNotRestartIfFailedContentConfigArgs = {
   input: AddCanNotRestartIfFailedContentConfigInput;
 };
-
 
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaAddCrmTreeHeadUpdaterRewardArgs = {
   input: AddCrmTreeHeadUpdaterRewardInput;
 };
 
-
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaAddDefaultFileAttachmentArgs = {
   input: AddDefaultFileAttachmentInput;
 };
-
 
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaAddDoNotRewardTreeConfigArgs = {
   input: AddDoNotRewardTreeConfigInput;
 };
 
-
 /** Data only accessible by the admin */
-export type TreeAdminMutationSchemaAddEducationalParticipationCertificateRewardArgs = {
-  input: AddEducationalParticipationCertificateRewardInput;
-};
-
+export type TreeAdminMutationSchemaAddEducationalParticipationCertificateRewardArgs =
+  {
+    input: AddEducationalParticipationCertificateRewardInput;
+  };
 
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaAddExternalLicenseRewardArgs = {
   input: AddExternalLicenseRewardInput;
 };
 
-
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaAddHideVisibilityTreeConfigArgs = {
   input: AddHideVisibilityTreeConfigInput;
 };
-
 
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaAddIhkCertificateRewardArgs = {
   input: AddIhkCertificateRewardInput;
 };
 
+/** Data only accessible by the admin */
+export type TreeAdminMutationSchemaAddNotAfterDateTimeVisibilityTreeConfigArgs =
+  {
+    input: AddNotAfterDateTimeVisibilityTreeConfigInput;
+  };
 
 /** Data only accessible by the admin */
-export type TreeAdminMutationSchemaAddNotAfterDateTimeVisibilityTreeConfigArgs = {
-  input: AddNotAfterDateTimeVisibilityTreeConfigInput;
-};
-
-
-/** Data only accessible by the admin */
-export type TreeAdminMutationSchemaAddOnlyAzavAccountVisibilityTreeConfigArgs = {
-  input: AddOnlyAzavAccountVisibilityTreeConfigInput;
-};
-
+export type TreeAdminMutationSchemaAddOnlyAzavAccountVisibilityTreeConfigArgs =
+  {
+    input: AddOnlyAzavAccountVisibilityTreeConfigInput;
+  };
 
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaAddOnlyAdminsVisibilityTreeConfigArgs = {
   input: AddOnlyAdminsVisibilityTreeConfigInput;
 };
 
-
 /** Data only accessible by the admin */
-export type TreeAdminMutationSchemaAddOnlyBusinessAccountVisibilityTreeConfigArgs = {
-  input: AddOnlyBusinessAccountVisibilityTreeConfigInput;
-};
-
+export type TreeAdminMutationSchemaAddOnlyBusinessAccountVisibilityTreeConfigArgs =
+  {
+    input: AddOnlyBusinessAccountVisibilityTreeConfigInput;
+  };
 
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaAddOnlyEditorsVisibilityTreeConfigArgs = {
   input: AddOnlyEditorsVisibilityTreeConfigInput;
 };
 
-
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaAddWordPackageRewardArgs = {
   input: AddWordPackageRewardInput;
 };
-
 
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaAddWordProficienciesRewardArgs = {
   input: AddWordProficienciesRewardInput;
 };
 
-
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaCloneTreeArgs = {
   input: CloneTreeInput;
 };
-
 
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaConstellationCreateBranchRootArgs = {
   input: ConstellationCreateBranchRootInput;
 };
 
-
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaCreateBranchChildArgs = {
   input: CreateBranchChildInput;
 };
-
 
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaCreateBranchRootArgs = {
   input: CreateBranchRootInput;
 };
 
-
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaCreateContentChildArgs = {
   input: CreateContentChildInput;
 };
-
 
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaCreateContentRootArgs = {
   input: CreateContentRootNodeInput;
 };
 
-
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaDeleteCourseOrMicroLearningLearnableArgs = {
   input: DeleteCourseOrMicroLearningLearnableInput;
 };
-
 
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaDeleteRewardArgs = {
   input: DeleteRewardInput;
 };
 
-
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaEditAfterDateTimeVisibilityTreeConfigArgs = {
   input: EditAfterDateTimeVisibilityTreeConfigInput;
 };
 
+/** Data only accessible by the admin */
+export type TreeAdminMutationSchemaEditBlockPermanentlyRestartIfFailedContentConfigArgs =
+  {
+    input: EditBlockPermanentlyRestartIfFailedContentConfigInput;
+  };
 
 /** Data only accessible by the admin */
-export type TreeAdminMutationSchemaEditBlockPermanentlyRestartIfFailedContentConfigArgs = {
-  input: EditBlockPermanentlyRestartIfFailedContentConfigInput;
-};
-
-
-/** Data only accessible by the admin */
-export type TreeAdminMutationSchemaEditBlockTemporarilyRestartIfFailedContentConfigArgs = {
-  input: EditBlockTemporarilyRestartIfFailedContentConfigInput;
-};
-
+export type TreeAdminMutationSchemaEditBlockTemporarilyRestartIfFailedContentConfigArgs =
+  {
+    input: EditBlockTemporarilyRestartIfFailedContentConfigInput;
+  };
 
 /** Data only accessible by the admin */
-export type TreeAdminMutationSchemaEditDirectFeedbackFlowELearningContentConfigArgs = {
-  input: EditDirectFeedbackFlowELearningContentConfigInput;
-};
-
+export type TreeAdminMutationSchemaEditDirectFeedbackFlowELearningContentConfigArgs =
+  {
+    input: EditDirectFeedbackFlowELearningContentConfigInput;
+  };
 
 /** Data only accessible by the admin */
-export type TreeAdminMutationSchemaEditEducationalParticipationCertificateRewardArgs = {
-  input: EditEducationalParticipationCertificateRewardInput;
-};
-
+export type TreeAdminMutationSchemaEditEducationalParticipationCertificateRewardArgs =
+  {
+    input: EditEducationalParticipationCertificateRewardInput;
+  };
 
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaEditExternalLicenseRewardArgs = {
   input: EditExternalLicenseRewardInput;
 };
 
-
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaEditNodeCoreArgs = {
   input: EditNodeCoreInput;
 };
 
-
 /** Data only accessible by the admin */
-export type TreeAdminMutationSchemaEditNotAfterDateTimeVisibilityTreeConfigArgs = {
-  input: EditNotAfterDateTimeVisibilityTreeConfigInput;
-};
-
+export type TreeAdminMutationSchemaEditNotAfterDateTimeVisibilityTreeConfigArgs =
+  {
+    input: EditNotAfterDateTimeVisibilityTreeConfigInput;
+  };
 
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaEditRootNodePartArgs = {
   input: EditRootNodePartInput;
 };
 
-
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaEditWordPackageRewardArgs = {
   input: EditWordPackageRewardInput;
 };
-
 
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaMoveChildNodeArgs = {
   input: MoveChildNodeInput;
 };
 
-
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaRemoveAttachmentArgs = {
   input: RemoveAttachmentInput;
 };
-
 
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaRemoveNodeFromTreeArgs = {
   input: RemoveNodeFromTreeInput;
 };
 
-
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaRemoveRestartIfFailedContentConfigArgs = {
   input: RemoveRestartIfFailedContentConfigInput;
 };
-
 
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaRemoveRewardTreeConfigArgs = {
   input: RemoveRewardTreeConfigInput;
 };
 
-
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaRemoveStartContentConfigArgs = {
   input: RemoveStartContentConfigInput;
 };
-
 
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaRemoveStartTreeConfigArgs = {
   input: RemoveStartTreeConfigInput;
 };
 
-
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaRemoveVisibilityTreeConfigArgs = {
   input: RemoveVisibilityTreeConfigInput;
 };
-
 
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaSetAlwaysPassContentConfigArgs = {
   input: SetAlwaysPassContentConfigInput;
 };
 
-
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaSetAlwaysRestartContinueContentConfigArgs = {
   input: SetAlwaysRestartContinueContentConfigInput;
 };
-
 
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaSetCanNotRestartIfPassedContentConfigArgs = {
   input: SetCanNotRestartIfPassedContentConfigInput;
 };
 
-
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaSetCanRestartIfPassedContentConfigArgs = {
   input: SetCanRestartIfPassedContentConfigInput;
 };
 
+/** Data only accessible by the admin */
+export type TreeAdminMutationSchemaSetConstellationRootExtensionExtensionArgs =
+  {
+    input: SetConstellationRootExtensionExtensionInput;
+  };
 
 /** Data only accessible by the admin */
-export type TreeAdminMutationSchemaSetConstellationRootExtensionExtensionArgs = {
-  input: SetConstellationRootExtensionExtensionInput;
-};
-
-
-/** Data only accessible by the admin */
-export type TreeAdminMutationSchemaSetContractPartnerInConstellationRootExtensionExtensionArgs = {
-  input: SetContractPartnerInConstellationRootExtensionExtensionInput;
-};
-
+export type TreeAdminMutationSchemaSetContractPartnerInConstellationRootExtensionExtensionArgs =
+  {
+    input: SetContractPartnerInConstellationRootExtensionExtensionInput;
+  };
 
 /** Data only accessible by the admin */
-export type TreeAdminMutationSchemaSetDirectFeedbackFlowELearningContentConfigArgs = {
-  input: SetDirectFeedbackFlowELearningContentConfigInput;
-};
-
+export type TreeAdminMutationSchemaSetDirectFeedbackFlowELearningContentConfigArgs =
+  {
+    input: SetDirectFeedbackFlowELearningContentConfigInput;
+  };
 
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaSetDoNotShowAnswerTreeConfigArgs = {
   input: SetDoNotShowAnswerTreeConfigInput;
 };
 
-
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaSetDoRewardContentConfigArgs = {
   input: SetDoRewardContentConfigInput;
 };
 
-
 /** Data only accessible by the admin */
-export type TreeAdminMutationSchemaSetFinishContentSubmissionTriggerInContentArgs = {
-  input: SetFinishContentSubmissionTriggerInContentInput;
-};
-
+export type TreeAdminMutationSchemaSetFinishContentSubmissionTriggerInContentArgs =
+  {
+    input: SetFinishContentSubmissionTriggerInContentInput;
+  };
 
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaSetIhkFlowPassContentConfigArgs = {
   input: SetIhkFlowPassContentConfigInput;
 };
 
-
 /** Data only accessible by the admin */
 export type TreeAdminMutationSchemaSetRootExtensionImplArgs = {
   input: SetRootExtensionImplInput;
 };
 
-
 /** Data only accessible by the admin */
-export type TreeAdminMutationSchemaSetSimplyContinueFlowELearningContentConfigArgs = {
-  input: SetSimplyContinueFlowELearningContentConfigInput;
-};
+export type TreeAdminMutationSchemaSetSimplyContinueFlowELearningContentConfigArgs =
+  {
+    input: SetSimplyContinueFlowELearningContentConfigInput;
+  };
 
 /** Data only accessible by the admin */
 export type TreeAdminSchema = {
@@ -13559,7 +13288,6 @@ export type TreeAdminSchema = {
   Tree: Tree;
 };
 
-
 /** Data only accessible by the admin */
 export type TreeAdminSchemaGetContentNodesArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -13567,7 +13295,6 @@ export type TreeAdminSchemaGetContentNodesArgs = {
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
 };
-
 
 /** Data only accessible by the admin */
 export type TreeAdminSchemaGetRootNodesArgs = {
@@ -13583,11 +13310,12 @@ export type TreeAdminSchemaGetRootNodesArgs = {
   filterByShowAnswersFrom?: InputMaybe<Scalars['ZonedDateTIme']['input']>;
   filterByShowAnswersTo?: InputMaybe<Scalars['ZonedDateTIme']['input']>;
   filterByTagIds?: InputMaybe<Array<Scalars['ID']['input']>>;
-  filterByTitleOrDescriptionOrShortDescription?: InputMaybe<Scalars['String']['input']>;
+  filterByTitleOrDescriptionOrShortDescription?: InputMaybe<
+    Scalars['String']['input']
+  >;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
 };
-
 
 /** Data only accessible by the admin */
 export type TreeAdminSchemaTreeArgs = {
@@ -13664,7 +13392,7 @@ export type TreeStateExtension = {
 
 export enum TreeStateStatus {
   Finished = 'finished',
-  Started = 'started'
+  Started = 'started',
 }
 
 /** A connection to a list of items. */
@@ -13709,24 +13437,20 @@ export type TrendAdminMutationSchema = {
   setTrendOrder?: Maybe<SetTrendOrderPayload>;
 };
 
-
 /** Data only accessible by the admin */
 export type TrendAdminMutationSchemaCreateTrendArgs = {
   input: CreateTrendInput;
 };
-
 
 /** Data only accessible by the admin */
 export type TrendAdminMutationSchemaDeleteTrendArgs = {
   input: DeleteTrendInput;
 };
 
-
 /** Data only accessible by the admin */
 export type TrendAdminMutationSchemaEditTrendArgs = {
   input: EditTrendInput;
 };
-
 
 /** Data only accessible by the admin */
 export type TrendAdminMutationSchemaSetTrendOrderArgs = {
@@ -13738,7 +13462,6 @@ export type TrendAdminSchema = {
   __typename?: 'TrendAdminSchema';
   trend: TrendConnection;
 };
-
 
 /** Data only accessible by the admin */
 export type TrendAdminSchemaTrendArgs = {
@@ -13804,7 +13527,7 @@ export type TrendMediaInput = {
 
 export enum TrendMediaKind {
   Image = 'image',
-  Video = 'video'
+  Video = 'video',
 }
 
 /** Data only accessible by the admin */
@@ -13825,78 +13548,73 @@ export type TriggerActionAdminMutationSchema = {
   setTriggerName?: Maybe<SetTriggerNamePayload>;
 };
 
+/** Data only accessible by the admin */
+export type TriggerActionAdminMutationSchemaAddGamificationPointsFinishContentSubmissionActionToActionResultToNextActionsArgs =
+  {
+    input: AddGamificationPointsFinishContentSubmissionActionToActionResultToNextActionsInput;
+  };
 
 /** Data only accessible by the admin */
-export type TriggerActionAdminMutationSchemaAddGamificationPointsFinishContentSubmissionActionToActionResultToNextActionsArgs = {
-  input: AddGamificationPointsFinishContentSubmissionActionToActionResultToNextActionsInput;
-};
-
-
-/** Data only accessible by the admin */
-export type TriggerActionAdminMutationSchemaAddGamificationPointsFinishContentSubmissionActionToTriggerArgs = {
-  input: AddGamificationPointsFinishContentSubmissionActionToTriggerInput;
-};
-
+export type TriggerActionAdminMutationSchemaAddGamificationPointsFinishContentSubmissionActionToTriggerArgs =
+  {
+    input: AddGamificationPointsFinishContentSubmissionActionToTriggerInput;
+  };
 
 /** Data only accessible by the admin */
-export type TriggerActionAdminMutationSchemaAddIhkCertificateFinishContentSubmissionActionToActionResultToNextActionsArgs = {
-  input: AddIhkCertificateFinishContentSubmissionActionToActionResultToNextActionsInput;
-};
-
-
-/** Data only accessible by the admin */
-export type TriggerActionAdminMutationSchemaAddIhkCertificateFinishContentSubmissionActionToTriggerArgs = {
-  input: AddIhkCertificateFinishContentSubmissionActionToTriggerInput;
-};
-
+export type TriggerActionAdminMutationSchemaAddIhkCertificateFinishContentSubmissionActionToActionResultToNextActionsArgs =
+  {
+    input: AddIhkCertificateFinishContentSubmissionActionToActionResultToNextActionsInput;
+  };
 
 /** Data only accessible by the admin */
-export type TriggerActionAdminMutationSchemaCreateActionResultToNextActionsArgs = {
-  input: CreateActionResultToNextActionsInput;
-};
+export type TriggerActionAdminMutationSchemaAddIhkCertificateFinishContentSubmissionActionToTriggerArgs =
+  {
+    input: AddIhkCertificateFinishContentSubmissionActionToTriggerInput;
+  };
 
+/** Data only accessible by the admin */
+export type TriggerActionAdminMutationSchemaCreateActionResultToNextActionsArgs =
+  {
+    input: CreateActionResultToNextActionsInput;
+  };
 
 /** Data only accessible by the admin */
 export type TriggerActionAdminMutationSchemaDeleteActionArgs = {
   input: DeleteActionInput;
 };
 
-
 /** Data only accessible by the admin */
-export type TriggerActionAdminMutationSchemaDeleteActionResultToNextActionsArgs = {
-  input: DeleteActionResultToNextActionsInput;
-};
-
+export type TriggerActionAdminMutationSchemaDeleteActionResultToNextActionsArgs =
+  {
+    input: DeleteActionResultToNextActionsInput;
+  };
 
 /** Data only accessible by the admin */
 export type TriggerActionAdminMutationSchemaPublishTriggerArgs = {
   input: PublishTriggerInput;
 };
 
+/** Data only accessible by the admin */
+export type TriggerActionAdminMutationSchemaRemoveActionFromActionResultToNextActionsAndDeleteItArgs =
+  {
+    input: RemoveActionFromActionResultToNextActionsAndDeleteItInput;
+  };
 
 /** Data only accessible by the admin */
-export type TriggerActionAdminMutationSchemaRemoveActionFromActionResultToNextActionsAndDeleteItArgs = {
-  input: RemoveActionFromActionResultToNextActionsAndDeleteItInput;
-};
-
-
-/** Data only accessible by the admin */
-export type TriggerActionAdminMutationSchemaRemoveActionFromTriggerAndDeleteItArgs = {
-  input: RemoveActionFromTriggerAndDeleteItInput;
-};
-
+export type TriggerActionAdminMutationSchemaRemoveActionFromTriggerAndDeleteItArgs =
+  {
+    input: RemoveActionFromTriggerAndDeleteItInput;
+  };
 
 /** Data only accessible by the admin */
 export type TriggerActionAdminMutationSchemaSetActionNameArgs = {
   input: SetActionNameInput;
 };
 
-
 /** Data only accessible by the admin */
 export type TriggerActionAdminMutationSchemaSetFieldValueKindAndIdMapArgs = {
   input: SetFieldValueKindAndIdMapInActionResultToNextActionInput;
 };
-
 
 /** Data only accessible by the admin */
 export type TriggerActionAdminMutationSchemaSetTriggerNameArgs = {
@@ -13913,7 +13631,6 @@ export type TriggerActionAdminSchema = {
   Triggers: TriggerAction_TriggersConnection;
 };
 
-
 /** Data only accessible by the admin */
 export type TriggerActionAdminSchemaActionKindsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -13922,26 +13639,25 @@ export type TriggerActionAdminSchemaActionKindsArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
 };
 
+/** Data only accessible by the admin */
+export type TriggerActionAdminSchemaAvailableFieldDefinitionsForActionIfParentActionResultToNextActionsArgs =
+  {
+    after?: InputMaybe<Scalars['String']['input']>;
+    before?: InputMaybe<Scalars['String']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+  };
 
 /** Data only accessible by the admin */
-export type TriggerActionAdminSchemaAvailableFieldDefinitionsForActionIfParentActionResultToNextActionsArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-};
-
-
-/** Data only accessible by the admin */
-export type TriggerActionAdminSchemaAvailableFieldDefinitionsForActionIfParentTriggerArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  filterByFieldValueKind?: InputMaybe<TriggerAction_FieldValueKind>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  triggerId: Scalars['ID']['input'];
-};
-
+export type TriggerActionAdminSchemaAvailableFieldDefinitionsForActionIfParentTriggerArgs =
+  {
+    after?: InputMaybe<Scalars['String']['input']>;
+    before?: InputMaybe<Scalars['String']['input']>;
+    filterByFieldValueKind?: InputMaybe<TriggerAction_FieldValueKind>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    triggerId: Scalars['ID']['input'];
+  };
 
 /** Data only accessible by the admin */
 export type TriggerActionAdminSchemaFieldValueKindAndIdsForActionKindArgs = {
@@ -13951,7 +13667,6 @@ export type TriggerActionAdminSchemaFieldValueKindAndIdsForActionKindArgs = {
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
 };
-
 
 /** Data only accessible by the admin */
 export type TriggerActionAdminSchemaTriggersArgs = {
@@ -13972,7 +13687,6 @@ export type TriggerAction_Action = Node & {
   name: Scalars['String']['output'];
 };
 
-
 export type TriggerAction_ActionActionResultToNextActionsOptsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -13992,7 +13706,7 @@ export type TriggerAction_ActionInputFieldSource = TriggerAction_FieldSource & {
 
 export enum TriggerAction_ActionKind {
   GamificationPointsFinishContentSubmission = 'GamificationPointsFinishContentSubmission',
-  IhkCertificateFinishContentSubmission = 'IHKCertificateFinishContentSubmission'
+  IhkCertificateFinishContentSubmission = 'IHKCertificateFinishContentSubmission',
 }
 
 /** A connection to a list of items. */
@@ -14018,15 +13732,16 @@ export enum TriggerAction_ActionResultKind {
   GamificationPointsFinishContentSubmissionNoPointsReceived = 'GamificationPointsFinishContentSubmission_NoPointsReceived',
   GamificationPointsFinishContentSubmissionNotPassedIhkTestFlow = 'GamificationPointsFinishContentSubmission_NotPassedIHKTestFlow',
   GamificationPointsFinishContentSubmissionPointsReceived = 'GamificationPointsFinishContentSubmission_PointsReceived',
-  IhkCertificateFinishContentSubmissionReadyToOrder = 'IHKCertificateFinishContentSubmission_ReadyToOrder'
+  IhkCertificateFinishContentSubmissionReadyToOrder = 'IHKCertificateFinishContentSubmission_ReadyToOrder',
 }
 
-export type TriggerAction_ActionResultOutputFieldSource = TriggerAction_FieldSource & {
-  __typename?: 'TriggerAction_ActionResultOutputFieldSource';
-  action?: Maybe<TriggerAction_Action>;
-  actionResultKind: TriggerAction_ActionResultKind;
-  kind: TriggerAction_FieldSourceKind;
-};
+export type TriggerAction_ActionResultOutputFieldSource =
+  TriggerAction_FieldSource & {
+    __typename?: 'TriggerAction_ActionResultOutputFieldSource';
+    action?: Maybe<TriggerAction_Action>;
+    actionResultKind: TriggerAction_ActionResultKind;
+    kind: TriggerAction_FieldSourceKind;
+  };
 
 export type TriggerAction_ActionResultToNextActions = {
   __typename?: 'TriggerAction_ActionResultToNextActions';
@@ -14035,7 +13750,6 @@ export type TriggerAction_ActionResultToNextActions = {
   id: Scalars['ID']['output'];
   nextActions: TriggerAction_ActionsConnection;
 };
-
 
 export type TriggerAction_ActionResultToNextActionsNextActionsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -14085,10 +13799,11 @@ export type TriggerAction_ActionsEdge = {
   node: TriggerAction_Action;
 };
 
-export type TriggerAction_BuiltInOutputFieldSource = TriggerAction_FieldSource & {
-  __typename?: 'TriggerAction_BuiltInOutputFieldSource';
-  kind: TriggerAction_FieldSourceKind;
-};
+export type TriggerAction_BuiltInOutputFieldSource =
+  TriggerAction_FieldSource & {
+    __typename?: 'TriggerAction_BuiltInOutputFieldSource';
+    kind: TriggerAction_FieldSourceKind;
+  };
 
 export type TriggerAction_FieldDefinition = {
   __typename?: 'TriggerAction_FieldDefinition';
@@ -14123,7 +13838,7 @@ export enum TriggerAction_FieldSourceKind {
   ActionInput = 'ActionInput',
   ActionResultOutput = 'ActionResultOutput',
   BuiltInOutput = 'BuiltInOutput',
-  TriggerOutput = 'TriggerOutput'
+  TriggerOutput = 'TriggerOutput',
 }
 
 export enum TriggerAction_FieldValueKind {
@@ -14135,7 +13850,7 @@ export enum TriggerAction_FieldValueKind {
   Int = 'Int',
   String = 'String',
   TriggerKind = 'TriggerKind',
-  UserId = 'UserId'
+  UserId = 'UserId',
 }
 
 export type TriggerAction_FieldValueKindAndId = {
@@ -14188,29 +13903,33 @@ export enum TriggerAction_FieldValueKindInput {
   Int = 'Int',
   String = 'String',
   TriggerKind = 'TriggerKind',
-  UserId = 'UserId'
+  UserId = 'UserId',
 }
 
-export type TriggerAction_FinishContentSubmissionTriggerData = TriggerAction_TriggerData & {
-  __typename?: 'TriggerAction_FinishContentSubmissionTriggerData';
-  kind: TriggerAction_TriggerKind;
-};
+export type TriggerAction_FinishContentSubmissionTriggerData =
+  TriggerAction_TriggerData & {
+    __typename?: 'TriggerAction_FinishContentSubmissionTriggerData';
+    kind: TriggerAction_TriggerKind;
+  };
 
-export type TriggerAction_GamificationPointsFinishContentSubmissionActionData = TriggerAction_ActionData & {
-  __typename?: 'TriggerAction_GamificationPointsFinishContentSubmissionActionData';
-  kind: TriggerAction_ActionKind;
-};
+export type TriggerAction_GamificationPointsFinishContentSubmissionActionData =
+  TriggerAction_ActionData & {
+    __typename?: 'TriggerAction_GamificationPointsFinishContentSubmissionActionData';
+    kind: TriggerAction_ActionKind;
+  };
 
-export type TriggerAction_IhkCertificateFinishContentSubmissionActionData = TriggerAction_ActionData & {
-  __typename?: 'TriggerAction_IHKCertificateFinishContentSubmissionActionData';
-  kind: TriggerAction_ActionKind;
-};
+export type TriggerAction_IhkCertificateFinishContentSubmissionActionData =
+  TriggerAction_ActionData & {
+    __typename?: 'TriggerAction_IHKCertificateFinishContentSubmissionActionData';
+    kind: TriggerAction_ActionKind;
+  };
 
-export type TriggerAction_NoneActionResultToNextActions = TriggerAction_ActionResultToNextActionsOpt & {
-  __typename?: 'TriggerAction_NoneActionResultToNextActions';
-  actionResultKind: TriggerAction_ActionResultKind;
-  id: Scalars['ID']['output'];
-};
+export type TriggerAction_NoneActionResultToNextActions =
+  TriggerAction_ActionResultToNextActionsOpt & {
+    __typename?: 'TriggerAction_NoneActionResultToNextActions';
+    actionResultKind: TriggerAction_ActionResultKind;
+    id: Scalars['ID']['output'];
+  };
 
 export type TriggerAction_PublishedAction = {
   __typename?: 'TriggerAction_PublishedAction';
@@ -14219,7 +13938,6 @@ export type TriggerAction_PublishedAction = {
   /** The ID of an object */
   id: Scalars['ID']['output'];
 };
-
 
 export type TriggerAction_PublishedActionActionResultToNextActionsOptsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -14236,7 +13954,6 @@ export type TriggerAction_PublishedActionResultToNextActions = {
   id: Scalars['ID']['output'];
 };
 
-
 export type TriggerAction_PublishedActionResultToNextActionsActionsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -14252,7 +13969,9 @@ export type TriggerAction_PublishedActionResultToNextActionsOpt = {
 export type TriggerAction_PublishedActionResultToNextActionsOptsConnection = {
   __typename?: 'TriggerAction_PublishedActionResultToNextActionsOptsConnection';
   /** A list of edges. */
-  edges?: Maybe<Array<Maybe<TriggerAction_PublishedActionResultToNextActionsOptsEdge>>>;
+  edges?: Maybe<
+    Array<Maybe<TriggerAction_PublishedActionResultToNextActionsOptsEdge>>
+  >;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
 };
@@ -14284,17 +14003,19 @@ export type TriggerAction_PublishedActionsEdge = {
   node: TriggerAction_PublishedAction;
 };
 
-export type TriggerAction_PublishedNoneActionResultToNextActions = TriggerAction_PublishedActionResultToNextActionsOpt & {
-  __typename?: 'TriggerAction_PublishedNoneActionResultToNextActions';
-  actionResultKind: TriggerAction_ActionResultKind;
-  id: Scalars['ID']['output'];
-};
+export type TriggerAction_PublishedNoneActionResultToNextActions =
+  TriggerAction_PublishedActionResultToNextActionsOpt & {
+    __typename?: 'TriggerAction_PublishedNoneActionResultToNextActions';
+    actionResultKind: TriggerAction_ActionResultKind;
+    id: Scalars['ID']['output'];
+  };
 
-export type TriggerAction_PublishedSomeActionResultToNextActions = TriggerAction_PublishedActionResultToNextActionsOpt & {
-  __typename?: 'TriggerAction_PublishedSomeActionResultToNextActions';
-  actionResultToNextAction?: Maybe<TriggerAction_PublishedActionResultToNextActions>;
-  id: Scalars['ID']['output'];
-};
+export type TriggerAction_PublishedSomeActionResultToNextActions =
+  TriggerAction_PublishedActionResultToNextActionsOpt & {
+    __typename?: 'TriggerAction_PublishedSomeActionResultToNextActions';
+    actionResultToNextAction?: Maybe<TriggerAction_PublishedActionResultToNextActions>;
+    id: Scalars['ID']['output'];
+  };
 
 export type TriggerAction_PublishedTrigger = {
   __typename?: 'TriggerAction_PublishedTrigger';
@@ -14304,7 +14025,6 @@ export type TriggerAction_PublishedTrigger = {
   id: Scalars['ID']['output'];
 };
 
-
 export type TriggerAction_PublishedTriggerActionsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -14312,12 +14032,13 @@ export type TriggerAction_PublishedTriggerActionsArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
 };
 
-export type TriggerAction_SomeActionResultToNextActions = TriggerAction_ActionResultToNextActionsOpt & {
-  __typename?: 'TriggerAction_SomeActionResultToNextActions';
-  actionResultKind: TriggerAction_ActionResultKind;
-  actionResultToNextAction?: Maybe<TriggerAction_ActionResultToNextActions>;
-  id: Scalars['ID']['output'];
-};
+export type TriggerAction_SomeActionResultToNextActions =
+  TriggerAction_ActionResultToNextActionsOpt & {
+    __typename?: 'TriggerAction_SomeActionResultToNextActions';
+    actionResultKind: TriggerAction_ActionResultKind;
+    actionResultToNextAction?: Maybe<TriggerAction_ActionResultToNextActions>;
+    id: Scalars['ID']['output'];
+  };
 
 export type TriggerAction_Trigger = Node & {
   __typename?: 'TriggerAction_Trigger';
@@ -14329,7 +14050,6 @@ export type TriggerAction_Trigger = Node & {
   name: Scalars['String']['output'];
   publishedTrigger?: Maybe<TriggerAction_PublishedTrigger>;
 };
-
 
 export type TriggerAction_TriggerActionsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -14343,14 +14063,15 @@ export type TriggerAction_TriggerData = {
 };
 
 export enum TriggerAction_TriggerKind {
-  FinishContentSubmission = 'FinishContentSubmission'
+  FinishContentSubmission = 'FinishContentSubmission',
 }
 
-export type TriggerAction_TriggerOutputFieldSource = TriggerAction_FieldSource & {
-  __typename?: 'TriggerAction_TriggerOutputFieldSource';
-  kind: TriggerAction_FieldSourceKind;
-  triggerKind: TriggerAction_TriggerKind;
-};
+export type TriggerAction_TriggerOutputFieldSource =
+  TriggerAction_FieldSource & {
+    __typename?: 'TriggerAction_TriggerOutputFieldSource';
+    kind: TriggerAction_FieldSourceKind;
+    triggerKind: TriggerAction_TriggerKind;
+  };
 
 /** A connection to a list of items. */
 export type TriggerAction_TriggersConnection = {
@@ -14396,7 +14117,7 @@ export type TypeDefinition = {
 
 export enum TypeDefinitionType {
   Branch = 'branch',
-  Content = 'content'
+  Content = 'content',
 }
 
 export type UnlockInfo = {
@@ -14419,7 +14140,7 @@ export enum UnlockInfoKind {
   Demo = 'Demo',
   ErrorOccurred = 'ErrorOccurred',
   FullAccess = 'FullAccess',
-  WallNotFound = 'WallNotFound'
+  WallNotFound = 'WallNotFound',
 }
 
 export type UnlockInfoWallNotFound = UnlockInfo & {
@@ -14695,7 +14416,6 @@ export type User = Node & {
   registeredAt: Scalars['ZonedDateTIme']['output'];
 };
 
-
 export type UserExtensionArgs = {
   userExtensionKind: UserExtensionKind;
 };
@@ -14728,7 +14448,7 @@ export type UserExtension = {
 };
 
 export enum UserExtensionKind {
-  Academies = 'Academies'
+  Academies = 'Academies',
 }
 
 export type UserGroupAssociation = {
@@ -14781,7 +14501,6 @@ export type UserInAccountGroupWrapper = {
   newInvitations: AccountMemberConnection;
 };
 
-
 export type UserInAccountGroupWrapperNewInvitationsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -14812,7 +14531,6 @@ export type UserInAccountGroupWrappersResult = {
   count: Scalars['Long']['output'];
   userInAccountGroupWrappers: UserInAccountGroupWrapperConnection;
 };
-
 
 export type UserInAccountGroupWrappersResultUserInAccountGroupWrappersArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
@@ -14931,7 +14649,7 @@ export enum ViewerTreeStateKind {
   CanNotBeStarted = 'CanNotBeStarted',
   IsFinished = 'IsFinished',
   IsStarted = 'IsStarted',
-  NotVisible = 'NotVisible'
+  NotVisible = 'NotVisible',
 }
 
 export type VimeoPodcastSourceV2 = PodcastSourceV2 & {
@@ -14950,29 +14668,26 @@ export type VimeoVideoSourceAdminMutationSchema = {
   setVimeoVideoSourceAsDefault?: Maybe<SetVimeoVideoSourceAsDefaultPayload>;
 };
 
-
 /** Data only accessible by the admin */
 export type VimeoVideoSourceAdminMutationSchemaCreateVimeoVideoSourceArgs = {
   input: CreateVimeoVideoSourceInput;
 };
-
 
 /** Data only accessible by the admin */
 export type VimeoVideoSourceAdminMutationSchemaDeleteVimeoVideoSourceArgs = {
   input: DeleteVimeoVideoSourceInput;
 };
 
-
 /** Data only accessible by the admin */
 export type VimeoVideoSourceAdminMutationSchemaEditVimeoVideoSourceArgs = {
   input: EditVimeoVideoSourceInput;
 };
 
-
 /** Data only accessible by the admin */
-export type VimeoVideoSourceAdminMutationSchemaSetVimeoVideoSourceAsDefaultArgs = {
-  input: SetVimeoVideoSourceAsDefaultInput;
-};
+export type VimeoVideoSourceAdminMutationSchemaSetVimeoVideoSourceAsDefaultArgs =
+  {
+    input: SetVimeoVideoSourceAsDefaultInput;
+  };
 
 /** Data only accessible by the admin */
 export type VimeoVideoSourceAdminSchema = {
@@ -14980,7 +14695,6 @@ export type VimeoVideoSourceAdminSchema = {
   GetDefaultVimeoVideoSource?: Maybe<Vimeo_VimeoVideoSource>;
   VimeoVideoSources: Vimeo_VimeoVideoSourceConnection;
 };
-
 
 /** Data only accessible by the admin */
 export type VimeoVideoSourceAdminSchemaVimeoVideoSourcesArgs = {
@@ -15027,7 +14741,7 @@ export enum VisibilityCoachingConfigType {
   VisibilityCoachingHide = 'VisibilityCoaching_Hide',
   VisibilityCoachingOnlyAzavAccount = 'VisibilityCoaching_OnlyAZAVAccount',
   VisibilityCoachingOnlyBusinessAccount = 'VisibilityCoaching_OnlyBusinessAccount',
-  VisibilityCoachingOnlyWithLicense = 'VisibilityCoaching_OnlyWithLicense'
+  VisibilityCoachingOnlyWithLicense = 'VisibilityCoaching_OnlyWithLicense',
 }
 
 export type VisibilityTreeConfig = {
@@ -15045,7 +14759,7 @@ export enum VisibilityTreeConfigType {
   VisibilityTreeOnlyBusinessAccount = 'VisibilityTree_OnlyBusinessAccount',
   VisibilityTreeOnlyEditors = 'VisibilityTree_OnlyEditors',
   VisibilityTreeOnlyIfTreeState = 'VisibilityTree_OnlyIfTreeState',
-  VisibilityTreeOnlyPermissionsImpl = 'VisibilityTree_OnlyPermissionsImpl'
+  VisibilityTreeOnlyPermissionsImpl = 'VisibilityTree_OnlyPermissionsImpl',
 }
 
 /** Data only accessible by the admin */
@@ -15059,36 +14773,30 @@ export type VocabAdminMutationSchema = {
   editWordPackage?: Maybe<EditWordPackagePayload>;
 };
 
-
 /** Data only accessible by the admin */
 export type VocabAdminMutationSchemaAddWordToPackageArgs = {
   input: AddWordToPackageInput;
 };
-
 
 /** Data only accessible by the admin */
 export type VocabAdminMutationSchemaCreateWordPackageArgs = {
   input: CreateWordPackageInput;
 };
 
-
 /** Data only accessible by the admin */
 export type VocabAdminMutationSchemaDeleteWordArgs = {
   input: DeleteWordInput;
 };
-
 
 /** Data only accessible by the admin */
 export type VocabAdminMutationSchemaDeleteWordPackageArgs = {
   input: DeleteWordPackageInput;
 };
 
-
 /** Data only accessible by the admin */
 export type VocabAdminMutationSchemaEditWordArgs = {
   input: EditWordInput;
 };
-
 
 /** Data only accessible by the admin */
 export type VocabAdminMutationSchemaEditWordPackageArgs = {
@@ -15100,7 +14808,6 @@ export type VocabAdminSchema = {
   __typename?: 'VocabAdminSchema';
   WordPackages: WordPackageConnection;
 };
-
 
 /** Data only accessible by the admin */
 export type VocabAdminSchemaWordPackagesArgs = {
@@ -15118,11 +14825,9 @@ export type VocabMutations = {
   startStandaloneVocabTraining?: Maybe<StartStandaloneVocabTrainingPayload>;
 };
 
-
 export type VocabMutationsAddWordNoteArgs = {
   input: AddWordNoteInput;
 };
-
 
 export type VocabMutationsStartStandaloneVocabTrainingArgs = {
   input: StartStandaloneVocabTrainingInput;
@@ -15138,23 +14843,25 @@ export type VocabTrainWordPackageSelection = {
   wordPackage?: Maybe<WordPackage>;
 };
 
-export type VocabTrainWordPackageSelectionFullPackage = VocabTrainWordPackageSelection & {
-  __typename?: 'VocabTrainWordPackageSelectionFullPackage';
-  kind: VocabTrainWordPackageSelectionKind;
-  wordPackage?: Maybe<WordPackage>;
-};
+export type VocabTrainWordPackageSelectionFullPackage =
+  VocabTrainWordPackageSelection & {
+    __typename?: 'VocabTrainWordPackageSelectionFullPackage';
+    kind: VocabTrainWordPackageSelectionKind;
+    wordPackage?: Maybe<WordPackage>;
+  };
 
 export enum VocabTrainWordPackageSelectionKind {
   FullPackage = 'FullPackage',
-  SpecificWords = 'SpecificWords'
+  SpecificWords = 'SpecificWords',
 }
 
-export type VocabTrainWordPackageSelectionSpecificWords = VocabTrainWordPackageSelection & {
-  __typename?: 'VocabTrainWordPackageSelectionSpecificWords';
-  kind: VocabTrainWordPackageSelectionKind;
-  wordIds: Array<Scalars['ID']['output']>;
-  wordPackage?: Maybe<WordPackage>;
-};
+export type VocabTrainWordPackageSelectionSpecificWords =
+  VocabTrainWordPackageSelection & {
+    __typename?: 'VocabTrainWordPackageSelectionSpecificWords';
+    kind: VocabTrainWordPackageSelectionKind;
+    wordIds: Array<Scalars['ID']['output']>;
+    wordPackage?: Maybe<WordPackage>;
+  };
 
 export type Word = {
   __typename?: 'Word';
@@ -15273,12 +14980,13 @@ export type WordProficiencies_ErrorOccurredRewardResult = RewardResult & {
   rewardKind: RewardKind;
 };
 
-export type WordProficiencies_ProficienciesChangedRewardResult = RewardResult & {
-  __typename?: 'WordProficiencies_ProficienciesChangedRewardResult';
-  kind: RewardResultKind;
-  rewardId: Scalars['ID']['output'];
-  rewardKind: RewardKind;
-};
+export type WordProficiencies_ProficienciesChangedRewardResult =
+  RewardResult & {
+    __typename?: 'WordProficiencies_ProficienciesChangedRewardResult';
+    kind: RewardResultKind;
+    rewardId: Scalars['ID']['output'];
+    rewardKind: RewardKind;
+  };
 
 export type WordProficiency = {
   __typename?: 'WordProficiency';
@@ -15334,7 +15042,10 @@ export class TypedDocumentString<TResult, TVariables>
 {
   __apiType?: DocumentTypeDecoration<TResult, TVariables>['__apiType'];
 
-  constructor(private value: string, public __meta__?: Record<string, any> | undefined) {
+  constructor(
+    private value: string,
+    public __meta__?: Record<string, any> | undefined,
+  ) {
     super(value);
   }
 

@@ -1,9 +1,9 @@
-import {Text, View} from 'react-native';
 import React from 'react';
+import {Text, View} from 'react-native';
 
 const HelloWorld = () => {
   return (
-    <View style={{backgroundColor: 'white'}}>
+    <View>
       <Text>Hello World</Text>
     </View>
   );
