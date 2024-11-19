@@ -6,7 +6,7 @@ import {GraphQLClient} from 'graphql-request';
 import {
   AuthenticationState,
   setLoginInformation,
-} from '../store/authenticationSlice.ts';
+} from '../../features/authentication/authenticationSlice.ts';
 import {JwtLoginInformation} from '../types/graphql.ts';
 
 
