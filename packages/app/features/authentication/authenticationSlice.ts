@@ -1,8 +1,11 @@
 import {PayloadAction, createSlice} from '@reduxjs/toolkit';
 
-import {api} from '../domain/authenticationApi.generated';
-import {Account, JwtLoginInformation, User} from '../types/graphql';
-
+import {api} from '../../graphql/domain/authenticationApi.generated.ts';
+import {
+  Account,
+  JwtLoginInformation,
+  User,
+} from '../../graphql/types/graphql.ts';
 
 export type AuthenticationState = {
   login?: JwtLoginInformation;
@@ -45,11 +48,14 @@ export const authenticationSlice = createSlice({
       state.login = undefined;
       state.currentUser = undefined;
     });
-    builder.addMatcher(api.endpoints.GetCurrentUser.matchRejected, (state, _) => {
-      state.login = undefined;
-      state.currentUser = undefined;
-    });
+    builder.addMatcher(
+      api.endpoints.GetCurrentUser.matchRejected,
+      (state, _) => {
+        state.login = undefined;
+        state.currentUser = undefined;
+      },
+    );
   },
 });
 
-export const { setLoginInformation } = authenticationSlice.actions;
+export const {setLoginInformation} = authenticationSlice.actions;

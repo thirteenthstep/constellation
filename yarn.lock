@@ -5,31 +5,6 @@ __metadata:
   version: 8
   cacheKey: 10c0
 
-"@0no-co/graphql.web@npm:^1.0.5":
-  version: 1.0.11
-  resolution: "@0no-co/graphql.web@npm:1.0.11"
-  peerDependencies:
-    graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
-  peerDependenciesMeta:
-    graphql:
-      optional: true
-  checksum: 10c0/7ef7e86a750d3df666830705dac7c984bc7f9604a42c43840586931bb7d6c14499595beb6b8bdcfac56b7847f921ddd08f2e0c39b55acff49ec847d278a8a768
-  languageName: node
-  linkType: hard
-
-"@0no-co/graphqlsp@npm:^1.12.16":
-  version: 1.12.16
-  resolution: "@0no-co/graphqlsp@npm:1.12.16"
-  dependencies:
-    "@gql.tada/internal": "npm:^1.0.0"
-    graphql: "npm:^15.5.0 || ^16.0.0 || ^17.0.0"
-  peerDependencies:
-    graphql: ^15.5.0 || ^16.0.0 || ^17.0.0
-    typescript: ^5.0.0
-  checksum: 10c0/e802fe7c719d68e1279f98da161d2b619f93a6768e82dee331af3d35b03b711f1e2b10911d0acae0dbd6fc72a3fea441fbc6c58aae6f75f269d9d4a48a2069bf
-  languageName: node
-  linkType: hard
-
 "@ampproject/remapping@npm:^2.2.0":
   version: 2.3.0
   resolution: "@ampproject/remapping@npm:2.3.0"
@@ -1692,19 +1667,28 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@constellation/app@workspace:packages/app"
   dependencies:
-    "@constellation/graphql-api": "npm:*"
+    "@graphql-codegen/add": "npm:^5.0.3"
+    "@graphql-codegen/cli": "npm:^5.0.3"
+    "@graphql-codegen/near-operation-file-preset": "npm:^3.0.0"
+    "@graphql-codegen/schema-ast": "npm:^4.1.0"
+    "@graphql-codegen/typescript-resolvers": "npm:^4.4.0"
+    "@graphql-codegen/typescript-rtk-query": "npm:^3.1.1"
     "@react-native/eslint-config": "npm:0.76.2"
     "@react-native/typescript-config": "npm:0.76.2"
     "@react-navigation/native": "npm:^7.0.3"
     "@react-navigation/native-stack": "npm:^7.0.4"
     "@react-navigation/stack": "npm:^7.0.4"
     "@reduxjs/toolkit": "npm:^2.3.0"
+    "@rtk-query/graphql-request-base-query": "npm:^2.3.1"
     "@shopify/flash-list": "npm:^1.7.2"
     "@tanstack/eslint-plugin-query": "npm:^5.60.1"
     "@tanstack/react-query": "npm:^5.60.5"
     "@types/react": "npm:^18.2.6"
     "@types/react-test-renderer": "npm:^18.0.0"
+    async-mutex: "npm:^0.5.0"
     eslint: "npm:^8.19.0"
+    graphql: "npm:^16.9.0"
+    graphql-tag: "npm:^2.12.6"
     jest: "npm:^29.6.3"
     prettier: "npm:2.8.8"
     react: "npm:18.3.1"
@@ -1712,35 +1696,7 @@ __metadata:
     react-native-safe-area-context: "npm:^4.14.0"
     react-redux: "npm:^9.1.2"
     react-test-renderer: "npm:18.3.1"
-    typescript: "npm:5.0.4"
-  peerDependencies:
-    react: 18.3.1
-    react-native: 0.76.2
-  languageName: unknown
-  linkType: soft
-
-"@constellation/graphql-api@npm:*, @constellation/graphql-api@workspace:packages/graphql-api":
-  version: 0.0.0-use.local
-  resolution: "@constellation/graphql-api@workspace:packages/graphql-api"
-  dependencies:
-    "@0no-co/graphqlsp": "npm:^1.12.16"
-    "@graphql-codegen/add": "npm:^5.0.3"
-    "@graphql-codegen/cli": "npm:^5.0.3"
-    "@graphql-codegen/near-operation-file-preset": "npm:^3.0.0"
-    "@graphql-codegen/schema-ast": "npm:^4.1.0"
-    "@graphql-codegen/typescript-resolvers": "npm:^4.4.0"
-    "@graphql-codegen/typescript-rtk-query": "npm:^3.1.1"
-    "@parcel/watcher": "npm:^2.5.0"
-    "@react-native/eslint-config": "npm:0.76.2"
-    "@reduxjs/toolkit": "npm:^2.3.0"
-    "@rtk-query/graphql-request-base-query": "npm:^2.3.1"
-    "@types/qs": "npm:^6"
-    async-mutex: "npm:^0.5.0"
-    eslint: "npm:^8.19.0"
-    graphql: "npm:^16.9.0"
-    graphql-tag: "npm:^2.12.6"
-    prettier: "npm:2.8.8"
-    qs: "npm:^6.13.1"
+    redux-persist: "npm:^6.0.0"
     typescript: "npm:5.0.4"
   languageName: unknown
   linkType: soft
@@ -1994,18 +1950,6 @@ __metadata:
   version: 8.57.1
   resolution: "@eslint/js@npm:8.57.1"
   checksum: 10c0/b489c474a3b5b54381c62e82b3f7f65f4b8a5eaaed126546520bf2fede5532a8ed53212919fed1e9048dcf7f37167c8561d58d0ba4492a4244004e7793805223
-  languageName: node
-  linkType: hard
-
-"@gql.tada/internal@npm:^1.0.0":
-  version: 1.0.8
-  resolution: "@gql.tada/internal@npm:1.0.8"
-  dependencies:
-    "@0no-co/graphql.web": "npm:^1.0.5"
-  peerDependencies:
-    graphql: ^15.5.0 || ^16.0.0 || ^17.0.0
-    typescript: ^5.0.0
-  checksum: 10c0/dd9b34296160f7eb4374b1791dd9353fd4147f4d7e2a3a8e2974c2319dc6165a4458c19d9b517a3f7764da4e7a4401c099fdf1936841de02c0e565db95d64a5d
   languageName: node
   linkType: hard
 
@@ -3214,150 +3158,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@parcel/watcher-android-arm64@npm:2.5.0":
-  version: 2.5.0
-  resolution: "@parcel/watcher-android-arm64@npm:2.5.0"
-  conditions: os=android & cpu=arm64
-  languageName: node
-  linkType: hard
-
-"@parcel/watcher-darwin-arm64@npm:2.5.0":
-  version: 2.5.0
-  resolution: "@parcel/watcher-darwin-arm64@npm:2.5.0"
-  conditions: os=darwin & cpu=arm64
-  languageName: node
-  linkType: hard
-
-"@parcel/watcher-darwin-x64@npm:2.5.0":
-  version: 2.5.0
-  resolution: "@parcel/watcher-darwin-x64@npm:2.5.0"
-  conditions: os=darwin & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@parcel/watcher-freebsd-x64@npm:2.5.0":
-  version: 2.5.0
-  resolution: "@parcel/watcher-freebsd-x64@npm:2.5.0"
-  conditions: os=freebsd & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@parcel/watcher-linux-arm-glibc@npm:2.5.0":
-  version: 2.5.0
-  resolution: "@parcel/watcher-linux-arm-glibc@npm:2.5.0"
-  conditions: os=linux & cpu=arm & libc=glibc
-  languageName: node
-  linkType: hard
-
-"@parcel/watcher-linux-arm-musl@npm:2.5.0":
-  version: 2.5.0
-  resolution: "@parcel/watcher-linux-arm-musl@npm:2.5.0"
-  conditions: os=linux & cpu=arm & libc=musl
-  languageName: node
-  linkType: hard
-
-"@parcel/watcher-linux-arm64-glibc@npm:2.5.0":
-  version: 2.5.0
-  resolution: "@parcel/watcher-linux-arm64-glibc@npm:2.5.0"
-  conditions: os=linux & cpu=arm64 & libc=glibc
-  languageName: node
-  linkType: hard
-
-"@parcel/watcher-linux-arm64-musl@npm:2.5.0":
-  version: 2.5.0
-  resolution: "@parcel/watcher-linux-arm64-musl@npm:2.5.0"
-  conditions: os=linux & cpu=arm64 & libc=musl
-  languageName: node
-  linkType: hard
-
-"@parcel/watcher-linux-x64-glibc@npm:2.5.0":
-  version: 2.5.0
-  resolution: "@parcel/watcher-linux-x64-glibc@npm:2.5.0"
-  conditions: os=linux & cpu=x64 & libc=glibc
-  languageName: node
-  linkType: hard
-
-"@parcel/watcher-linux-x64-musl@npm:2.5.0":
-  version: 2.5.0
-  resolution: "@parcel/watcher-linux-x64-musl@npm:2.5.0"
-  conditions: os=linux & cpu=x64 & libc=musl
-  languageName: node
-  linkType: hard
-
-"@parcel/watcher-win32-arm64@npm:2.5.0":
-  version: 2.5.0
-  resolution: "@parcel/watcher-win32-arm64@npm:2.5.0"
-  conditions: os=win32 & cpu=arm64
-  languageName: node
-  linkType: hard
-
-"@parcel/watcher-win32-ia32@npm:2.5.0":
-  version: 2.5.0
-  resolution: "@parcel/watcher-win32-ia32@npm:2.5.0"
-  conditions: os=win32 & cpu=ia32
-  languageName: node
-  linkType: hard
-
-"@parcel/watcher-win32-x64@npm:2.5.0":
-  version: 2.5.0
-  resolution: "@parcel/watcher-win32-x64@npm:2.5.0"
-  conditions: os=win32 & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@parcel/watcher@npm:^2.5.0":
-  version: 2.5.0
-  resolution: "@parcel/watcher@npm:2.5.0"
-  dependencies:
-    "@parcel/watcher-android-arm64": "npm:2.5.0"
-    "@parcel/watcher-darwin-arm64": "npm:2.5.0"
-    "@parcel/watcher-darwin-x64": "npm:2.5.0"
-    "@parcel/watcher-freebsd-x64": "npm:2.5.0"
-    "@parcel/watcher-linux-arm-glibc": "npm:2.5.0"
-    "@parcel/watcher-linux-arm-musl": "npm:2.5.0"
-    "@parcel/watcher-linux-arm64-glibc": "npm:2.5.0"
-    "@parcel/watcher-linux-arm64-musl": "npm:2.5.0"
-    "@parcel/watcher-linux-x64-glibc": "npm:2.5.0"
-    "@parcel/watcher-linux-x64-musl": "npm:2.5.0"
-    "@parcel/watcher-win32-arm64": "npm:2.5.0"
-    "@parcel/watcher-win32-ia32": "npm:2.5.0"
-    "@parcel/watcher-win32-x64": "npm:2.5.0"
-    detect-libc: "npm:^1.0.3"
-    is-glob: "npm:^4.0.3"
-    micromatch: "npm:^4.0.5"
-    node-addon-api: "npm:^7.0.0"
-    node-gyp: "npm:latest"
-  dependenciesMeta:
-    "@parcel/watcher-android-arm64":
-      optional: true
-    "@parcel/watcher-darwin-arm64":
-      optional: true
-    "@parcel/watcher-darwin-x64":
-      optional: true
-    "@parcel/watcher-freebsd-x64":
-      optional: true
-    "@parcel/watcher-linux-arm-glibc":
-      optional: true
-    "@parcel/watcher-linux-arm-musl":
-      optional: true
-    "@parcel/watcher-linux-arm64-glibc":
-      optional: true
-    "@parcel/watcher-linux-arm64-musl":
-      optional: true
-    "@parcel/watcher-linux-x64-glibc":
-      optional: true
-    "@parcel/watcher-linux-x64-musl":
-      optional: true
-    "@parcel/watcher-win32-arm64":
-      optional: true
-    "@parcel/watcher-win32-ia32":
-      optional: true
-    "@parcel/watcher-win32-x64":
-      optional: true
-  checksum: 10c0/9bad727d8b11e5d150ec47459254544c583adaa47d047b8ef65e1c74aede1a0767dc7fc6b8997649dae07318d6ef39caba6a1c405d306398d5bcd47074ec5d29
-  languageName: node
-  linkType: hard
-
 "@pkgjs/parseargs@npm:^0.11.0":
   version: 0.11.0
   resolution: "@pkgjs/parseargs@npm:0.11.0"
@@ -4278,13 +4078,6 @@ __metadata:
   version: 15.7.13
   resolution: "@types/prop-types@npm:15.7.13"
   checksum: 10c0/1b20fc67281902c6743379960247bc161f3f0406ffc0df8e7058745a85ea1538612109db0406290512947f9632fe9e10e7337bf0ce6338a91d6c948df16a7c61
-  languageName: node
-  linkType: hard
-
-"@types/qs@npm:^6":
-  version: 6.9.17
-  resolution: "@types/qs@npm:6.9.17"
-  checksum: 10c0/a183fa0b3464267f8f421e2d66d960815080e8aab12b9aadab60479ba84183b1cdba8f4eff3c06f76675a8e42fe6a3b1313ea76c74f2885c3e25d32499c17d1b
   languageName: node
   linkType: hard
 
@@ -6154,15 +5947,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"detect-libc@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "detect-libc@npm:1.0.3"
-  bin:
-    detect-libc: ./bin/detect-libc.js
-  checksum: 10c0/4da0deae9f69e13bc37a0902d78bf7169480004b1fed3c19722d56cff578d16f0e11633b7fbf5fb6249181236c72e90024cbd68f0b9558ae06e281f47326d50d
-  languageName: node
-  linkType: hard
-
 "detect-newline@npm:^3.0.0":
   version: 3.1.0
   resolution: "detect-newline@npm:3.1.0"
@@ -7489,7 +7273,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql@npm:^15.5.0 || ^16.0.0 || ^17.0.0, graphql@npm:^16.9.0":
+"graphql@npm:^16.9.0":
   version: 16.9.0
   resolution: "graphql@npm:16.9.0"
   checksum: 10c0/a8850f077ff767377237d1f8b1da2ec70aeb7623cdf1dfc9e1c7ae93accc0c8149c85abe68923be9871a2934b1bce5a2496f846d4d56e1cfb03eaaa7ddba9b6a
@@ -9872,15 +9656,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-addon-api@npm:^7.0.0":
-  version: 7.1.1
-  resolution: "node-addon-api@npm:7.1.1"
-  dependencies:
-    node-gyp: "npm:latest"
-  checksum: 10c0/fb32a206276d608037fa1bcd7e9921e177fe992fc610d098aa3128baca3c0050fc1e014fa007e9b3874cf865ddb4f5bd9f43ccb7cbbbe4efaff6a83e920b17e9
-  languageName: node
-  linkType: hard
-
 "node-dir@npm:^0.1.17":
   version: 0.1.17
   resolution: "node-dir@npm:0.1.17"
@@ -10573,15 +10348,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"qs@npm:^6.13.1":
-  version: 6.13.1
-  resolution: "qs@npm:6.13.1"
-  dependencies:
-    side-channel: "npm:^1.0.6"
-  checksum: 10c0/5ef527c0d62ffca5501322f0832d800ddc78eeb00da3b906f1b260ca0492721f8cdc13ee4b8fd8ac314a6ec37b948798c7b603ccc167e954088df392092f160c
-  languageName: node
-  linkType: hard
-
 "query-string@npm:^7.1.3":
   version: 7.1.3
   resolution: "query-string@npm:7.1.3"
@@ -10859,6 +10625,15 @@ __metadata:
     react: ">= 15.2.1"
     react-native: ">= 0.30.0"
   checksum: 10c0/58c2f5fa6372b31f82a1fc976ddbf9c45fa2c1a2fcaab417e39096152c4815463357ff410603db1df7dabab3a383bdef80db04c54a667bc40c5a0ce130e68961
+  languageName: node
+  linkType: hard
+
+"redux-persist@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "redux-persist@npm:6.0.0"
+  peerDependencies:
+    redux: ">4.0.0"
+  checksum: 10c0/8242d265ab8d28bbc95cf2dc2a05b869eb67aa309b1ed08163c926f3af56dd8eb1ea62118286083461b8ef2024d3b349fd264e5a62a70eb2e74d068c832d5bf2
   languageName: node
   linkType: hard
 
