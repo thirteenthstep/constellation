@@ -12,7 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 import {authenticationSlice} from '../features/authentication/authenticationSlice.ts';
-import {api} from '../graphql/domain/authenticationApi.generated.ts';
+import {api} from '../api/domain/authenticationApi.generated.ts';
 
 const persistConfig = {
   key: 'root',

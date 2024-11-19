@@ -20,9 +20,6 @@ query GetCurrentUser {
                     name
                     email
                 }
-                accounts {
-                    id
-                }
             }
         }
     }

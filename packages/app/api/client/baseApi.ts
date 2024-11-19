@@ -43,58 +43,54 @@ export const baseQueryWithReauthGraphql: any = async (
 ) => {
   await mutex.waitForUnlock();
   let result;
-  try {
-    result = await graphqlBaseQuery({document, variables}, api, extraOptions);
+
+  result = await graphqlBaseQuery({document, variables}, api, extraOptions);
+  if ((result.meta as any)?.response?.status !== 401) {
     return result;
-  } catch (e: any) {
-    // Intercept HTTP 401 responses and do the refresh token call
-    if (e && e.response && e.response.status === 401) {
-      if (!mutex.isLocked()) {
-        const release = await mutex.acquire();
-        try {
-          const getState = api.getState as () => {
-            authentication: AuthenticationState;
-          };
-          const refreshToken = getState().authentication.login?.refreshToken;
-          const accountId = getState().authentication.currentUser?.account?.id;
-          const refreshResult = await authBaseQuery(
-            {
-              url: '/refresh-token',
-              method: 'POST',
-              body: JSON.stringify({refreshToken, accountId}),
-            },
-            api,
-            extraOptions,
-          );
+  }
+  if (!mutex.isLocked()) {
+    const release = await mutex.acquire();
+    try {
+      const getState = api.getState as () => {
+        authentication: AuthenticationState;
+      };
+      const refreshToken = getState().authentication.login?.refreshToken;
+      const accountId = getState().authentication.currentUser?.account?.id;
+      const refreshResult = await authBaseQuery(
+        {
+          url: '/refresh-token',
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({refreshToken, accountId}),
+        },
+        api,
+        extraOptions,
+      );
 
-          if (refreshResult.data) {
-            api.dispatch(
-              setLoginInformation(refreshResult.data as JwtLoginInformation),
-            );
+      if (refreshResult.data) {
+        api.dispatch(
+          setLoginInformation(refreshResult.data as JwtLoginInformation),
+        );
 
-            // Once the tokens are updated, do the failed api call again
-            result = await graphqlBaseQuery(
-              {document, variables},
-              api,
-              extraOptions,
-            );
-          } else {
-            api.dispatch(setLoginInformation(undefined));
-          }
-        } finally {
-          release();
-        }
-      } else {
-        await mutex.waitForUnlock();
+        // Once the tokens are updated, do the failed api call again
         result = await graphqlBaseQuery(
           {document, variables},
           api,
           extraOptions,
         );
+      } else {
+        api.dispatch(setLoginInformation(undefined));
       }
-      return result;
+    } finally {
+      release();
     }
+  } else {
+    await mutex.waitForUnlock();
+    result = await graphqlBaseQuery({document, variables}, api, extraOptions);
   }
+  return result;
 };
 export const api = createApi({
   baseQuery: baseQueryWithReauthGraphql,

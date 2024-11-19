@@ -1,17 +1,16 @@
 import {PayloadAction, createSlice} from '@reduxjs/toolkit';
+import {decode} from 'jwt-js-decode';
 
-import {api} from '../../graphql/domain/authenticationApi.generated.ts';
-import {
-  Account,
-  JwtLoginInformation,
-  User,
-} from '../../graphql/types/graphql.ts';
+import {api} from '../../api/domain/authenticationApi.generated.ts';
+import {Account, JwtLoginInformation, User} from '../../api/types/graphql.ts';
+
 
 export type AuthenticationState = {
   login?: JwtLoginInformation;
   currentUser?: {
     user?: Partial<User>;
-    account?: Partial<Account>;
+    account?: Pick<Account, 'id'>;
+    permissions?: string[];
   };
 };
 
@@ -33,14 +32,31 @@ export const authenticationSlice = createSlice({
       api.endpoints.Authenticate.matchFulfilled,
       (state, action) => {
         state.login = action.payload.Auth.loginJwt?.loginResult?.jwtTokens;
+
+        if (state.login?.accessToken) {
+          const jwt = decode(state.login?.accessToken);
+          state.currentUser = {
+            user: {
+              id: jwt.payload.userId,
+            },
+            account: {
+              id: jwt.payload.accountId,
+            },
+            permissions: jwt.payload.permissionsInAccount,
+          };
+        }
       },
     );
     builder.addMatcher(
       api.endpoints.GetCurrentUser.matchFulfilled,
       (state, action) => {
         state.currentUser = {
-          user: action.payload.Viewer.Auth.currentUser?.user,
-          account: action.payload.Viewer.Auth.currentUser?.accounts?.[0],
+          ...state.currentUser,
+          user: {
+            name: action.payload.Viewer.Auth.currentUser?.user?.name,
+            email: action.payload.Viewer.Auth.currentUser?.user?.email,
+            ...state.currentUser?.user,
+          },
         };
       },
     );
