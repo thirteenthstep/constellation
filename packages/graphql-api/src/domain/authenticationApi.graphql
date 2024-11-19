@@ -1,0 +1,13 @@
+mutation Auth($email: String!, $password: String!) {
+    Auth {
+        loginJwt(input: { email: $email, password: $password }) {
+            clientMutationId
+            loginResult {
+                jwtTokens {
+                    accessToken
+                    refreshToken
+                }
+            }
+        }
+    }
+}

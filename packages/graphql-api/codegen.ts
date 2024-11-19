@@ -2,14 +2,34 @@ import type {CodegenConfig} from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
   schema: './schema.graphql',
-  documents: ['src/**/*.tsx'],
+  documents: ['src/**/*.graphql'],
   ignoreNoDocuments: true,
   generates: {
-    './src/graphql/': {
+    './src/types/': {
       preset: 'client',
       config: {
         documentMode: 'string',
       },
+    },
+    src: {
+      preset: 'near-operation-file',
+      presetConfig: {
+        baseTypesPath: 'types/graphql.ts',
+      },
+      plugins: [
+        'typescript-operations',
+        {
+          add: {
+            content: '/* eslint-disable */',
+          },
+        },
+        {
+          'typescript-rtk-query': {
+            importBaseApiFrom: '../client/baseApi',
+            exportHooks: true,
+          },
+        },
+      ],
     },
   },
 };

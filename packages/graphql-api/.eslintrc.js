@@ -1,5 +1,5 @@
 module.exports = {
   root: true,
   extends: '@react-native',
-  ignorePatterns: ['src/graphql/*'],
+  ignorePatterns: ['src/types/*', 'src/domain/*'],
 };
