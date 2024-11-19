@@ -1,0 +1,15 @@
+query Admin {
+    Admin {
+        Tree {
+            GetContentNodes(first: 10) {
+                edges {
+                    node {
+                        structureDefinition {
+                            title
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

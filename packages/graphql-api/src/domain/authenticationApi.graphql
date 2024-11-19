@@ -1,4 +1,4 @@
-mutation Auth($email: String!, $password: String!) {
+mutation Authenticate($email: String!, $password: String!) {
     Auth {
         loginJwt(input: { email: $email, password: $password }) {
             clientMutationId
@@ -6,6 +6,22 @@ mutation Auth($email: String!, $password: String!) {
                 jwtTokens {
                     accessToken
                     refreshToken
+                }
+            }
+        }
+    }
+}
+
+query GetCurrentUser {
+    Viewer {
+        Auth {
+            currentUser {
+                user {
+                    name
+                    email
+                }
+                accounts {
+                    id
                 }
             }
         }

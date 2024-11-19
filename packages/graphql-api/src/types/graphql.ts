@@ -1,5 +1,3 @@
-/* eslint-disable */
-import { DocumentTypeDecoration } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -15328,42 +15326,3 @@ export type RemoveActionFromTriggerAndDeleteItPayload = {
   clientMutationId?: Maybe<Scalars['String']['output']>;
   deletedActionId: Scalars['ID']['output'];
 };
-
-export type AuthMutationVariables = Exact<{
-  email: Scalars['String']['input'];
-  password: Scalars['String']['input'];
-}>;
-
-
-export type AuthMutation = { __typename?: 'Mutation', Auth: { __typename?: 'AuthMutations', loginJwt?: { __typename?: 'LoginJwtPayload', clientMutationId?: string | null, loginResult: { __typename?: 'LoginResult', jwtTokens: { __typename?: 'JwtLoginInformation', accessToken: string, refreshToken: string } } } | null } };
-
-export class TypedDocumentString<TResult, TVariables>
-  extends String
-  implements DocumentTypeDecoration<TResult, TVariables>
-{
-  __apiType?: DocumentTypeDecoration<TResult, TVariables>['__apiType'];
-
-  constructor(private value: string, public __meta__?: Record<string, any> | undefined) {
-    super(value);
-  }
-
-  toString(): string & DocumentTypeDecoration<TResult, TVariables> {
-    return this.value;
-  }
-}
-
-export const AuthDocument = new TypedDocumentString(`
-    mutation Auth($email: String!, $password: String!) {
-  Auth {
-    loginJwt(input: {email: $email, password: $password}) {
-      clientMutationId
-      loginResult {
-        jwtTokens {
-          accessToken
-          refreshToken
-        }
-      }
-    }
-  }
-}
-    `) as unknown as TypedDocumentString<AuthMutation, AuthMutationVariables>;

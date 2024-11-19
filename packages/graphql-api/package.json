@@ -10,13 +10,16 @@
   "exports": {
     "./client": "./src/client/baseApi.ts",
     "./domain/": "./src/domain/",
+    "./store/": "./src/store/",
     "./types": "./src/types/graphql.ts"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.3.0",
     "@rtk-query/graphql-request-base-query": "^2.3.1",
+    "async-mutex": "^0.5.0",
     "graphql": "^16.9.0",
-    "graphql-tag": "^2.12.6"
+    "graphql-tag": "^2.12.6",
+    "qs": "^6.13.1"
   },
   "devDependencies": {
     "@0no-co/graphqlsp": "^1.12.16",
@@ -28,6 +31,7 @@
     "@graphql-codegen/typescript-rtk-query": "^3.1.1",
     "@parcel/watcher": "^2.5.0",
     "@react-native/eslint-config": "0.76.2",
+    "@types/qs": "^6",
     "eslint": "^8.19.0",
     "prettier": "2.8.8",
     "typescript": "5.0.4"
