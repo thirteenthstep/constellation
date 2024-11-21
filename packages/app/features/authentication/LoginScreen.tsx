@@ -4,7 +4,7 @@ import {Button, Text, View} from 'react-native';
 import {
   useAuthenticateMutation,
   useLazyGetCurrentUserQuery,
-} from '../../graphql/domain/authenticationApi.generated.ts';
+} from '../../api/domain/authenticationApi.generated.ts';
 
 export const LoginScreen = () => {
   const [authenticate, {data}] = useAuthenticateMutation();
@@ -12,7 +12,6 @@ export const LoginScreen = () => {
 
   return (
     <View style={{backgroundColor: 'white'}}>
-      <Text>{JSON.stringify(data)}</Text>
       <Button
         title={'login'}
         onPress={() =>
