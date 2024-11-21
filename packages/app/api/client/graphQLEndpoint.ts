@@ -1,1 +1,1 @@
-export const ENDPOINT_URL = 'https://staging.api.constellation.academy/api';
+export const ENDPOINT_URL = process.env.ENDPOINT_URL;
