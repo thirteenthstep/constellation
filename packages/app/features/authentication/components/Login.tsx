@@ -31,6 +31,12 @@ export const Login = () => {
     formState: {errors},
   } = useForm<AuthenticateMutationVariables>({
     resolver: zodResolver(CredentialsSchema),
+    defaultValues: __DEV__
+      ? {
+          email: 'editor.staging@example.com',
+          password: 'HtxbYgJfB1ysRCEDX6b2',
+        }
+      : undefined,
   });
 
   return (
@@ -70,7 +76,9 @@ export const Login = () => {
         />
         {errors.password && <Text>{errors.password.message}</Text>}
       </YStack>
-      {!isLoading && <Button onPress={handleSubmit(authenticate)}>Login</Button>}
+      {!isLoading && (
+        <Button onPress={handleSubmit(authenticate)}>Login</Button>
+      )}
       {isLoading && <Button icon={<Spinner />} disabled />}
       {error && <Text>{error.message}</Text>}
     </YStack>

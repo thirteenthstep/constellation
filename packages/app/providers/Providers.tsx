@@ -1,76 +1,15 @@
-import {
-  StaticParamList,
-  createStaticNavigation,
-} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {TamaguiProvider, createTamagui} from '@tamagui/core';
 import React, {FC, PropsWithChildren} from 'react';
 import {Provider} from 'react-redux';
 import {persistStore} from 'redux-persist';
 import {PersistGate} from 'redux-persist/integration/react';
 
-import {LoginScreen} from '../features/authentication/LoginScreen';
-import {
-  LogoutButton,
-  ProfileButton,
-} from '../features/content/ContentHeaderButtons';
-import {ContentScreen} from '../features/content/ContentScreen.tsx';
-import {ProfileScreen} from '../features/profile/ProfileScreen';
-import {store, useAppSelector} from '../store/store.ts';
+import {store} from '../store/store.ts';
 import appConfig from '../tamagui.config.ts';
+import {NavigationProvider} from './NavigationProvider';
 
 
 const persistor = persistStore(store);
-
-const useIsSignedIn = () => {
-  return !!useAppSelector(state => state.authentication.login);
-};
-const useIsSignedOut = () => {
-  return !useAppSelector(state => state.authentication.login);
-};
-
-const RootStack = createNativeStackNavigator({
-  groups: {
-    SignedOut: {
-      if: useIsSignedOut,
-      screens: {
-        Login: {
-          screen: LoginScreen,
-          options: {
-            headerShown: false,
-          },
-        },
-      },
-    },
-    SignedIn: {
-      if: useIsSignedIn,
-      screens: {
-        Content: {
-          screen: ContentScreen,
-          options: {
-            title: 'Content',
-            headerLeft: ProfileButton,
-            headerRight: LogoutButton,
-          },
-        },
-        Profile: {
-          screen: ProfileScreen,
-        },
-      },
-    },
-  },
-});
-
-type RootStackParamList = StaticParamList<typeof RootStack>;
-
-declare global {
-  namespace ReactNavigation {
-    interface RootParamList extends RootStackParamList {}
-  }
-}
-
-const Navigation = createStaticNavigation(RootStack);
-
 const tamaguiConfig = createTamagui(appConfig);
 
 export const Providers: FC<PropsWithChildren> = () => {
@@ -78,7 +17,7 @@ export const Providers: FC<PropsWithChildren> = () => {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <TamaguiProvider config={tamaguiConfig}>
-          <Navigation />
+          <NavigationProvider />
         </TamaguiProvider>
       </PersistGate>
     </Provider>
