@@ -10,10 +10,15 @@ export type AuthenticateMutationVariables = Types.Exact<{
 
 export type AuthenticateMutation = { __typename?: 'Mutation', Auth: { __typename?: 'AuthMutations', loginJwt?: { __typename?: 'LoginJwtPayload', clientMutationId?: string | null, loginResult: { __typename?: 'LoginResult', jwtTokens: { __typename?: 'JwtLoginInformation', accessToken: string, refreshToken: string } } } | null } };
 
+export type LogoutMutationVariables = Types.Exact<{ [key: string]: never; }>;
+
+
+export type LogoutMutation = { __typename?: 'Mutation', Auth: { __typename?: 'AuthMutations', logoutJwt?: { __typename?: 'LogoutJwtPayload', clientMutationId?: string | null } | null } };
+
 export type GetCurrentUserQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type GetCurrentUserQuery = { __typename?: 'Query', Viewer: { __typename?: 'ViewerQueryType', Auth: { __typename?: 'AuthViewerSchema', currentUser?: { __typename?: 'CurrentUser', user: { __typename?: 'User', name: string, email: string }, accounts: Array<{ __typename?: 'Account', id: string }> } | null } } };
+export type GetCurrentUserQuery = { __typename?: 'Query', Viewer: { __typename?: 'ViewerQueryType', Auth: { __typename?: 'AuthViewerSchema', currentUser?: { __typename?: 'CurrentUser', user: { __typename?: 'User', name: string, email: string } } | null } } };
 
 
 export const AuthenticateDocument = `
@@ -31,6 +36,15 @@ export const AuthenticateDocument = `
   }
 }
     `;
+export const LogoutDocument = `
+    mutation Logout {
+  Auth {
+    logoutJwt(input: {clientMutationId: null}) {
+      clientMutationId
+    }
+  }
+}
+    `;
 export const GetCurrentUserDocument = `
     query GetCurrentUser {
   Viewer {
@@ -39,9 +53,6 @@ export const GetCurrentUserDocument = `
         user {
           name
           email
-        }
-        accounts {
-          id
         }
       }
     }
@@ -54,6 +65,9 @@ const injectedRtkApi = api.injectEndpoints({
     Authenticate: build.mutation<AuthenticateMutation, AuthenticateMutationVariables>({
       query: (variables) => ({ document: AuthenticateDocument, variables })
     }),
+    Logout: build.mutation<LogoutMutation, LogoutMutationVariables | void>({
+      query: (variables) => ({ document: LogoutDocument, variables })
+    }),
     GetCurrentUser: build.query<GetCurrentUserQuery, GetCurrentUserQueryVariables | void>({
       query: (variables) => ({ document: GetCurrentUserDocument, variables })
     }),
@@ -61,5 +75,5 @@ const injectedRtkApi = api.injectEndpoints({
 });
 
 export { injectedRtkApi as api };
-export const { useAuthenticateMutation, useGetCurrentUserQuery, useLazyGetCurrentUserQuery } = injectedRtkApi;
+export const { useAuthenticateMutation, useLogoutMutation, useGetCurrentUserQuery, useLazyGetCurrentUserQuery } = injectedRtkApi;
 

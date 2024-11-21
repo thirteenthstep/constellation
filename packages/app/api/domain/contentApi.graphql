@@ -1,13 +1,29 @@
-query Admin {
+query fetchContentNodes($first: Int!, $after: String) {
     Admin {
         Tree {
-            GetContentNodes(first: 10) {
+            GetContentNodes(first: $first, after: $after) {
                 edges {
                     node {
+                        id
                         structureDefinition {
                             title
                         }
+                        description
+                        shortDescription
+                        image {
+                            id
+                            name
+                            url
+                            thumbnail
+                        }
                     }
+                    cursor
+                }
+                pageInfo {
+                    hasNextPage
+                    hasPreviousPage
+                    startCursor
+                    endCursor
                 }
             }
         }

@@ -12,6 +12,14 @@ mutation Authenticate($email: String!, $password: String!) {
     }
 }
 
+mutation Logout {
+    Auth {
+        logoutJwt(input: {clientMutationId: null}) {
+            clientMutationId
+        }
+    }
+}
+
 query GetCurrentUser {
     Viewer {
         Auth {
