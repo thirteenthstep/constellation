@@ -9,7 +9,7 @@ import {Provider} from 'react-redux';
 import {persistStore} from 'redux-persist';
 import {PersistGate} from 'redux-persist/integration/react';
 
-import {LoginScreen} from '../features/authentication/LoginScreen.tsx';
+import {LoginScreen} from '../features/authentication/LoginScreen';
 import {store, useAppSelector} from '../store/store.ts';
 import appConfig from '../tamagui.config.ts';
 import {ContentScreen} from '../features/content/ContentScreen.tsx';
@@ -31,7 +31,12 @@ const RootStack = createNativeStackNavigator({
     SignedOut: {
       if: useIsSignedOut,
       screens: {
-        Login: LoginScreen,
+        Login: {
+          screen: LoginScreen,
+          options: {
+            headerShown: false
+          }
+        },
       },
     },
       SignedIn: {

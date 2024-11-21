@@ -8,6 +8,7 @@
     "format": "prettier --write './**/*.{ts,tsx}'"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.1",
     "@react-native-async-storage/async-storage": "^2.1.0",
     "@react-navigation/native": "^7.0.3",
     "@react-navigation/native-stack": "^7.0.4",
@@ -24,6 +25,7 @@
     "jwt-decode": "^4.0.0",
     "jwt-js-decode": "^1.9.0",
     "react": "18.3.1",
+    "react-hook-form": "^7.53.2",
     "react-infinite-scroll-component": "^6.1.0",
     "react-native": "0.76.2",
     "react-native-html-text-view": "^0.3.1",
@@ -33,7 +35,8 @@
     "react-native-screens": "^4.2.0",
     "react-redux": "^9.1.2",
     "redux-persist": "^6.0.0",
-    "tamagui": "^1.117.0"
+    "tamagui": "^1.117.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@graphql-codegen/add": "^5.0.3",

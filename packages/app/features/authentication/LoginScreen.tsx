@@ -1,26 +1,21 @@
 import React from 'react';
-import {Button, Text, View} from 'react-native';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {View} from 'tamagui';
 
-import {
-  useAuthenticateMutation,
-  useLazyGetCurrentUserQuery,
-} from '../../api/domain/authenticationApi.generated.ts';
+import {Login} from './components/Login';
+
 
 export const LoginScreen = () => {
-  const [authenticate, {data}] = useAuthenticateMutation();
-  const [getCurrentUser] = useLazyGetCurrentUserQuery();
+  const safeArea = useSafeAreaInsets();
 
   return (
-    <View style={{backgroundColor: 'white'}}>
-      <Button
-        title={'login'}
-        onPress={() =>
-          authenticate({
-            email: 'editor.staging@example.com',
-            password: 'HtxbYgJfB1ysRCEDX6b2',
-          }).then(() => getCurrentUser())
-        }
-      />
+    <View
+      flex={1}
+      backgroundColor={'white'}
+      paddingTop={safeArea.top}
+      paddingLeft={safeArea.left}
+      paddingRight={safeArea.right}>
+      <Login />
     </View>
   );
 };
