@@ -6,19 +6,17 @@ import {GraphQLClient} from 'graphql-request';
 import {
   AuthenticationState,
   setLoginInformation,
-} from '../../features/authentication/authenticationSlice.ts';
-import {JwtLoginInformation} from '../types/graphql.ts';
+} from '../../features/authentication/authenticationSlice';
+import {JwtLoginInformation} from '../types/graphql';
+import {ENDPOINT_URL} from './graphQLEndpoint';
 
 
-const BASE_URL =
-  // @ts-ignore
-  import.meta.env.VITE_ENDPOINT_URL ?? '';
-const GRAPHQL_ENDPOINT = `${BASE_URL}/graphql`;
+const GRAPHQL_ENDPOINT = `${ENDPOINT_URL}/graphql`;
 
 export const client: any = new GraphQLClient(GRAPHQL_ENDPOINT);
 
 const authBaseQuery = fetchBaseQuery({
-  baseUrl: BASE_URL,
+  baseUrl: ENDPOINT_URL,
 });
 
 const graphqlBaseQuery = graphqlRequestBaseQuery({
@@ -46,14 +44,21 @@ export const baseQueryWithReauthGraphql: any = async (
 
   result = await graphqlBaseQuery({document, variables}, api, extraOptions);
   if ((result.meta as any)?.response?.status !== 401) {
+    // successful request, nothing to do
     return result;
   }
+  const getState = api.getState as () => {
+    authentication: AuthenticationState;
+  };
+  if (!getState().authentication.login?.refreshToken) {
+    // user did not log in before
+    return result;
+  }
+
+  console.log('acess token expired - attempt token refresh...');
   if (!mutex.isLocked()) {
     const release = await mutex.acquire();
     try {
-      const getState = api.getState as () => {
-        authentication: AuthenticationState;
-      };
       const refreshToken = getState().authentication.login?.refreshToken;
       const accountId = getState().authentication.currentUser?.account?.id;
       const refreshResult = await authBaseQuery(
@@ -70,6 +75,8 @@ export const baseQueryWithReauthGraphql: any = async (
       );
 
       if (refreshResult.data) {
+        console.log('token refresh successful');
+
         api.dispatch(
           setLoginInformation(refreshResult.data as JwtLoginInformation),
         );
@@ -81,6 +88,8 @@ export const baseQueryWithReauthGraphql: any = async (
           extraOptions,
         );
       } else {
+        console.log('token refresh failed');
+
         api.dispatch(setLoginInformation(undefined));
       }
     } finally {
