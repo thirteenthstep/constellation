@@ -1,26 +1,43 @@
-import {FlashList} from '@shopify/flash-list';
 import React from 'react';
-import {Text, View} from 'react-native';
 
-import {useAdminQuery} from '../../graphql/domain/contentApi.generated.ts';
+import {useLazyPaginateContentNodesQuery} from '../../api/domain/contentApi.custom.ts';
+import {TreeNodesEdge} from '../../api/types/graphql.ts';
+import {useAppSelector} from '../../store/store';
+import {ContentList} from './ContentList';
+
 
 export const ContentScreen = () => {
-  const {data} = useAdminQuery();
+  const [fetch, {currentData, isLoading}] = useLazyPaginateContentNodesQuery();
+  const pinnedContent = useAppSelector(state => state.content.pinnedContent);
 
-  if (!data) {
+  if (!currentData && !isLoading) {
+    fetch({first: 10});
+  }
+
+  if (!currentData) {
     return null;
   }
 
+  const filteredList = (
+    currentData.Admin.Tree.GetContentNodes.edges ?? []
+  ).filter(
+    item =>
+      !pinnedContent.includes(item) &&
+      item?.node?.structureDefinition?.title &&
+      item.node.structureDefinition.title.trim() !== '',
+  );
+  const combinedList = [...pinnedContent, ...filteredList];
+
   return (
-    <View style={{width: 1000, height: 1000, backgroundColor: 'red'}}>
-      <FlashList
-        data={data.Admin.Tree.GetContentNodes.edges}
-        renderItem={({item}) => (
-          <View style={{height: 100, backgroundColor: '#aaa', margin: 10}}>
-            <Text>{item?.node.structureDefinition.title}</Text>
-          </View>
-        )}
-      />
-    </View>
+    <ContentList
+      items={combinedList as TreeNodesEdge[]}
+      fetchMore={() =>
+        fetch({
+          first: 10,
+          after: combinedList[combinedList.length - 1]?.cursor,
+        })
+      }
+      refresh={() => {}}
+    />
   );
 };
