@@ -1,13 +1,13 @@
 import React from 'react';
 
-import HelloWorld from '@constellation/app/components/HelloWorld';
+import {Providers} from '@constellation/app/providers/Providers.tsx';
 
 import './App.css';
 
 function App() {
   return (
     <>
-      <HelloWorld />
+      <Providers />
     </>
   );
 }
