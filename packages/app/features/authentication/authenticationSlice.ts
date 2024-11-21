@@ -1,5 +1,5 @@
 import {PayloadAction, createSlice} from '@reduxjs/toolkit';
-import {decode} from 'jwt-js-decode';
+import {jwtDecode} from 'jwt-decode';
 
 import {api} from '../../api/domain/authenticationApi.generated.ts';
 import {Account, JwtLoginInformation, User} from '../../api/types/graphql.ts';
@@ -34,15 +34,19 @@ export const authenticationSlice = createSlice({
         state.login = action.payload.Auth.loginJwt?.loginResult?.jwtTokens;
 
         if (state.login?.accessToken) {
-          const jwt = decode(state.login?.accessToken);
+          const jwt = jwtDecode<{
+            userId: string;
+            accountId: string;
+            permissionsInAccount: string[];
+          }>(state.login?.accessToken);
           state.currentUser = {
             user: {
-              id: jwt.payload.userId,
+              id: jwt.userId,
             },
             account: {
-              id: jwt.payload.accountId,
+              id: jwt.accountId,
             },
-            permissions: jwt.payload.permissionsInAccount,
+            permissions: jwt.permissionsInAccount,
           };
         }
       },
@@ -65,7 +69,7 @@ export const authenticationSlice = createSlice({
       state.currentUser = undefined;
     });
     builder.addMatcher(
-      api.endpoints.GetCurrentUser.matchRejected,
+      api.endpoints.Logout.matchFulfilled,
       (state, _) => {
         state.login = undefined;
         state.currentUser = undefined;
