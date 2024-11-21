@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
 import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
 import {persistReducer} from 'redux-persist';
@@ -9,20 +10,22 @@ import {
   REGISTER,
   REHYDRATE,
 } from 'redux-persist/es/constants';
-import storage from 'redux-persist/lib/storage';
 
-import {authenticationSlice} from '../features/authentication/authenticationSlice.ts';
 import {api} from '../api/domain/authenticationApi.generated.ts';
+import {authenticationSlice} from '../features/authentication/authenticationSlice.ts';
+import {contentSlice} from '../features/content/contentSlice.ts';
+
 
 const persistConfig = {
   key: 'root',
-  storage,
+  storage: AsyncStorage,
   blacklist: [api.reducerPath],
 };
 
 const rootReducer = combineReducers({
   [api.reducerPath]: api.reducer,
   [authenticationSlice.reducerPath]: authenticationSlice.reducer,
+  [contentSlice.reducerPath]: contentSlice.reducer,
 });
 
 export const store = configureStore({
@@ -39,4 +42,4 @@ export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
 export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+export const useAppSelector = useSelector.withTypes<RootState>();
