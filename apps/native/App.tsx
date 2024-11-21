@@ -5,41 +5,23 @@
  * @format
  */
 import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  View,
-  useColorScheme,
-} from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {LogBox} from 'react-native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
-import HelloWorld from '@constellation/app/components/HelloWorld.tsx';
+import {Providers} from '@constellation/app/providers/Providers.tsx';
+
+
+LogBox.ignoreLogs([
+  /TNodeChildrenRenderer/,
+  /MemoizedTNodeRenderer/,
+  /TRenderEngineProvider/,
+]);
 
 function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <HelloWorld />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <Providers />
+    </SafeAreaProvider>
   );
 }
 
