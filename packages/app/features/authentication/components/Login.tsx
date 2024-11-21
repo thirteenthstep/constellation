@@ -1,7 +1,7 @@
 import {zodResolver} from '@hookform/resolvers/zod';
 import React from 'react';
 import {Controller, useForm} from 'react-hook-form';
-import {Button, Input, Text, YStack} from 'tamagui';
+import {Button, Input, Spinner, Text, YStack} from 'tamagui';
 import {z} from 'zod';
 
 import {
@@ -18,7 +18,7 @@ const CredentialsSchema = z.object({
 });
 
 export const Login = () => {
-  const [mutate] = useAuthenticateMutation();
+  const [mutate, {isLoading, error}] = useAuthenticateMutation();
   const [getCurrentUser] = useLazyGetCurrentUserQuery();
 
   const authenticate = (credentials: AuthenticateMutationVariables) => {
@@ -70,7 +70,9 @@ export const Login = () => {
         />
         {errors.password && <Text>{errors.password.message}</Text>}
       </YStack>
-      <Button onPress={handleSubmit(authenticate)}>Login</Button>
+      {!isLoading && <Button onPress={handleSubmit(authenticate)}>Login</Button>}
+      {isLoading && <Button icon={<Spinner />} disabled />}
+      {error && <Text>{error.message}</Text>}
     </YStack>
   );
 };

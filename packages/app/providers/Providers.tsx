@@ -10,11 +10,14 @@ import {persistStore} from 'redux-persist';
 import {PersistGate} from 'redux-persist/integration/react';
 
 import {LoginScreen} from '../features/authentication/LoginScreen';
+import {
+  LogoutButton,
+  ProfileButton,
+} from '../features/content/ContentHeaderButtons';
+import {ContentScreen} from '../features/content/ContentScreen.tsx';
+import {ProfileScreen} from '../features/profile/ProfileScreen';
 import {store, useAppSelector} from '../store/store.ts';
 import appConfig from '../tamagui.config.ts';
-import {ContentScreen} from '../features/content/ContentScreen.tsx';
-import {ContentHeaderButtons} from '../features/content/ContentHeaderButtons.tsx';
-import {ProfileScreen} from '../features/profile/ProfileScreen';
 
 
 const persistor = persistStore(store);
@@ -34,26 +37,27 @@ const RootStack = createNativeStackNavigator({
         Login: {
           screen: LoginScreen,
           options: {
-            headerShown: false
-          }
+            headerShown: false,
+          },
         },
       },
     },
-      SignedIn: {
-        if: useIsSignedIn,
-        screens: {
-          Content: {
-            screen: ContentScreen,
-            options: {
-              title: 'Content',
-              headerRight: ContentHeaderButtons,
-            },
-          },
-          Profile: {
-            screen: ProfileScreen,
+    SignedIn: {
+      if: useIsSignedIn,
+      screens: {
+        Content: {
+          screen: ContentScreen,
+          options: {
+            title: 'Content',
+            headerLeft: ProfileButton,
+            headerRight: LogoutButton,
           },
         },
+        Profile: {
+          screen: ProfileScreen,
+        },
       },
+    },
   },
 });
 
