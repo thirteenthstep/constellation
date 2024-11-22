@@ -7,7 +7,6 @@ import {useAppDispatch, useAppSelector} from '../../../service/store/store';
 import {togglePinContent} from '../service/store/contentSlice';
 import {ContentDescription} from './ContentDescription';
 
-
 const ASPECT_RATIO = 9 / 5;
 
 export const ContentItem: FC<{item: TreeNodesEdge}> = ({item}) => {

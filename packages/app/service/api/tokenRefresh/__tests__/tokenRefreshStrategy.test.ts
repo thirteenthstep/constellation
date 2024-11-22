@@ -6,7 +6,6 @@ import {legacy_configureStore} from 'redux-mock-store';
 import {JwtLoginInformation} from '../../types/graphql';
 import {maybeRefreshAccessToken} from '../tokenRefreshStrategy';
 
-
 const mockStore = legacy_configureStore();
 
 describe('maybeRefreshAccessToken', () => {

@@ -5,7 +5,6 @@ import RenderHtml, {
   CSSLongNativeTranslatableTextPropKey,
 } from 'react-native-render-html';
 
-
 const TAGS_STYLES = {body: {color: 'white'}};
 const IGNORED_STYLES: CSSLongNativeTranslatableTextPropKey[] = ['color'];
 
