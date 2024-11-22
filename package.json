@@ -8,7 +8,7 @@
     "packages/*"
   ],
   "scripts": {
-    "postinstall": "patch-package",
+    "postinstall": "patch-package && husky install",
     "start:metro": "yarn workspace @constellation/native start",
     "start:android": "yarn workspace @constellation/native android",
     "start:ios": "yarn workspace @constellation/native ios",
@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "husky": "^9.1.7",
     "patch-package": "^8.0.0",
     "prettier": "2.8.8",
     "typescript": "5.0.4"
