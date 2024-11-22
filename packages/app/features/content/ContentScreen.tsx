@@ -29,7 +29,6 @@ export const ContentScreen = () => {
     <ContentList
       items={combinedList as TreeNodesEdge[]}
       fetchMore={() => setCursor(combinedList[combinedList.length - 1]?.cursor)}
-      refresh={() => {}}
     />
   );
 };

@@ -7,7 +7,7 @@ import {ContentItem} from './ContentItem.tsx';
 export const ContentList: FC<{
   items: TreeNodesEdge[];
   fetchMore: () => void;
-  refresh: () => void;
+  refresh?: () => void;
 }> = ({items, fetchMore}) => {
   return (
     <FlatList

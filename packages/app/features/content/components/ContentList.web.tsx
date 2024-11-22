@@ -7,11 +7,11 @@ import {ContentItem} from './ContentItem.tsx';
 export const ContentList: FC<{
   items: TreeNodesEdge[];
   fetchMore: () => {};
-  refresh: () => void;
+  refresh?: () => void;
 }> = ({items, fetchMore}) => {
   return (
     <InfiniteScroll
-      dataLength={items.length} //This is important field to render the next data
+      dataLength={items.length}
       next={fetchMore}
       hasMore={true}
       loader={<h4>Loading...</h4>}>
