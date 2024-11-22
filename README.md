@@ -7,6 +7,10 @@ Proof of Concept: share close to 100% of application code between
 - Install dependencies and apply patches at root folder: `yarn (install)`
 
 ## Quickstart
+If you want login data being prefilled at dev mode, add EMAIL/PASSWORD credentials at
+`/apps/native/.env` for react native or `/apps/web/.env` for web.
+Or create `.env.local` files - which are gitignored - and start react native accordingly: `APP_ENV=local react-native start`
+
 - RN Dev: start metro using `yarn start:metro`
 - iOS: `yarn start:ios` or build using xcode from `/apps/native/ios`
 - android: `yarn start:android` or build using android studio from `/apps/native/android`

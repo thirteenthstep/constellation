@@ -1,6 +1,6 @@
 import {fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 
-import {ENDPOINT_URL} from '../env/graphQLEndpoint';
+import {ENDPOINT_URL} from '../../../environment';
 
 export const createBaseQuery = (endpointUrl?: string) =>
   fetchBaseQuery({

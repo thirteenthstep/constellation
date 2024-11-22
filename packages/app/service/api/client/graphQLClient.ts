@@ -1,6 +1,6 @@
 import {GraphQLClient} from 'graphql-request';
 
-import {ENDPOINT_URL} from '../env/graphQLEndpoint';
+import {ENDPOINT_URL} from '../../../environment';
 
 const GRAPHQL_ENDPOINT = `${ENDPOINT_URL}/graphql`;
 

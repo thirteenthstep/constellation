@@ -4,13 +4,13 @@ import {Controller, useForm} from 'react-hook-form';
 import {Button, Input, Spinner, Text, YStack} from 'tamagui';
 import {z} from 'zod';
 
+import {EMAIL, PASSWORD} from '../../../environment';
 import {
   AuthenticateMutationVariables,
   useAuthenticateMutation,
   useLazyGetCurrentUserQuery,
 } from '../service/api/authenticationApi.generated';
 import {Logo} from './Logo';
-
 
 const CredentialsSchema = z.object({
   email: z.string().email(),
@@ -33,8 +33,8 @@ export const Login = () => {
     resolver: zodResolver(CredentialsSchema),
     defaultValues: __DEV__
       ? {
-          email: 'editor.staging@example.com',
-          password: 'HtxbYgJfB1ysRCEDX6b2',
+          email: EMAIL,
+          password: PASSWORD,
         }
       : undefined,
   });

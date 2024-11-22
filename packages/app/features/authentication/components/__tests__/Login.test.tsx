@@ -17,8 +17,7 @@ import {api} from '../../../../service/api/baseApi';
 import {authenticationSlice} from '../../service/store/authenticationSlice';
 import {Login} from '../Login';
 
-
-jest.mock('../../../../service/api/env/graphQLEndpoint', () => ({
+jest.mock('../../../../environment', () => ({
   ENDPOINT_URL: 'https://test.academy',
 }));
 
