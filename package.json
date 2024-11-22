@@ -14,6 +14,7 @@
     "start:ios": "yarn workspace @constellation/native ios",
     "start:web": "yarn workspace @constellation/web dev",
     "lint": "yarn workspaces foreach -A -p run lint",
+    "test": "yarn workspaces foreach -A -p run test",
     "format": "yarn workspaces foreach -A -p run format",
     "prepare": "husky install"
   },
