@@ -4,10 +4,9 @@ import {Provider} from 'react-redux';
 import {persistStore} from 'redux-persist';
 import {PersistGate} from 'redux-persist/integration/react';
 
-import {store} from '../store/store.ts';
-import appConfig from '../tamagui.config.ts';
-import {NavigationProvider} from './NavigationProvider';
-
+import {Navigation} from '../navigation/Navigation';
+import {store} from '../service/store/store';
+import appConfig from '../tamagui.config';
 
 const persistor = persistStore(store);
 const tamaguiConfig = createTamagui(appConfig);
@@ -17,7 +16,7 @@ export const Providers: FC<PropsWithChildren> = () => {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <TamaguiProvider config={tamaguiConfig}>
-          <NavigationProvider />
+          <Navigation />
         </TamaguiProvider>
       </PersistGate>
     </Provider>

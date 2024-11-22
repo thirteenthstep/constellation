@@ -1,7 +1,7 @@
 import React from 'react';
+import {useWindowDimensions} from 'react-native';
 import {SvgUri} from 'react-native-svg';
 import {View} from 'tamagui';
-import {useWindowDimensions} from 'react-native';
 
 export const Logo = () => {
   const dimensions = useWindowDimensions();

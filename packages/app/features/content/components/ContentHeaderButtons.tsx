@@ -3,8 +3,7 @@ import {CircleUser} from '@tamagui/lucide-icons';
 import React, {FC} from 'react';
 import {Button} from 'tamagui';
 
-import {Logout} from '../authentication/components/Logout';
-
+import {Logout} from '../../authentication/components/Logout';
 
 export const ProfileButton: FC = () => {
   const navigation = useNavigation();

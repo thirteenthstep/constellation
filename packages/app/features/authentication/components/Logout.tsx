@@ -3,8 +3,7 @@ import React, {FC, useEffect} from 'react';
 import {Alert} from 'react-native';
 import {Button, Spinner, XStack} from 'tamagui';
 
-import {useLogoutMutation} from '../../../api/domain/authenticationApi.generated';
-
+import {useLogoutMutation} from '../service/api/authenticationApi.generated';
 
 export const Logout: FC = () => {
   const [logout, {isLoading, error}] = useLogoutMutation();

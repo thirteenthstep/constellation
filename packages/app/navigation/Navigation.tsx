@@ -1,11 +1,18 @@
+import {
+  StaticParamList,
+  createStaticNavigation,
+} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import React from 'react';
+
 import {LoginScreen} from '../features/authentication/LoginScreen';
 import {ContentScreen} from '../features/content/ContentScreen';
-import {LogoutButton, ProfileButton} from '../features/content/ContentHeaderButtons';
+import {
+  LogoutButton,
+  ProfileButton,
+} from '../features/content/components/ContentHeaderButtons';
 import {ProfileScreen} from '../features/profile/ProfileScreen';
-import {createStaticNavigation, StaticParamList} from '@react-navigation/native';
-import {useAppSelector} from '../store/store';
-import React from 'react';
+import {useAppSelector} from '../service/store/store';
 
 declare global {
   namespace ReactNavigation {
@@ -47,7 +54,7 @@ export type SignedInStackParamList = StaticParamList<typeof SignedInStack>;
 const SignedOutNavigation = createStaticNavigation(SignedOutStack);
 const SignedInNavigation = createStaticNavigation(SignedInStack);
 
-export const NavigationProvider = () => {
+export const Navigation = () => {
   const isLoggedIn = useAppSelector(state => state.authentication.login);
 
   return isLoggedIn ? <SignedInNavigation /> : <SignedOutNavigation />;

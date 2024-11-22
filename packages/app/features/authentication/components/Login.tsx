@@ -4,13 +4,13 @@ import {Controller, useForm} from 'react-hook-form';
 import {Button, Input, Spinner, Text, YStack} from 'tamagui';
 import {z} from 'zod';
 
+import {useLazyPaginateContentNodesQuery} from '../../content/service/api/contentApi.custom';
 import {
   AuthenticateMutationVariables,
   useAuthenticateMutation,
   useLazyGetCurrentUserQuery,
-} from '../../../api/domain/authenticationApi.generated';
+} from '../service/api/authenticationApi.generated';
 import {Logo} from './Logo';
-
 
 const CredentialsSchema = z.object({
   email: z.string().email(),
@@ -20,9 +20,13 @@ const CredentialsSchema = z.object({
 export const Login = () => {
   const [mutate, {isLoading, error}] = useAuthenticateMutation();
   const [getCurrentUser] = useLazyGetCurrentUserQuery();
+  const [fetchContentNodes] = useLazyPaginateContentNodesQuery();
 
   const authenticate = (credentials: AuthenticateMutationVariables) => {
-    mutate(credentials).then(() => getCurrentUser());
+    mutate(credentials).then(() => {
+      getCurrentUser();
+      fetchContentNodes({first: 10});
+    });
   };
 
   const {

@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "codegen": "graphql-codegen --config api/codegen.ts",
+    "codegen": "graphql-codegen --config ./codegen.ts",
     "lint": "eslint .",
     "format": "prettier --write './**/*.{ts,tsx}'"
   },

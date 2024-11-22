@@ -4,7 +4,6 @@ import {ScrollView} from 'tamagui';
 
 import {Login} from './components/Login';
 
-
 export const LoginScreen = () => {
   const safeArea = useSafeAreaInsets();
 

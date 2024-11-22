@@ -1,3 +1,4 @@
-import defaultConfig from '@tamagui/config/v3';
+import {config} from '@tamagui/config/v3';
+import {createTamagui} from 'tamagui';
 
-export default defaultConfig;
+export default createTamagui(config);

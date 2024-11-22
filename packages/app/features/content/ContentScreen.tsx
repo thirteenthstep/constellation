@@ -1,28 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-import {useLazyPaginateContentNodesQuery} from '../../api/domain/contentApi.custom.ts';
-import {TreeNodesEdge} from '../../api/types/graphql.ts';
-import {useAppSelector} from '../../store/store';
-import {ContentList} from './ContentList';
-
+import {TreeNodesEdge} from '../../service/api/types/graphql';
+import {useAppSelector} from '../../service/store/store';
+import {ContentList} from './components/ContentList';
+import {usePaginateContentNodesQuery} from './service/api/contentApi.custom';
 
 export const ContentScreen = () => {
-  const [fetch, {currentData, isLoading}] = useLazyPaginateContentNodesQuery();
+  const [cursor, setCursor] = useState<string>();
+  const {currentData} = usePaginateContentNodesQuery({
+    first: 10,
+    after: cursor,
+  });
   const pinnedContent = useAppSelector(state => state.content.pinnedContent);
 
-  if (!currentData && !isLoading) {
-    fetch({first: 10});
-  }
-
-  if (!currentData) {
+  if (!currentData || !currentData.Admin.Tree.GetContentNodes.edges) {
     return null;
   }
 
-  const filteredList = (
-    currentData.Admin.Tree.GetContentNodes.edges ?? []
-  ).filter(
+  const filteredList = currentData.Admin.Tree.GetContentNodes.edges.filter(
     item =>
-      !pinnedContent.includes(item) &&
+      !pinnedContent.find(c => c.node.id === item?.node?.id) &&
       item?.node?.structureDefinition?.title &&
       item.node.structureDefinition.title.trim() !== '',
   );
@@ -31,12 +28,7 @@ export const ContentScreen = () => {
   return (
     <ContentList
       items={combinedList as TreeNodesEdge[]}
-      fetchMore={() =>
-        fetch({
-          first: 10,
-          after: combinedList[combinedList.length - 1]?.cursor,
-        })
-      }
+      fetchMore={() => setCursor(combinedList[combinedList.length - 1]?.cursor)}
       refresh={() => {}}
     />
   );

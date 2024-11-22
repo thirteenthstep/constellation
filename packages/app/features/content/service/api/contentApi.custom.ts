@@ -1,6 +1,9 @@
-import { api } from '../client/baseApi';
-import { FetchContentNodesDocument, FetchContentNodesQuery, FetchContentNodesQueryVariables } from './contentApi.generated.ts';
-
+import {api} from '../../../../service/api/baseApi.ts';
+import {
+  FetchContentNodesDocument,
+  FetchContentNodesQuery,
+  FetchContentNodesQueryVariables,
+} from './contentApi.generated.ts';
 
 const injectedRtkApi = api.injectEndpoints({
   endpoints: build => ({
@@ -13,9 +16,15 @@ const injectedRtkApi = api.injectEndpoints({
         return endpointName;
       },
       merge: (currentCache, newItems) => {
-        if (newItems.Admin.Tree.GetContentNodes.edges) {
+        if (
+          newItems.Admin.Tree.GetContentNodes.edges &&
+          newItems.Admin.Tree.GetContentNodes.edges.length > 1
+        ) {
           currentCache.Admin.Tree.GetContentNodes.edges?.push(
-            ...newItems.Admin.Tree.GetContentNodes.edges,
+            ...newItems.Admin.Tree.GetContentNodes.edges.slice(
+              1,
+              newItems.Admin.Tree.GetContentNodes.edges.length - 1,
+            ),
           );
         }
       },

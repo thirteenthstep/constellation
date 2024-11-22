@@ -11,10 +11,9 @@ import {
   REHYDRATE,
 } from 'redux-persist/es/constants';
 
-import {api} from '../api/domain/authenticationApi.generated.ts';
-import {authenticationSlice} from '../features/authentication/authenticationSlice.ts';
-import {contentSlice} from '../features/content/contentSlice.ts';
-
+import {authenticationSlice} from '../../features/authentication/service/store/authenticationSlice';
+import {contentSlice} from '../../features/content/service/store/contentSlice';
+import {api} from '../api/baseApi';
 
 const persistConfig = {
   key: 'root',
@@ -38,8 +37,9 @@ export const store = configureStore({
     }).concat(api.middleware),
 });
 
-export type RootState = ReturnType<typeof store.getState>;
+export type RootState = ReturnType<typeof rootReducer>;
 export type AppDispatch = typeof store.dispatch;
 
 export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
-export const useAppSelector = useSelector.withTypes<RootState>();
+export const useAppSelector: TypedUseSelectorHook<RootState> =
+  useSelector.withTypes<RootState>();

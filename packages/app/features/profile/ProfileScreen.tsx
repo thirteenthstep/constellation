@@ -2,8 +2,7 @@ import React, {FC} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {ScrollView} from 'tamagui';
 
-import {Profile} from './Profile';
-
+import {Profile} from './components/Profile';
 
 export const ProfileScreen: FC = () => {
   return (

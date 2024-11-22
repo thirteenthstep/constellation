@@ -7,10 +7,9 @@ import RenderHtml, {
 } from 'react-native-render-html';
 import {Button, Card, H5, Image, View, ZStack} from 'tamagui';
 
-import {TreeNodesEdge} from '../../api/types/graphql.ts';
-import {useAppDispatch, useAppSelector} from '../../store/store.ts';
-import {pinContent, unpinContent} from './contentSlice.ts';
-
+import {TreeNodesEdge} from '../../../service/api/types/graphql';
+import {useAppDispatch, useAppSelector} from '../../../service/store/store';
+import {togglePinContent} from '../service/store/contentSlice';
 
 const ASPECT_RATIO = 9 / 5;
 const TAGS_STYLES = {body: {color: 'white'}};
@@ -25,7 +24,12 @@ export const ContentItem: FC<{item: TreeNodesEdge}> = ({item}) => {
   const dispatch = useAppDispatch();
 
   return (
-    <Card width={'100%'} maxWidth={600} aspectRatio={ASPECT_RATIO} marginBottom={10}>
+    <Card
+      key={item.node.id}
+      width={'100%'}
+      maxWidth={600}
+      aspectRatio={ASPECT_RATIO}
+      marginBottom={10}>
       <Card.Header>
         <H5 color={'white'}>{item.node.structureDefinition.title}</H5>
       </Card.Header>
@@ -52,9 +56,7 @@ export const ContentItem: FC<{item: TreeNodesEdge}> = ({item}) => {
           size={36}
           icon={<Pin color={isPinned ? 'white' : undefined} />}
           backgroundColor={isPinned ? '#888' : undefined}
-          onPress={() =>
-            dispatch(isPinned ? unpinContent(item) : pinContent(item))
-          }
+          onPress={() => dispatch(togglePinContent(item))}
         />
       </Card.Footer>
 

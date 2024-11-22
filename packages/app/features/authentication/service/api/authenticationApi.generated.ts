@@ -1,7 +1,7 @@
 /* eslint-disable */
-import * as Types from '../types/graphql';
+import * as Types from '../../../../service/api/types/graphql.d';
 
-import { api } from '../client/baseApi';
+import { api } from '../../../../service/api/baseApi';
 export type AuthenticateMutationVariables = Types.Exact<{
   email: Types.Scalars['String']['input'];
   password: Types.Scalars['String']['input'];

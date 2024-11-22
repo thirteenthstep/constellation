@@ -1,7 +1,7 @@
 /* eslint-disable */
-import * as Types from '../types/graphql';
+import * as Types from '../../../../service/api/types/graphql.d';
 
-import { api } from '../client/baseApi';
+import { api } from '../../../../service/api/baseApi';
 export type FetchContentNodesQueryVariables = Types.Exact<{
   first: Types.Scalars['Int']['input'];
   after?: Types.InputMaybe<Types.Scalars['String']['input']>;
