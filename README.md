@@ -5,6 +5,7 @@ Proof of Concept: share close to 100% of application code between
 ## Prerequisites
 - Node > 18 and Corepack: `corepack enable` since the project uses yarn berry for monorepo workspaces
 - Install dependencies and apply patches at root folder: `yarn (install)`
+- Install iOS Pods  `cd apps/native/ios && pod install`
 
 ## Quickstart
 If you want login data being prefilled at dev mode, add EMAIL/PASSWORD credentials at
