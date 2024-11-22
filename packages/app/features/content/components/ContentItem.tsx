@@ -1,23 +1,16 @@
 import {ImageOff, Pin} from '@tamagui/lucide-icons';
-import {decode} from 'html-entities';
 import React, {FC} from 'react';
-import {useWindowDimensions} from 'react-native';
-import RenderHtml, {
-  CSSLongNativeTranslatableTextPropKey,
-} from 'react-native-render-html';
 import {Button, Card, H5, Image, View, ZStack} from 'tamagui';
 
 import {TreeNodesEdge} from '../../../service/api/types/graphql';
 import {useAppDispatch, useAppSelector} from '../../../service/store/store';
 import {togglePinContent} from '../service/store/contentSlice';
+import {ContentDescription} from './ContentDescription';
+
 
 const ASPECT_RATIO = 9 / 5;
-const TAGS_STYLES = {body: {color: 'white'}};
-const IGNORED_STYLES: CSSLongNativeTranslatableTextPropKey[] = ['color'];
 
 export const ContentItem: FC<{item: TreeNodesEdge}> = ({item}) => {
-  const {width} = useWindowDimensions();
-
   const isPinned = useAppSelector(
     state => state.content.pinnedContent,
   ).includes(item);
@@ -37,12 +30,7 @@ export const ContentItem: FC<{item: TreeNodesEdge}> = ({item}) => {
       <View zIndex={2} flex={1}>
         <View padding={20}>
           {item.node.shortDescription && (
-            <RenderHtml
-              tagsStyles={TAGS_STYLES}
-              ignoredStyles={IGNORED_STYLES}
-              contentWidth={width}
-              source={{html: decode(item.node.shortDescription)}}
-            />
+            <ContentDescription description={item.node.shortDescription} />
           )}
         </View>
       </View>

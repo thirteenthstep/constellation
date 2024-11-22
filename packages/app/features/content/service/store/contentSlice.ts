@@ -18,7 +18,6 @@ export const contentSlice = createSlice({
       const index = state.pinnedContent.findIndex(
         c => c.node.id === action.payload.node.id,
       );
-      console.log(index);
       if (index !== -1) {
         state.pinnedContent.splice(index, 1);
       } else {
