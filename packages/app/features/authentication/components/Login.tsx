@@ -79,8 +79,14 @@ export const Login = () => {
       {!isLoading && (
         <Button onPress={handleSubmit(authenticate)}>Login</Button>
       )}
-      {isLoading && <Button icon={<Spinner />} disabled />}
-      {error && <Text>{error.message}</Text>}
+      {isLoading && (
+        <Button
+          testID={'Login.Button.Submit'}
+          icon={<Spinner testID={'Login.Spinner'} />}
+          disabled
+        />
+      )}
+      {error && <Text testID={'Login.Error'}>{error.message}</Text>}
     </YStack>
   );
 };
